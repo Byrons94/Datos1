@@ -16,6 +16,24 @@
     <Filter Include="Ficheros">
       <UniqueIdentifier>{3b638269-a23f-47f2-b5df-7f1d77615da1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Articulos">
+      <UniqueIdentifier>{40add3b7-e1e5-4954-bb71-aeefdc8fea4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Articulos">
+      <UniqueIdentifier>{f5697321-a07e-433e-b024-50c8f356e747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Inventario">
+      <UniqueIdentifier>{f2c8144d-94e9-4007-8680-8542b2297908}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Inventario">
+      <UniqueIdentifier>{ced0bcb0-f496-4120-a7a5-d405a8bca551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Gestores">
+      <UniqueIdentifier>{a30bcf07-88e1-44ff-8996-2f21a023326b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gestores">
+      <UniqueIdentifier>{aad7f1d9-d189-4c42-94ff-e9133b7ba7b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -27,23 +45,26 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ListaInventario.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NodoInventario.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoInventario.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="InfoArticulo.h">
+      <Filter>Header Files\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="ListaArticulo.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="NodoArticulo.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Articulos</Filter>
     </ClInclude>
-    <ClInclude Include="InfoArticulo.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="InfoInventario.h">
+      <Filter>Header Files\Inventario</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaInventario.h">
+      <Filter>Header Files\Inventario</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoInventario.h">
+      <Filter>Header Files\Inventario</Filter>
+    </ClInclude>
+    <ClInclude Include="GestorInventario.h">
+      <Filter>Header Files\Gestores</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -53,23 +74,26 @@
     <ClCompile Include="proyectoDatos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ListaInventario.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NodoInventario.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InfoInventario.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="InfoArticulo.cpp">
+      <Filter>Source Files\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="ListaArticulo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="NodoArticulo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Articulos</Filter>
     </ClCompile>
-    <ClCompile Include="InfoArticulo.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="InfoInventario.cpp">
+      <Filter>Source Files\Inventario</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaInventario.cpp">
+      <Filter>Source Files\Inventario</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoInventario.cpp">
+      <Filter>Source Files\Inventario</Filter>
+    </ClCompile>
+    <ClCompile Include="GestorInventario.cpp">
+      <Filter>Source Files\Gestores</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

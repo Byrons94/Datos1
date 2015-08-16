@@ -11,7 +11,6 @@ public:
 	InfoInventario(char*, char*, int);
 	~InfoInventario();
 
-
 	void setCodigo(char *);
 	void setDescripcion(char *);
 	void setLargo(int);
