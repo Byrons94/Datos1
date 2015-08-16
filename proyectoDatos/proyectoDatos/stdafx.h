@@ -9,7 +9,12 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include <conio.h>
+#include <string.h>
+#include <iostream>
+#include <stdlib.h>
 
+using namespace std;
 
 
 // TODO: reference additional headers your program requires here
