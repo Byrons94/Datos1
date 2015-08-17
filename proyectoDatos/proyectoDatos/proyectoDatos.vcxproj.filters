@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Ficheros">
-      <UniqueIdentifier>{3b638269-a23f-47f2-b5df-7f1d77615da1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Articulos">
       <UniqueIdentifier>{40add3b7-e1e5-4954-bb71-aeefdc8fea4a}</UniqueIdentifier>
     </Filter>
