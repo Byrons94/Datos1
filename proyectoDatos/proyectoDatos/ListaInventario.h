@@ -1,14 +1,13 @@
 #pragma once
-class ListaInventario
-{
-
+#include "NodoInventario.h"
+class ListaInventario{
 private:
-
+	NodoInventario *cab;
+	int tamanio;
 
 public:
 	ListaInventario();
 	~ListaInventario();
-
-
+ 
 };
 

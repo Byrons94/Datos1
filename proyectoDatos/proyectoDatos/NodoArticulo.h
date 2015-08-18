@@ -1,3 +1,4 @@
+#pragma once
 #include "InfoArticulo.h"
 #include "stdafx.h"
 

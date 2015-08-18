@@ -1,3 +1,4 @@
+#pragma once
 #include "InfoInventario.h"
 #include "stdafx.h"
 

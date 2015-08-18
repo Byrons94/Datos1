@@ -1,22 +1,28 @@
 #pragma once
-class InfoInventario
-{
+#include "ListaArticulo.h"
+
+
+class InfoInventario{
 private:
-	char *codigo;
-	char *descripcion;
-	int  largo;
+	char codigo[15];
+	char descripcion[50];
+	ListaArticulo * listaArticulos;
+
+	//ListaInventario * listaInterna;
 
 public:
 	InfoInventario();
-	InfoInventario(char*, char*, int);
+	InfoInventario(char*, char*);
 	~InfoInventario();
 
 	void setCodigo(char *);
 	void setDescripcion(char *);
-	void setLargo(int);
+	//void setListaInterna(ListaInventario *);
+	void setListaArticulos(ListaArticulo *);
 
 	char *getCodigo();
 	char *getDescripcion();
-	int getLargo();
+	//ListaInventario * getListaInterna();
+	ListaArticulo *getListaArticulos();
 };
 
