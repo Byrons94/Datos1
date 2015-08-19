@@ -63,6 +63,15 @@
     <ClInclude Include="GestorInventario.h">
       <Filter>Header Files\Gestores</Filter>
     </ClInclude>
+    <ClInclude Include="NodoTemplate.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TInfoInventario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaTInventario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -91,6 +100,15 @@
     </ClCompile>
     <ClCompile Include="GestorInventario.cpp">
       <Filter>Source Files\Gestores</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoTemplate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TInfoInventario.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaTInventario.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
