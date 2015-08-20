@@ -31,6 +31,18 @@
     <Filter Include="Archivos de codigo fuente\Inventario">
       <UniqueIdentifier>{96ed03a3-067d-414f-8303-7f2507f16085}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de codigo fuente\Inventario\Pasillos">
+      <UniqueIdentifier>{90543963-ae7e-4fdd-8f48-76b9393861df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Inventario\Lineas generales">
+      <UniqueIdentifier>{f691c24f-c75b-43ad-9f9b-25f928f7f77b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Inventario\Pasillos">
+      <UniqueIdentifier>{531b1c09-0f50-4e9c-baef-f9e9ab8c8602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Inventario\Lineas generales">
+      <UniqueIdentifier>{63f9baa8-c637-443a-9461-cdbb5bce8789}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -54,6 +66,24 @@
     <ClInclude Include="GestorInventario.h">
       <Filter>Archivos de encabezado\Gestores</Filter>
     </ClInclude>
+    <ClInclude Include="ListaPasillos.h">
+      <Filter>Archivos de encabezado\Inventario\Pasillos</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoPasillo.h">
+      <Filter>Archivos de encabezado\Inventario\Pasillos</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoPasillo.h">
+      <Filter>Archivos de encabezado\Inventario\Pasillos</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoGenerales.h">
+      <Filter>Archivos de encabezado\Inventario\Lineas generales</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaGenerales.h">
+      <Filter>Archivos de encabezado\Inventario\Lineas generales</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoGenerales.h">
+      <Filter>Archivos de encabezado\Inventario\Lineas generales</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -73,6 +103,24 @@
     </ClCompile>
     <ClCompile Include="GestorInventario.cpp">
       <Filter>Archivos de codigo fuente\Gestores</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoPasillo.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Pasillos</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaPasillos.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Pasillos</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoPasillo.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Pasillos</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoGenerales.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Lineas generales</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaGenerales.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Lineas generales</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoGenerales.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Lineas generales</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
