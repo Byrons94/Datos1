@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-#include "GestorInventario.h";
+#include "GestorInventario.h"
 #include<cstdlib>
 #include<iostream>
 #include<fstream>
