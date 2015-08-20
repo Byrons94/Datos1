@@ -8,7 +8,9 @@ class ListaTInventario
 
 public:
 	ListaTInventario();
+	ListaTInventario(NodoTemplate<T> *);
 	~ListaTInventario();
+
 
 	void setCab(NodoTemplate<T> *);
 	void setTamanio(int);

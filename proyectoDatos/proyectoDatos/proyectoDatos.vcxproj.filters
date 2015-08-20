@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
+    <Filter Include="Archivos de encabezado">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
+    <Filter Include="Archivos de encabezado\Articulos">
+      <UniqueIdentifier>{40add3b7-e1e5-4954-bb71-aeefdc8fea4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Gestores">
+      <UniqueIdentifier>{a30bcf07-88e1-44ff-8996-2f21a023326b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Articulos">
+      <UniqueIdentifier>{f5697321-a07e-433e-b024-50c8f356e747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Gestores">
+      <UniqueIdentifier>{aad7f1d9-d189-4c42-94ff-e9133b7ba7b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Articulos">
-      <UniqueIdentifier>{40add3b7-e1e5-4954-bb71-aeefdc8fea4a}</UniqueIdentifier>
+    <Filter Include="Archivos de encabezado\Inventario">
+      <UniqueIdentifier>{13ef621c-d1a4-4f37-baf8-c5fead562872}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Articulos">
-      <UniqueIdentifier>{f5697321-a07e-433e-b024-50c8f356e747}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Inventario">
-      <UniqueIdentifier>{f2c8144d-94e9-4007-8680-8542b2297908}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Inventario">
-      <UniqueIdentifier>{ced0bcb0-f496-4120-a7a5-d405a8bca551}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Gestores">
-      <UniqueIdentifier>{a30bcf07-88e1-44ff-8996-2f21a023326b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Gestores">
-      <UniqueIdentifier>{aad7f1d9-d189-4c42-94ff-e9133b7ba7b2}</UniqueIdentifier>
+    <Filter Include="Archivos de codigo fuente\Inventario">
+      <UniqueIdentifier>{96ed03a3-067d-414f-8303-7f2507f16085}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -37,78 +37,42 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="InfoArticulo.h">
-      <Filter>Header Files\Articulos</Filter>
+      <Filter>Archivos de encabezado\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="ListaArticulo.h">
-      <Filter>Header Files\Articulos</Filter>
+      <Filter>Archivos de encabezado\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="NodoArticulo.h">
-      <Filter>Header Files\Articulos</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoInventario.h">
-      <Filter>Header Files\Inventario</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaInventario.h">
-      <Filter>Header Files\Inventario</Filter>
-    </ClInclude>
-    <ClInclude Include="NodoInventario.h">
-      <Filter>Header Files\Inventario</Filter>
+      <Filter>Archivos de encabezado\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="GestorInventario.h">
-      <Filter>Header Files\Gestores</Filter>
-    </ClInclude>
-    <ClInclude Include="NodoTemplate.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TInfoInventario.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaTInventario.h">
-      <Filter>Header Files</Filter>
+      <Filter>Archivos de encabezado\Gestores</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="proyectoDatos.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="InfoArticulo.cpp">
-      <Filter>Source Files\Articulos</Filter>
+      <Filter>Archivos de codigo fuente\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="ListaArticulo.cpp">
-      <Filter>Source Files\Articulos</Filter>
+      <Filter>Archivos de codigo fuente\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="NodoArticulo.cpp">
-      <Filter>Source Files\Articulos</Filter>
-    </ClCompile>
-    <ClCompile Include="InfoInventario.cpp">
-      <Filter>Source Files\Inventario</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaInventario.cpp">
-      <Filter>Source Files\Inventario</Filter>
-    </ClCompile>
-    <ClCompile Include="NodoInventario.cpp">
-      <Filter>Source Files\Inventario</Filter>
+      <Filter>Archivos de codigo fuente\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="GestorInventario.cpp">
-      <Filter>Source Files\Gestores</Filter>
-    </ClCompile>
-    <ClCompile Include="NodoTemplate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TInfoInventario.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ListaTInventario.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Archivos de codigo fuente\Gestores</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

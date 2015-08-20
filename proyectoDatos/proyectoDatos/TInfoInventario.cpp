@@ -15,7 +15,7 @@ TInfoInventario<T>::TInfoInventario(T * listaInterna){
 }
 
 template<class T>
-TInfoInventario<T>::TInfoInventario(char * codigo, char * descripcion, T * listaInterna){
+TInfoInventario<T>::TInfoInventario(char * codigo, char * descripcion, int pjerarquia ,T * listaInterna){
 	setCodigo(codigo);
 	setDescripcion(descripcion);
 	setListaInterna(listaInterna);
@@ -24,6 +24,11 @@ TInfoInventario<T>::TInfoInventario(char * codigo, char * descripcion, T * lista
 template<class T>
 TInfoInventario<T>::~TInfoInventario()
 {}
+
+template<class T>
+void TInfoInventario<T>::setJerarquia(int pjerarquia){
+	this->jerarquia = pjerarquia;
+}
 
 template<class T>
 void TInfoInventario<T>::setCodigo(char * pcodigo){
@@ -38,6 +43,11 @@ void TInfoInventario<T>::setDescripcion(char * pdescripcion){
 template<class T>
 void TInfoInventario<T>::setListaInterna(T *plista){
 	this->listaInterna = plista;
+}
+
+template<class T>
+int TInfoInventario<T>::getJerarquia(){
+	return this->jerarquia;
 }
 
 template<class T>

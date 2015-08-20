@@ -151,30 +151,18 @@
   <ItemGroup>
     <ClInclude Include="GestorInventario.h" />
     <ClInclude Include="InfoArticulo.h" />
-    <ClInclude Include="InfoInventario.h" />
     <ClInclude Include="ListaArticulo.h" />
-    <ClInclude Include="ListaInventario.h" />
-    <ClInclude Include="ListaTInventario.h" />
     <ClInclude Include="NodoArticulo.h" />
-    <ClInclude Include="NodoInventario.h" />
-    <ClInclude Include="NodoTemplate.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TInfoInventario.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GestorInventario.cpp" />
     <ClCompile Include="InfoArticulo.cpp" />
-    <ClCompile Include="InfoInventario.cpp" />
     <ClCompile Include="ListaArticulo.cpp" />
-    <ClCompile Include="ListaInventario.cpp" />
-    <ClCompile Include="ListaTInventario.cpp" />
     <ClCompile Include="NodoArticulo.cpp" />
-    <ClCompile Include="NodoInventario.cpp" />
-    <ClCompile Include="NodoTemplate.cpp" />
     <ClCompile Include="proyectoDatos.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="TInfoInventario.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
