@@ -151,12 +151,18 @@
   <ItemGroup>
     <ClInclude Include="GestorInventario.h" />
     <ClInclude Include="InfoArticulo.h" />
+    <ClInclude Include="InfoCarrito.h" />
+    <ClInclude Include="InfoEspecifica.h" />
     <ClInclude Include="InfoGenerales.h" />
     <ClInclude Include="InfoPasillo.h" />
     <ClInclude Include="ListaArticulo.h" />
+    <ClInclude Include="ListaCarrito.h" />
+    <ClInclude Include="ListaEspecifica.h" />
     <ClInclude Include="ListaGenerales.h" />
     <ClInclude Include="ListaPasillos.h" />
     <ClInclude Include="NodoArticulo.h" />
+    <ClInclude Include="NodoCarrito.h" />
+    <ClInclude Include="NodoEspecifica.h" />
     <ClInclude Include="NodoGenerales.h" />
     <ClInclude Include="NodoPasillo.h" />
     <ClInclude Include="stdafx.h" />
@@ -165,12 +171,18 @@
   <ItemGroup>
     <ClCompile Include="GestorInventario.cpp" />
     <ClCompile Include="InfoArticulo.cpp" />
+    <ClCompile Include="InfoCarrito.cpp" />
+    <ClCompile Include="InfoEspecifica.cpp" />
     <ClCompile Include="InfoGenerales.cpp" />
     <ClCompile Include="InfoPasillo.cpp" />
     <ClCompile Include="ListaArticulo.cpp" />
+    <ClCompile Include="ListaCarrito.cpp" />
+    <ClCompile Include="ListaEspecifica.cpp" />
     <ClCompile Include="ListaGenerales.cpp" />
     <ClCompile Include="ListaPasillos.cpp" />
     <ClCompile Include="NodoArticulo.cpp" />
+    <ClCompile Include="NodoCarrito.cpp" />
+    <ClCompile Include="NodoEspecifica.cpp" />
     <ClCompile Include="NodoGenerales.cpp" />
     <ClCompile Include="NodoPasillo.cpp" />
     <ClCompile Include="proyectoDatos.cpp" />

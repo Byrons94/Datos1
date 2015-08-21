@@ -14,7 +14,7 @@ int main(){
 	
 	ListaArticulo *lista = a->cargarArticulos();
 	
-	a->crearProducto("0805", "Arroz", "Tio pelon", 45, 2000, lista);
+	a->crearProducto("0132", "perrito", "Tio pelon", 45, 2000, lista);
 
 	NodoArticulo *aux = lista->getCab();
 	while (aux != NULL){

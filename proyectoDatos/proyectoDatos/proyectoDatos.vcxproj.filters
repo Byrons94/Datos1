@@ -5,18 +5,12 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Archivos de encabezado\Articulos">
-      <UniqueIdentifier>{40add3b7-e1e5-4954-bb71-aeefdc8fea4a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de encabezado\Gestores">
       <UniqueIdentifier>{a30bcf07-88e1-44ff-8996-2f21a023326b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Archivos de codigo fuente">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Archivos de codigo fuente\Articulos">
-      <UniqueIdentifier>{f5697321-a07e-433e-b024-50c8f356e747}</UniqueIdentifier>
     </Filter>
     <Filter Include="Archivos de codigo fuente\Gestores">
       <UniqueIdentifier>{aad7f1d9-d189-4c42-94ff-e9133b7ba7b2}</UniqueIdentifier>
@@ -43,6 +37,24 @@
     <Filter Include="Archivos de encabezado\Inventario\Lineas generales">
       <UniqueIdentifier>{63f9baa8-c637-443a-9461-cdbb5bce8789}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Inventario\Articulos">
+      <UniqueIdentifier>{40add3b7-e1e5-4954-bb71-aeefdc8fea4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Inventario\Articulos">
+      <UniqueIdentifier>{f5697321-a07e-433e-b024-50c8f356e747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Inventario\Lineas especificas">
+      <UniqueIdentifier>{ccf05c86-efff-465b-ab96-76b7613f6e6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Inventario\Lineas especificas">
+      <UniqueIdentifier>{e08b7b80-3b14-4da0-aaa7-8976c940d9fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Compras">
+      <UniqueIdentifier>{6cdc429a-dd0a-45c3-bd1a-4e14ad6fd5d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Compras">
+      <UniqueIdentifier>{35636789-7a85-48ec-b964-061b0eaf6c53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -55,13 +67,13 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="InfoArticulo.h">
-      <Filter>Archivos de encabezado\Articulos</Filter>
+      <Filter>Archivos de encabezado\Inventario\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="ListaArticulo.h">
-      <Filter>Archivos de encabezado\Articulos</Filter>
+      <Filter>Archivos de encabezado\Inventario\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="NodoArticulo.h">
-      <Filter>Archivos de encabezado\Articulos</Filter>
+      <Filter>Archivos de encabezado\Inventario\Articulos</Filter>
     </ClInclude>
     <ClInclude Include="GestorInventario.h">
       <Filter>Archivos de encabezado\Gestores</Filter>
@@ -84,6 +96,24 @@
     <ClInclude Include="NodoGenerales.h">
       <Filter>Archivos de encabezado\Inventario\Lineas generales</Filter>
     </ClInclude>
+    <ClInclude Include="NodoEspecifica.h">
+      <Filter>Archivos de encabezado\Inventario\Lineas especificas</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaEspecifica.h">
+      <Filter>Archivos de encabezado\Inventario\Lineas especificas</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoEspecifica.h">
+      <Filter>Archivos de encabezado\Inventario\Lineas especificas</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoCarrito.h">
+      <Filter>Archivos de encabezado\Compras</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaCarrito.h">
+      <Filter>Archivos de encabezado\Compras</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoCarrito.h">
+      <Filter>Archivos de encabezado\Compras</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -93,13 +123,13 @@
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="InfoArticulo.cpp">
-      <Filter>Archivos de codigo fuente\Articulos</Filter>
+      <Filter>Archivos de codigo fuente\Inventario\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="ListaArticulo.cpp">
-      <Filter>Archivos de codigo fuente\Articulos</Filter>
+      <Filter>Archivos de codigo fuente\Inventario\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="NodoArticulo.cpp">
-      <Filter>Archivos de codigo fuente\Articulos</Filter>
+      <Filter>Archivos de codigo fuente\Inventario\Articulos</Filter>
     </ClCompile>
     <ClCompile Include="GestorInventario.cpp">
       <Filter>Archivos de codigo fuente\Gestores</Filter>
@@ -121,6 +151,24 @@
     </ClCompile>
     <ClCompile Include="NodoGenerales.cpp">
       <Filter>Archivos de codigo fuente\Inventario\Lineas generales</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoEspecifica.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Lineas especificas</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaEspecifica.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Lineas especificas</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoEspecifica.cpp">
+      <Filter>Archivos de codigo fuente\Inventario\Lineas especificas</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaCarrito.cpp">
+      <Filter>Archivos de codigo fuente\Compras</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoCarrito.cpp">
+      <Filter>Archivos de codigo fuente\Compras</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoCarrito.cpp">
+      <Filter>Archivos de codigo fuente\Compras</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

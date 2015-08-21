@@ -64,8 +64,8 @@ void ListaGenerales::agregarNodoAntesDe(NodoGenerales * nuevo, NodoGenerales * n
 }
 
 ListaGenerales::ListaGenerales() {
-	/*setCab(NULL);
-	setTamanio(0);*/
+	setCab(NULL);
+	setTamanio(0);
 }
 
 ListaGenerales::~ListaGenerales() {}
