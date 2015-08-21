@@ -55,6 +55,12 @@
     <Filter Include="Archivos de encabezado\Compras">
       <UniqueIdentifier>{35636789-7a85-48ec-b964-061b0eaf6c53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Usuarios">
+      <UniqueIdentifier>{89ba8a77-1d89-4587-961b-9c7ca2d44a32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Usuarios">
+      <UniqueIdentifier>{a6eebe03-6049-4ab5-8b6c-25b7802612ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -114,6 +120,15 @@
     <ClInclude Include="InfoCarrito.h">
       <Filter>Archivos de encabezado\Compras</Filter>
     </ClInclude>
+    <ClInclude Include="InfoUsuario.h">
+      <Filter>Archivos de encabezado\Usuarios</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaUsuario.h">
+      <Filter>Archivos de encabezado\Usuarios</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoUsuario.h">
+      <Filter>Archivos de encabezado\Usuarios</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -169,6 +184,15 @@
     </ClCompile>
     <ClCompile Include="InfoCarrito.cpp">
       <Filter>Archivos de codigo fuente\Compras</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaUsuario.cpp">
+      <Filter>Archivos de codigo fuente\Usuarios</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoUsuario.cpp">
+      <Filter>Archivos de codigo fuente\Usuarios</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoUsuario.cpp">
+      <Filter>Archivos de codigo fuente\Usuarios</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
