@@ -214,7 +214,6 @@ bool ListaPasillos::insertarAcendente(InfoPasillo * pinfo) {
 		agregarNodoDespuesDe(new NodoPasillo(pinfo), nodo);
 		return true;
 	}
-
 	return false;
 }
 

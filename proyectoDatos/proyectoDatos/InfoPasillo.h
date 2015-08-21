@@ -26,6 +26,5 @@ public:
 	char * getDescripcion();
 	ListaGenerales * getListaGeneral();
 
-
 };
 

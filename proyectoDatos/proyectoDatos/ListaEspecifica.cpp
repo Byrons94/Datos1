@@ -62,8 +62,6 @@ void ListaEspecifica::agregarNodoAntesDe(NodoEspecifica * nuevo, NodoEspecifica 
 	++tamanio;
 }
 
-
-
 ListaEspecifica::ListaEspecifica(){
 	setCab(NULL);
 	setTamanio(0);
@@ -223,7 +221,6 @@ bool ListaEspecifica::insertarAcendente(InfoEspecifica * pinfo) {
 		agregarNodoDespuesDe(new NodoEspecifica(pinfo), nodo);
 		return true;
 	}
-
 	return false;
 }
 
@@ -240,6 +237,5 @@ bool ListaEspecifica::insertarDecendente(InfoEspecifica * pinfo) {
 		agregarNodoDespuesDe(new NodoEspecifica(pinfo), nodo);
 		return true;
 	}
-
 	return false;
 }
