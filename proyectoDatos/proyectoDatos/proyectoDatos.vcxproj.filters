@@ -129,6 +129,9 @@
     <ClInclude Include="NodoUsuario.h">
       <Filter>Archivos de encabezado\Usuarios</Filter>
     </ClInclude>
+    <ClInclude Include="GestorUsuarios.h">
+      <Filter>Archivos de encabezado\Gestores</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -193,6 +196,9 @@
     </ClCompile>
     <ClCompile Include="InfoUsuario.cpp">
       <Filter>Archivos de codigo fuente\Usuarios</Filter>
+    </ClCompile>
+    <ClCompile Include="GestorUsuarios.cpp">
+      <Filter>Archivos de codigo fuente\Gestores</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

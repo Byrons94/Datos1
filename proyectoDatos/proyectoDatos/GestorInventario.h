@@ -16,10 +16,5 @@ public:
 	bool almacenarArticuloEnFichero(InfoArticulo *);
 	void convertirAChar(char *, string);
 
-	//Inventario
-	int crearJerarquia(int, char*, char* );
-	bool alamacenarJerarquiaEnFichero(TInfoInventario<ListaArticulo> * info);
-
-
 };
 

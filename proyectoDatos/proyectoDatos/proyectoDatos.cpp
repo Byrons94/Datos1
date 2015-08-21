@@ -12,9 +12,8 @@
 int main(){
 	GestorInventario *a = new GestorInventario();
 	
-	ListaArticulo *lista = a->cargarArticulos();
-	
-	a->crearProducto("0132", "perrito", "Tio pelon", 45, 2000, lista);
+	/*ListaArticulo *lista = a->cargarArticulos();
+	cout <<  lista->agregar("030", "perrito", "Tio pelon", 45, 2000, lista) << endl;
 
 	NodoArticulo *aux = lista->getCab();
 	while (aux != NULL){
@@ -25,7 +24,7 @@ int main(){
 		cout << "Precio: " << aux->getInfo()->getPrecio() << endl;
 		aux = aux->getSgte();
 		cout << endl;
-	}
+	}*/
 
 	system("PAUSE");
     return 0;

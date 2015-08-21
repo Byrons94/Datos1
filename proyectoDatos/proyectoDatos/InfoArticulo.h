@@ -9,6 +9,7 @@ private:
 	double	tamanio;
 	double	precio;
 
+
 public:
 	InfoArticulo();
 	~InfoArticulo();
@@ -24,6 +25,8 @@ public:
 	char   *getMarca();
 	double getTamanio();
 	double getPrecio();
+
+
 
 };
 
