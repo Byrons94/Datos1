@@ -27,6 +27,8 @@ public:
 	char * getDescripcion();
 	ListaEspecifica * getListaGeneral();
 
+	void cargarEspecificas();
+
 
 };
 

@@ -23,6 +23,7 @@ InfoGenerales::InfoGenerales(int numero, char * codigo, char * descripcion, List
 
 InfoGenerales::~InfoGenerales(){}
 
+
 void InfoGenerales::setNumero(int pnumero){
 	this->numero = pnumero;
 }
@@ -53,4 +54,11 @@ char * InfoGenerales::getDescripcion(){
 
 ListaEspecifica * InfoGenerales::getListaGeneral(){
 	return this->lista;
+}
+
+void  InfoGenerales::cargarEspecificas() {
+	ListaEspecifica * lista = new ListaEspecifica();
+	int especificas = atoi(this->codigo);
+	lista->cargarEspecificas(especificas);
+	setListaEspecifica(lista);
 }

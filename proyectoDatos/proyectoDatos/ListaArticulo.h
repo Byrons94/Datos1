@@ -17,7 +17,7 @@ private:
 	void agregarNodoDespuesDe(NodoArticulo * nuevo, NodoArticulo * nodo);
 
 	void agregarNodoAntesDe(NodoArticulo * nuevo, NodoArticulo * nodo);
-	int covertirAEntero(char *);
+	int convertirAEntero(char * pcodigo);
 	bool almacenarArticuloEnFichero(InfoArticulo * articulo);
 
 

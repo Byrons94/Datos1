@@ -19,12 +19,16 @@ public:
 	void setNumero(int);
 	void setCodigo(char *);
 	void setDescripcionn(char *);
-	void setListageneral(ListaGenerales *);
+	void setListaGeneral(ListaGenerales * lista);
+
 
 	int getNumero();
 	char * getCodigo();
 	char * getDescripcion();
 	ListaGenerales * getListaGeneral();
 
-};
+	void cargarGeneralesPasillo();
 
+	
+
+};

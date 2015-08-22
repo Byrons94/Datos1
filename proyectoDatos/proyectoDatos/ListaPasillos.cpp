@@ -1,7 +1,5 @@
 #include "ListaPasillos.h"
 
-
-
 NodoPasillo * ListaPasillos::dirNodo(char * pcodigo){
 	NodoPasillo * nodo = getCab();
 	while (nodo != nullptr && strcmp(pcodigo, dirCodigoDePasillo(nodo)) != 0 ) {
@@ -43,7 +41,6 @@ void ListaPasillos::agregarNodoDespuesDe(NodoPasillo * nuevo, NodoPasillo * nodo
 	nuevo->setSgte(nodo->getSgte());
 	nuevo->setAnte(nodo);
 	nodo->setSgte(nuevo);
-
 	++tamanio;
 }
 
@@ -63,6 +60,12 @@ void ListaPasillos::agregarNodoAntesDe(NodoPasillo * nuevo, NodoPasillo * nodo){
 	++tamanio;
 }
 
+int ListaPasillos::convertirAEntero(char * pcodigo) {
+	int num = atoi(pcodigo);
+	return num;
+}
+
+//constructores
 ListaPasillos::ListaPasillos(){
 	setCab(NULL);
 	setTamanio(0);
@@ -203,33 +206,98 @@ bool ListaPasillos::insertarDespuesDe(InfoPasillo * pinfo, char * pcodigo){
 }
 
 bool ListaPasillos::insertarAcendente(InfoPasillo * pinfo) {
-
+	NodoPasillo * temp = new NodoPasillo(pinfo);
 	NodoPasillo * nodo = getCab();
-	if (nodo == NULL || strcmp(pinfo->getCodigo(), nodo->getInfoPasillo()->getCodigo()) < 0) {
+	if (nodo == NULL || convertirAEntero(pinfo->getCodigo()) < convertirAEntero(nodo->getInfoPasillo()->getCodigo())) {
 		insetarInicio(pinfo);
-	}else {
-		while (nodo->getSgte() != NULL && strcmp(pinfo->getCodigo(), nodo->getInfoPasillo()->getCodigo()) < 0) {
+	}
+	else {
+		bool existe = false;
+		while (nodo->getSgte() != NULL && convertirAEntero(pinfo->getCodigo()) >= convertirAEntero(nodo->getSgte()->getInfoPasillo()->getCodigo())) {
+			existe = (convertirAEntero(pinfo->getCodigo()) == convertirAEntero(nodo->getInfoPasillo()->getCodigo()));
 			nodo = nodo->getSgte();
 		}
-		agregarNodoDespuesDe(new NodoPasillo(pinfo), nodo);
-		return true;
+		if (!existe) {
+			agregarNodoDespuesDe(temp, nodo);
+			return true;
+		}
 	}
 	return false;
 }
 
 bool ListaPasillos::insertarDecendente(InfoPasillo * pinfo){
-	
+	NodoPasillo * temp = new NodoPasillo(pinfo);
 	NodoPasillo * nodo = getCab();
-	if (nodo == NULL || strcmp(pinfo->getCodigo(), nodo->getInfoPasillo()->getCodigo()) > 0) {
+	if (nodo == NULL || convertirAEntero(pinfo->getCodigo()) > convertirAEntero(nodo->getInfoPasillo()->getCodigo())) {
 		insetarInicio(pinfo);
 	}
 	else {
-		while (nodo->getSgte() != NULL && strcmp(pinfo->getCodigo(), nodo->getInfoPasillo()->getCodigo()) > 0) {
+		bool existe = false;
+		while (nodo->getSgte() != NULL && convertirAEntero(pinfo->getCodigo()) < convertirAEntero(nodo->getSgte()->getInfoPasillo()->getCodigo())) {
+			existe = (convertirAEntero(pinfo->getCodigo()) == convertirAEntero(nodo->getInfoPasillo()->getCodigo()));
 			nodo = nodo->getSgte();
 		}
-		agregarNodoDespuesDe(new NodoPasillo(pinfo), nodo);
-		return true;
-	}
+		if (!existe) {
+			agregarNodoDespuesDe(temp, nodo);
 
+			return true;
+		}
+	}
 	return false;
 }
+
+
+void ListaPasillos::cargarPasillos(){
+	leerFicheroPasillos();
+}
+
+int ListaPasillos::leerFicheroPasillos() {
+	
+	ifstream lectura;
+	char numero[5], codigo[15], descripcion[30];
+
+	lectura.open("Ficheros/pasillos.txt", ios::out | ios::in);
+	InfoPasillo *pasillo;
+
+	if (lectura.is_open()) {
+		lectura >> numero;  //primer registro de la linea
+		string linea;		//contador de las lineas del documento
+
+		while (getline(lectura, linea)) {
+			stringstream ss(linea); //nos da un el elemento por linea
+			string palabraString;   // lo definimos para almacenar el dato del txt
+
+			string str(numero);
+			str.erase(str.find(';'));
+			strcpy_s(numero, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(codigo, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(descripcion, palabraString);
+
+			pasillo = new InfoPasillo(covertirAEntero(numero), codigo, descripcion);
+			insertarAcendente(pasillo); //los anadimos a la lista
+			
+			pasillo->cargarGeneralesPasillo();
+			lectura >> numero;
+		}
+		lectura.close();
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+void ListaPasillos::convertirAChar(char *palabra, string palabraString) {
+	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
+	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
+}
+
+int ListaPasillos::covertirAEntero(char * pcodigo) {
+	int num = atoi(pcodigo);
+	return num;
+}
+

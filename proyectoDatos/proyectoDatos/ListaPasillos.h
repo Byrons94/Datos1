@@ -1,6 +1,12 @@
 #pragma once
 #include "NodoPasillo.h"
 #include "stdafx.h"
+#include "stdlib.h"
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <sstream>
 
 class ListaPasillos
 {
@@ -18,6 +24,8 @@ private:
 	// agregar
 	void agregarNodoDespuesDe(NodoPasillo *, NodoPasillo *);
 	void agregarNodoAntesDe(NodoPasillo *, NodoPasillo *);
+
+	int convertirAEntero(char * pcodigo);
 
 public:
 	ListaPasillos();
@@ -38,6 +46,16 @@ public:
 	bool insertarDespuesDe(InfoPasillo *, char *);
 	bool insertarAcendente(InfoPasillo *);
 	bool insertarDecendente(InfoPasillo *);
+
+
+	void cargarPasillos();
+
+	int leerFicheroPasillos();
+
+	
+	void convertirAChar(char * palabra, string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 
 

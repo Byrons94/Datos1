@@ -14,6 +14,11 @@
 #include <iostream>
 #include <stdlib.h>
 #include <fstream>
+#include "stdlib.h"
+#include <cstdlib>
+#include <fstream>
+#include <iostream>
+#include <sstream>
 
 
 using namespace std;

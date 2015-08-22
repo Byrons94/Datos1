@@ -16,6 +16,8 @@ private:
 	void agregarNodoDespuesDe(NodoGenerales *, NodoGenerales *);
 	void agregarNodoAntesDe(NodoGenerales *, NodoGenerales *);
 
+	int convertirAEntero(char * pcodigo);
+
 
 public:
 	ListaGenerales();
@@ -36,6 +38,14 @@ public:
 	bool insertarDespuesDe(InfoGenerales *, char *);
 	bool insertarAcendente(InfoGenerales *);
 	bool insertarDecendente(InfoGenerales *);
+
+	void cargarGenerales(int numPasillo);
+
+	int leerFicheroGenerales(int numPasillo);
+
+	void convertirAChar(char * palabra, string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 
 	//eliminar

@@ -59,7 +59,6 @@ void ListaUsuario::insertarFinal(InfoUsuario * pinfo){
 		nodo->setSgte(new NodoUsuario(pinfo));
 	
 	++tamanio;
-
 }
 
 bool ListaUsuario::insertarDespuesDe(InfoUsuario * pinfo, char * pcodigo){

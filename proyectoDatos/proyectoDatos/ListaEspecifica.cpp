@@ -239,3 +239,60 @@ bool ListaEspecifica::insertarDecendente(InfoEspecifica * pinfo) {
 	}
 	return false;
 }
+
+
+
+void ListaEspecifica::cargarEspecificas(int numLineaGeneral) {
+
+	leerFicheroEspecificas(numLineaGeneral);
+}
+
+int ListaEspecifica::leerFicheroEspecificas(int numLineaGeneral) {
+
+	ifstream lectura;
+	char numero[15], codigo[15], descripcion[30];
+
+	lectura.open("Ficheros/especificas.txt", ios::out | ios::in);
+	InfoEspecifica * lineaEspecifica;
+
+	if (lectura.is_open()) {
+		lectura >> numero;  //primer registro de la linea
+		string linea;		//contador de las lineas del documento
+
+		while (getline(lectura, linea)) {
+			stringstream ss(linea); //nos da un el elemento por linea
+			string palabraString;   // lo definimos para almacenar el dato del txt
+
+			string str(numero);
+			str.erase(str.find(';'));
+			strcpy_s(numero, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(codigo, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(descripcion, palabraString);
+
+			if (covertirAEntero(numero) == numLineaGeneral) {
+				lineaEspecifica = new InfoEspecifica(covertirAEntero(numero), codigo, descripcion);
+				insertarAcendente(lineaEspecifica);
+			}
+			lectura >> numero;
+		}
+		lectura.close();
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+void ListaEspecifica::convertirAChar(char *palabra, string palabraString) {
+	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
+	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
+}
+
+int ListaEspecifica::covertirAEntero(char * pcodigo) {
+	int num = atoi(pcodigo);
+	return num;
+}

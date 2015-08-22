@@ -1,7 +1,6 @@
 #include "ListaGenerales.h"
 
 
-
 NodoGenerales * ListaGenerales::dirNodo(char * pcodigo) {
 	NodoGenerales * nodo = getCab();
 	while (nodo != nullptr && strcmp(pcodigo, dirCodigoDePasillo(nodo)) != 0) {
@@ -63,6 +62,12 @@ void ListaGenerales::agregarNodoAntesDe(NodoGenerales * nuevo, NodoGenerales * n
 	++tamanio;
 }
 
+int ListaGenerales::convertirAEntero(char * pcodigo) {
+	int num = atoi(pcodigo);
+	return num;
+}
+
+//constructores
 ListaGenerales::ListaGenerales() {
 	setCab(NULL);
 	setTamanio(0);
@@ -204,35 +209,98 @@ bool ListaGenerales::insertarDespuesDe(InfoGenerales * pinfo, char * pcodigo) {
 }
 
 bool ListaGenerales::insertarAcendente(InfoGenerales * pinfo) {
-
+	NodoGenerales * temp = new NodoGenerales(pinfo);
 	NodoGenerales * nodo = getCab();
-	if (nodo == NULL || strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) < 0) {
+	if (nodo == NULL || convertirAEntero(pinfo->getCodigo()) < convertirAEntero(nodo->getInfo()->getCodigo())) {
 		insetarInicio(pinfo);
 	}
 	else {
-		while (nodo->getSgte() != NULL && strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) < 0) {
+		bool existe = false;
+		while (nodo->getSgte() != NULL && convertirAEntero(pinfo->getCodigo()) >= convertirAEntero(nodo->getSgte()->getInfo()->getCodigo())) {
+			existe = (convertirAEntero(pinfo->getCodigo()) == convertirAEntero(nodo->getInfo()->getCodigo()));
 			nodo = nodo->getSgte();
 		}
-		agregarNodoDespuesDe(new NodoGenerales(pinfo), nodo);
-		return true;
+		if (!existe){
+			agregarNodoDespuesDe(temp, nodo);
+			return true;
+		}
 	}
-
 	return false;
 }
 
-bool ListaGenerales::insertarDecendente(InfoGenerales * pinfo) {
 
+bool ListaGenerales::insertarDecendente(InfoGenerales * pinfo) {
+	NodoGenerales * temp = new NodoGenerales(pinfo);
 	NodoGenerales * nodo = getCab();
-	if (nodo == NULL || strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) > 0) {
+	if (nodo == NULL || convertirAEntero(pinfo->getCodigo()) > convertirAEntero(nodo->getInfo()->getCodigo())) {
 		insetarInicio(pinfo);
 	}
 	else {
-		while (nodo->getSgte() != NULL && strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) > 0) {
+		bool existe = false;
+		while (nodo->getSgte() != NULL && convertirAEntero(pinfo->getCodigo()) < convertirAEntero(nodo->getSgte()->getInfo()->getCodigo())) {
+			existe = (convertirAEntero(pinfo->getCodigo()) == convertirAEntero(nodo->getInfo()->getCodigo()));
 			nodo = nodo->getSgte();
 		}
-		agregarNodoDespuesDe(new NodoGenerales(pinfo), nodo);
-		return true;
+		if (!existe) {
+			agregarNodoDespuesDe(temp, nodo);
+			return true;
+		}
 	}
-
 	return false;
+}
+
+void ListaGenerales::cargarGenerales(int numPasillo) {
+	
+	leerFicheroGenerales(numPasillo);
+}
+
+int ListaGenerales::leerFicheroGenerales(int numPasillo) {
+
+	ifstream lectura;
+	char numero[3], codigo[15], descripcion[30];
+
+	lectura.open("Ficheros/generales.txt", ios::out | ios::in);
+	InfoGenerales *lineaGeneral;
+
+	if (lectura.is_open()) {
+		lectura >> numero;  //primer registro de la linea
+		string linea;		//contador de las lineas del documento
+
+		while (getline(lectura, linea)) {
+			stringstream ss(linea); //nos da un el elemento por linea
+			string palabraString;   // lo definimos para almacenar el dato del txt
+
+			string str(numero);
+			str.erase(str.find(";"));
+			strcpy_s(numero, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(codigo, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(descripcion, palabraString);
+
+			if(covertirAEntero(numero) == numPasillo){
+				lineaGeneral = new InfoGenerales(covertirAEntero(numero), codigo, descripcion);
+				insertarAcendente(lineaGeneral); 
+				lineaGeneral->cargarEspecificas();
+			}
+			lectura >> numero;
+		}
+		lectura.close();
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+void ListaGenerales::convertirAChar(char *palabra, string palabraString) {
+	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
+	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
+}
+
+int ListaGenerales::covertirAEntero(char * pcodigo) {
+	int num = atoi(pcodigo);
+	return num;
 }

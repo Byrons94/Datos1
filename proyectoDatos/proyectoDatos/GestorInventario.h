@@ -1,7 +1,7 @@
 #pragma once
 #include "ListaArticulo.h"
-#include "ListaTInventario.h"
-#include "NodoTemplate.h"
+#include "ListaPasillos.h"
+
 
 class GestorInventario
 {
@@ -11,10 +11,12 @@ public:
 
 	//Articulos
 	ListaArticulo *cargarArticulos();
-	ListaArticulo * leerFichero();
-	int crearProducto(char *, char *, char *, double, double, ListaArticulo *);
-	bool almacenarArticuloEnFichero(InfoArticulo *);
+	ListaArticulo * leerFicheroArticulos();
+	ListaPasillos * cargarPasillos();
+	ListaPasillos * leerFicheroPasillos();
 	void convertirAChar(char *, string);
+
+	int covertirAEntero(char * pcodigo);
 
 };
 

@@ -6,22 +6,24 @@ InfoPasillo::InfoPasillo(){
 	setNumero(0);
 	setCodigo("");
 	setDescripcionn("");
-	setListageneral(NULL);
+	setListaGeneral(NULL);
 }
 
 InfoPasillo::InfoPasillo(int pnumero, char * pcodigo, char * pdescripcion){
 	setNumero(pnumero);
 	setCodigo(pcodigo);
 	setDescripcionn(pdescripcion);
-	setListageneral(NULL);
+	setListaGeneral(NULL);
 }
 
 InfoPasillo::InfoPasillo(int pnumero, char * pcodigo, char * pdescripcion, ListaGenerales * plista){
 	setNumero(pnumero);
 	setCodigo(pcodigo);
 	setDescripcionn(pdescripcion);
-	setListageneral(plista);
+	setListaGeneral(plista);
 }
+
+
 
 //destructor
 InfoPasillo::~InfoPasillo(){}
@@ -39,8 +41,8 @@ void InfoPasillo::setDescripcionn(char * pdescripcion){
 	strcpy_s(this->descripcion, pdescripcion);
 }
 
-void InfoPasillo::setListageneral(ListaGenerales * plista){
-	this->lista = plista;
+void InfoPasillo::setListaGeneral(ListaGenerales * lista){
+	this->lista = lista;
 }
 
 int InfoPasillo::getNumero(){
@@ -57,4 +59,12 @@ char * InfoPasillo::getDescripcion(){
 
 ListaGenerales * InfoPasillo::getListaGeneral(){
 	return this->lista;
+	
+}
+
+void  InfoPasillo::cargarGeneralesPasillo(){
+	ListaGenerales * lista = new ListaGenerales();
+	int codigoPasillo = atoi(this->getCodigo());
+	lista->cargarGenerales(codigoPasillo);
+	setListaGeneral(lista);
 }

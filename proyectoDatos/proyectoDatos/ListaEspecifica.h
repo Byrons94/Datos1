@@ -36,6 +36,14 @@ public:
 	bool insertarAcendente(InfoEspecifica *);
 	bool insertarDecendente(InfoEspecifica *);
 
+	void cargarEspecificas(int numLineaGeneral);
+
+	int leerFicheroEspecificas(int numLineaGeneral);
+
+	void convertirAChar(char * palabra, string palabraString);
+
+	int covertirAEntero(char * pcodigo);
+
 
 	//eliminar
 	bool elimina(char *);
