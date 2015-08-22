@@ -61,6 +61,18 @@
     <Filter Include="Archivos de codigo fuente\Usuarios">
       <UniqueIdentifier>{a6eebe03-6049-4ab5-8b6c-25b7802612ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de codigo fuente\Compras\Carrito">
+      <UniqueIdentifier>{7527f95c-ac95-429d-a1ac-f4ba64a6eb10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Compras\Carrito">
+      <UniqueIdentifier>{bc7ee824-e247-438c-bb64-a20348691b67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Compras\ListaCompra">
+      <UniqueIdentifier>{96a0819d-0003-40be-9efc-568d97d76634}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Compras\ListaCompra">
+      <UniqueIdentifier>{c94a9cc2-4ece-4a72-b51f-b82c1596af68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -111,15 +123,6 @@
     <ClInclude Include="InfoEspecifica.h">
       <Filter>Archivos de encabezado\Inventario\Lineas especificas</Filter>
     </ClInclude>
-    <ClInclude Include="NodoCarrito.h">
-      <Filter>Archivos de encabezado\Compras</Filter>
-    </ClInclude>
-    <ClInclude Include="ListaCarrito.h">
-      <Filter>Archivos de encabezado\Compras</Filter>
-    </ClInclude>
-    <ClInclude Include="InfoCarrito.h">
-      <Filter>Archivos de encabezado\Compras</Filter>
-    </ClInclude>
     <ClInclude Include="InfoUsuario.h">
       <Filter>Archivos de encabezado\Usuarios</Filter>
     </ClInclude>
@@ -131,6 +134,24 @@
     </ClInclude>
     <ClInclude Include="GestorUsuarios.h">
       <Filter>Archivos de encabezado\Gestores</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoCarrito.h">
+      <Filter>Archivos de encabezado\Compras\Carrito</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaCarrito.h">
+      <Filter>Archivos de encabezado\Compras\Carrito</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoCarrito.h">
+      <Filter>Archivos de encabezado\Compras\Carrito</Filter>
+    </ClInclude>
+    <ClInclude Include="InfoCompra.h">
+      <Filter>Archivos de encabezado\Compras\ListaCompra</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaCompra.h">
+      <Filter>Archivos de encabezado\Compras\ListaCompra</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoCompra.h">
+      <Filter>Archivos de encabezado\Compras\ListaCompra</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -179,15 +200,6 @@
     <ClCompile Include="NodoEspecifica.cpp">
       <Filter>Archivos de codigo fuente\Inventario\Lineas especificas</Filter>
     </ClCompile>
-    <ClCompile Include="ListaCarrito.cpp">
-      <Filter>Archivos de codigo fuente\Compras</Filter>
-    </ClCompile>
-    <ClCompile Include="NodoCarrito.cpp">
-      <Filter>Archivos de codigo fuente\Compras</Filter>
-    </ClCompile>
-    <ClCompile Include="InfoCarrito.cpp">
-      <Filter>Archivos de codigo fuente\Compras</Filter>
-    </ClCompile>
     <ClCompile Include="ListaUsuario.cpp">
       <Filter>Archivos de codigo fuente\Usuarios</Filter>
     </ClCompile>
@@ -199,6 +211,24 @@
     </ClCompile>
     <ClCompile Include="GestorUsuarios.cpp">
       <Filter>Archivos de codigo fuente\Gestores</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoCarrito.cpp">
+      <Filter>Archivos de codigo fuente\Compras\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaCarrito.cpp">
+      <Filter>Archivos de codigo fuente\Compras\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoCarrito.cpp">
+      <Filter>Archivos de codigo fuente\Compras\Carrito</Filter>
+    </ClCompile>
+    <ClCompile Include="InfoCompra.cpp">
+      <Filter>Archivos de codigo fuente\Compras\ListaCompra</Filter>
+    </ClCompile>
+    <ClCompile Include="ListaCompra.cpp">
+      <Filter>Archivos de codigo fuente\Compras\ListaCompra</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoCompra.cpp">
+      <Filter>Archivos de codigo fuente\Compras\ListaCompra</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

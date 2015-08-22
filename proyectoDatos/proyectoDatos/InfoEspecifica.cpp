@@ -25,7 +25,6 @@ InfoEspecifica::InfoEspecifica(int pnumero, char * pcodigo, char * pdescripcion,
 
 InfoEspecifica::~InfoEspecifica(){}
 
-
 void InfoEspecifica::setNumero(int pnumero){
 	this->numero = pnumero;
 }
@@ -57,3 +56,11 @@ char * InfoEspecifica::getDescripcion(){
 ListaArticulo * InfoEspecifica::getListaArticulos(){
 	return this->lista;
 }
+
+void  InfoEspecifica::cargarArticulos() {
+	ListaArticulo * lista = new ListaArticulo();
+	int especificas = atoi(this->codigo);
+	lista->cargarArticulos(especificas);
+	setListaArticulos(lista);
+}
+

@@ -27,5 +27,7 @@ public:
 	char * getDescripcion();
 	ListaArticulo * getListaArticulos();
 
+	void cargarArticulos();
+
 };
 

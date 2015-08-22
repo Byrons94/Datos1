@@ -276,6 +276,8 @@ int ListaEspecifica::leerFicheroEspecificas(int numLineaGeneral) {
 			if (covertirAEntero(numero) == numLineaGeneral) {
 				lineaEspecifica = new InfoEspecifica(covertirAEntero(numero), codigo, descripcion);
 				insertarAcendente(lineaEspecifica);
+
+				lineaEspecifica->cargarArticulos();
 			}
 			lectura >> numero;
 		}

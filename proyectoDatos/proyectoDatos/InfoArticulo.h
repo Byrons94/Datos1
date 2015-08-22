@@ -3,27 +3,30 @@
 class InfoArticulo
 {
 private:
+	int     lineaEspecifica;
 	char	codigo[15];
-	char	nombre[15];
-	char	marca[15];
-	double	tamanio;
+	char	nombre[30];
+	char	marca[30];
+	char	tamanio[30];
 	double	precio;
-
 
 public:
 	InfoArticulo();
 	~InfoArticulo();
-	InfoArticulo(char*, char*, char*, double, double);
+	InfoArticulo(int, char*, char*, char*, char *, double);
+	
+	void   setCodLinea(int);	
 	void   setCodigo(char *);
 	void   setNombre(char *);
 	void   setMarca(char *);
-	void   setTamanio(double);
+	void   setTamanio(char*);
 	void   setPrecio(double);
-	
+
+	int    getCodlinea();
 	char   *getCodigo();
 	char   *getNombre();
 	char   *getMarca();
-	double getTamanio();
+	char    *getTamanio();
 	double getPrecio();
 
 

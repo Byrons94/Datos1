@@ -39,7 +39,16 @@ public:
 	bool insertarAcendente(InfoArticulo *);
 	bool insertarDecendente(InfoArticulo *);
 
-	int agregar(char * codigo, char * nombre, char * marca, double tamanio, double precio, ListaArticulo * lista);
+	int agregar(char * codigo, char * nombre, char * marca, char * tamanio, double precio, ListaArticulo * lista);
+
+	ListaArticulo * cargarArticulos(int codigoespecificas);
+
+	ListaArticulo * leerFicheroArticulos(int codigoEspecificas);
+
+
+	void convertirAChar(char * palabra, string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 
 
