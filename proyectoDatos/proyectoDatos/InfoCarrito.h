@@ -1,5 +1,5 @@
 #pragma once
-#include "ListaArticulo.h"
+#include "ListaCompra.h"
 class InfoCarrito
 {
 
@@ -9,12 +9,12 @@ private:
 	char   codCliente[15];
 	bool   estado; // false  = no entregado, true = entregado
 	double monto;
-	ListaArticulo * lista;
+	ListaCompra * lista;
 
 public:	
 	InfoCarrito();
-	InfoCarrito(char *, char *, ListaArticulo*);
-	InfoCarrito(char *, char *, char*, bool, double, ListaArticulo* );
+	InfoCarrito(char *, char *, ListaCompra*);
+	InfoCarrito(char *, char *, char*, bool, double, ListaCompra* );
 	~InfoCarrito();
 
 	void setCodigo(char *);
@@ -22,14 +22,16 @@ public:
 	void setCodClie(char *);
 	void setEstado(bool);
 	void setMonto(double);
-	void setListaArticulo(ListaArticulo *);
+	void setListaCompra(ListaCompra * );
+
 
 	char * getCodigo();
 	char * getNombre();
 	char * getCodClie();
 	bool   getEstado();
 	double getMonto();
-	ListaArticulo * getListaArticulo();
+	ListaCompra * getListaCompra();
+
 
 };
 

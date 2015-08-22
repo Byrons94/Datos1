@@ -34,6 +34,7 @@ public:
 
 	//eliminar
 	bool elimina(char *);
+	void agregarProducto(InfoCompra * lineaDetallle);
 	void vaciar();
 
 	//Estatus

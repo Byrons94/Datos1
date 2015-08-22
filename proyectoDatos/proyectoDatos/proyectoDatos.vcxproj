@@ -149,6 +149,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GestorCompras.h" />
     <ClInclude Include="GestorInventario.h" />
     <ClInclude Include="GestorUsuarios.h" />
     <ClInclude Include="InfoArticulo.h" />
@@ -176,6 +177,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GestorCompras.cpp" />
     <ClCompile Include="GestorInventario.cpp" />
     <ClCompile Include="GestorUsuarios.cpp" />
     <ClCompile Include="InfoArticulo.cpp" />

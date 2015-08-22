@@ -8,6 +8,8 @@
 #include <fstream>
 #include <string.h>
 #include "ListaArticulo.h"
+#include "ListaCarrito.h"
+
 
 void mostrarElementos() {
 	GestorInventario *a = new GestorInventario();
@@ -62,12 +64,29 @@ void mostrarElementos() {
 	}*/
 
 	system("PAUSE");
-
 }
 
 
+void mostrarCarrito() {
+	ListaCarrito *carrito = new ListaCarrito();
+	ListaCompra * lista = new ListaCompra();
+	lista->agregarProducto(new InfoCompra("1", "1", "1", "1", 5, 5000));
+	lista->agregarProducto(new InfoCompra("2", "2", "2", "2", 8, 8000));
+	lista->agregarProducto(new InfoCompra("3", "3", "3", "3", 3, 3500));
+	
+	carrito->agregarListaCompra(lista);
+	//InfoCarrito * infoCarrito = new InfoCarrito();
+	//infoCarrito->setListaCompra(lista);
+	
+
+
+	/*char * pasillo, char *general, char *especifica, 
+		char *producto, int cantidad, double monto*/
+	system("PAUSE");
+}
+
 int main(){
-	mostrarElementos();
+	//mostrarElementos();
 
 
     return 0;

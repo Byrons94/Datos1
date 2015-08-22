@@ -17,7 +17,6 @@ private:
 	void agregarNodoAntesDe(NodoCarrito *, NodoCarrito*);
 	void borrar(NodoCarrito * );
 
-
 public:
 	//constructores
 	ListaCarrito();
@@ -39,7 +38,6 @@ public:
 	bool insertarIndex(InfoCarrito*, int);
 
 
-
 	bool elimina(char *);
 	bool eliminarIndex(int);
 	void vaciar();
@@ -52,9 +50,10 @@ public:
 	bool modificarDatos(char *, InfoCarrito *);
 	bool modificarDatoPorIndex(int, InfoCarrito*);
 
+	void agregarListaCompra(ListaCompra * listaCompra);
+
 	void mostrarLista();
-
-
+	
 
 };
 
