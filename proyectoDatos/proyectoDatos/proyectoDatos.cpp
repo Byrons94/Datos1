@@ -67,27 +67,43 @@ void mostrarElementos() {
 }
 
 
-void mostrarCarrito() {
+void mostrarCarrito(){
 	ListaCarrito *carrito = new ListaCarrito();
 	ListaCompra * lista = new ListaCompra();
 	lista->agregarProducto(new InfoCompra("1", "1", "1", "1", 5, 5000));
 	lista->agregarProducto(new InfoCompra("2", "2", "2", "2", 8, 8000));
 	lista->agregarProducto(new InfoCompra("3", "3", "3", "3", 3, 3500));
+
+	carrito->agregarListaCompra("123", "Semamal", "1", false, 5325, lista);
+
+	ListaCompra * lista2 = new ListaCompra();
+	lista2->agregarProducto(new InfoCompra("6", "1", "1", "1", 5, 3215));
+	lista2->agregarProducto(new InfoCompra("4", "2", "2", "2", 8, 6542));
+	lista2->agregarProducto(new InfoCompra("4", "3", "3", "3", 3, 9878));
+
+	carrito->agregarListaCompra("567", "Semamal", "1", false, 5325, lista2);
 	
-	carrito->agregarListaCompra(lista);
-	//InfoCarrito * infoCarrito = new InfoCarrito();
-	//infoCarrito->setListaCompra(lista);
+	carrito->guardarCarritos();
+
+	NodoCarrito *nodo = carrito->getCab();
+	for (int i = 0; i < carrito->getTamanio(); i++){
+		cout << nodo->getInfo()->getNombre() << endl;
+		NodoCompra * lista = nodo->getInfo()->getListaCompra()->getCab();
+		while (lista != NULL) {
+			cout << lista->getLineaDetalle()->getCodCarrito() << endl;
+			cout << "producto: " << lista->getLineaDetalle()->getProducto() << " Monto:  " << lista->getLineaDetalle()->getMonto() << endl;
+			lista = lista->getSgte();
+		}
+		nodo = nodo->getSgte();
+	}
 	
 
-
-	/*char * pasillo, char *general, char *especifica, 
-		char *producto, int cantidad, double monto*/
 	system("PAUSE");
 }
 
 int main(){
 	//mostrarElementos();
-
+	mostrarCarrito();
 
     return 0;
 }

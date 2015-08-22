@@ -48,5 +48,7 @@ public:
 
 	bool modificarDatos(char*, InfoCompra *);
 	bool momodificarDatoPorIndex(int, InfoCompra *);
+	void guardarListas();
+	bool almacenarListaEnFichero(InfoCompra * lista);
 };
 

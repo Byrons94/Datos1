@@ -31,6 +31,7 @@ public:
 	
 	void insetarInicio(InfoCarrito *);
 	void insertarFinal(InfoCarrito*);
+	void agregarVacio(NodoCarrito * nodo);
 	bool insertarAntesDe(InfoCarrito*, char *);
 	bool insertarDespuesDe(InfoCarrito*, char *);
 	bool insertarAcendente(InfoCarrito*);
@@ -50,9 +51,13 @@ public:
 	bool modificarDatos(char *, InfoCarrito *);
 	bool modificarDatoPorIndex(int, InfoCarrito*);
 
-	void agregarListaCompra(ListaCompra * listaCompra);
+	void agregarListaCompra(char * codigo, char * nombre, char * codClie, bool estado, double monto, ListaCompra * listaCompra);
 
 	void mostrarLista();
+
+	void guardarCarritos();
+
+	bool almacenarCarritoEnFichero(InfoCarrito * carrito);
 	
 
 };

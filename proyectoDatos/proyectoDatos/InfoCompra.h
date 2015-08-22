@@ -4,6 +4,7 @@ class InfoCompra
 {
 private:
 	//posee el detalle por detalle de cada compra
+	char codigoCarrito[15];
 	char pasillo[15];
 	char lgeneral[15]; //linea
 	char lespecifica[15]; //linea
@@ -13,9 +14,11 @@ private:
 
 public:
 	InfoCompra();
-	InfoCompra(char *, char *, char *, char *, int, double);
+	InfoCompra(char *, char *, char *, char *, char *, int, double);
+	InfoCompra(char * pasillo, char * general, char * especifica, char * producto, int cantidad, double monto);
 	~InfoCompra();
 
+	void setCodCarrito(char *);
 	void setPasillo(char *);
 	void setGeneral(char *);
 	void setEspecifica(char *);
@@ -23,6 +26,7 @@ public:
 	void setCantidad(int);
 	void setMonto(double);
 
+	char * getCodCarrito();
 	char * getPasillo();
 	char * getGeneral();
 	char * getEspecifica();
