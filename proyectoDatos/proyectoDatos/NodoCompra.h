@@ -5,6 +5,8 @@ class NodoCompra
 private:
 	InfoCompra * lineaDetalle;
 	NodoCompra *sgte;
+
+
 	
 public:
 	NodoCompra();
@@ -16,5 +18,8 @@ public:
 
 	InfoCompra * getLineaDetalle();
 	NodoCompra * getSgte();
+
+
+
 };
 

@@ -1,6 +1,5 @@
 #include "ListaUsuario.h"
 
-
 NodoUsuario * ListaUsuario::dirNodo(char * pcodigo){
 	NodoUsuario *nodo = getCab();
 	while (nodo != nullptr && strcmp(nodo->getInfo()->getCodigo(), pcodigo) != 0)
