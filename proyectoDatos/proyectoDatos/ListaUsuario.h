@@ -59,7 +59,7 @@ public:
 
 	void  leerFicheroUsuarios();
 
-	void convertirAChar(char * palabra, string palabraString);
+	void convertirAChar(char * palabra, std::string palabraString);
 
 	int covertirAEntero(char * pcodigo);
 

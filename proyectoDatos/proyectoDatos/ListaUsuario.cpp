@@ -188,11 +188,11 @@ void ListaUsuario::crearUsuario(InfoUsuario *info){
 }
 
 bool ListaUsuario::almacenarUsuarioEnFichero(InfoUsuario* usuario) {
-	ofstream escritura;
-	escritura.open("Ficheros/usuarios.txt", ios::out | ios::app);
+	std::ofstream escritura;
+	escritura.open("Ficheros/usuarios.txt", std::ios::out | std::ios::app);
 	if (escritura.is_open()) {
 		escritura << usuario->getCodigo() << "; " << usuario->getNombre() << "; "
-			<< usuario->getContrasenna() << "; " << usuario->getRol() <<  endl;
+			<< usuario->getContrasenna() << "; " << usuario->getRol() << std::endl;
 		escritura.close();
 	}
 	else {
@@ -222,22 +222,22 @@ void  ListaUsuario::cargarUsuarios() {
 }
 
 void  ListaUsuario::leerFicheroUsuarios() {
-	ifstream lectura;
+	std::ifstream lectura;
 
 	char codigo[30], nombre[30], contrasena[30], rol[5];
-	lectura.open("Ficheros/usuarios.txt", ios::out | ios::in);
+	lectura.open("Ficheros/usuarios.txt", std::ios::out | std::ios::in);
 
 	InfoUsuario * usuario = NULL;
 
 	if (lectura.is_open()) {
 		
 		lectura >> codigo;  //primer registro de la linea
-		string linea;		//contador de las lineas del documento
+		std::string linea;		//contador de las lineas del documento
 		while (getline(lectura, linea)) {
-			stringstream ss(linea); //nos da un el elemento por linea
-			string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
 
-			string str(codigo);
+			std::string str(codigo);
 			str.erase(str.find(';'));
 			strcpy_s(codigo, str.c_str());
 
@@ -259,7 +259,7 @@ void  ListaUsuario::leerFicheroUsuarios() {
 	}
 }
 
-void ListaUsuario::convertirAChar(char *palabra, string palabraString) {
+void ListaUsuario::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
 }

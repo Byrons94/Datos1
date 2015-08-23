@@ -52,7 +52,7 @@ public:
 	bool almacenarListaEnFichero(InfoCompra * lista);
 	void cargarCompras(char * codCarrito);
 	int leerFicheroCompras(char * codCarrito);
-	void convertirAChar(char * palabra, string palabraString);
+	void convertirAChar(char * palabra, std::string palabraString);
 	int covertirAEntero(char * pcodigo);
 };
 

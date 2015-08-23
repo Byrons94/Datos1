@@ -19,9 +19,9 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <array>
 
-
-using namespace std;
+//using namespace std;
 
 
 // TODO: reference additional headers your program requires here

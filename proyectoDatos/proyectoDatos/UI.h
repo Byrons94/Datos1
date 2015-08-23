@@ -15,7 +15,6 @@ namespace proyectoDatos {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace std;
 	using namespace Utilitario;
 
 	/// <summary>
@@ -88,6 +87,7 @@ namespace proyectoDatos {
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(UI::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->txtClave = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -95,7 +95,6 @@ namespace proyectoDatos {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->txtClave = (gcnew System::Windows::Forms::TextBox());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -113,6 +112,16 @@ namespace proyectoDatos {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(373, 257);
 			this->panel1->TabIndex = 0;
+			// 
+			// txtClave
+			// 
+			this->txtClave->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtClave->Location = System::Drawing::Point(116, 120);
+			this->txtClave->Name = L"txtClave";
+			this->txtClave->PasswordChar = '*';
+			this->txtClave->Size = System::Drawing::Size(180, 31);
+			this->txtClave->TabIndex = 15;
 			// 
 			// label4
 			// 
@@ -194,21 +203,12 @@ namespace proyectoDatos {
 			this->panel2->Size = System::Drawing::Size(373, 45);
 			this->panel2->TabIndex = 1;
 			// 
-			// txtClave
-			// 
-			this->txtClave->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtClave->Location = System::Drawing::Point(116, 120);
-			this->txtClave->Name = L"txtClave";
-			this->txtClave->PasswordChar = '*';
-			this->txtClave->Size = System::Drawing::Size(180, 31);
-			this->txtClave->TabIndex = 15;
-			// 
 			// UI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(373, 299);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
@@ -242,7 +242,7 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 	}
 	else {
 		label4->Visible = false;
-		UIPrincipal ^ principal = gcnew UIPrincipal();
+		UIPrincipal ^ principal = gcnew UIPrincipal(Utilitario::toInt(b));
 		Hide();
 		principal->Show();
 	}

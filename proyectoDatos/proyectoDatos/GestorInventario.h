@@ -14,7 +14,7 @@ public:
 	ListaArticulo * leerFicheroArticulos();
 	ListaPasillos * cargarPasillos();
 	ListaPasillos * leerFicheroPasillos();
-	void convertirAChar(char *, string);
+	void convertirAChar(char *, std::string);
 
 	int covertirAEntero(char * pcodigo);
 

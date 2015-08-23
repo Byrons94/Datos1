@@ -53,7 +53,7 @@ void ListaCarrito::agregarNodoDespuesDe(NodoCarrito * nuevo, NodoCarrito *nodo){
 }
 
 void ListaCarrito::agregarNodoAntesDe(NodoCarrito *nodo, NodoCarrito *nuevo){
-	cout << "perrito";
+	std::cout << "perrito";
 	nuevo->setSgte(nodo);
 	nuevo->setAnte(nodo->getAnte());
 	nodo->getAnte()->setSgte(nuevo);
@@ -285,12 +285,12 @@ void  ListaCarrito::guardarCarritos() {
 }
 
 bool ListaCarrito::almacenarCarritoEnFichero(InfoCarrito* carrito) {
-	ofstream escritura;
-	escritura.open("Ficheros/carritos.txt", ios::out | ios::app);
+	std::ofstream escritura;
+	escritura.open("Ficheros/carritos.txt", std::ios::out | std::ios::app);
 	if (escritura.is_open()) {
 		escritura << carrito->getCodigo() << "; " << carrito->getCodClie() << "; "
 			<< carrito->getNombre() << "; " << carrito->getEstado() << "; "
-			<< carrito->getMonto() << "; " << endl;
+			<< carrito->getMonto() << "; " << std::endl;
 		escritura.close();
 	}
 	else {
@@ -305,20 +305,20 @@ void ListaCarrito::cargarCarritosUsuario(char *codUsuario) {
 }
 
 int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
-	ifstream lectura;
+	std::ifstream lectura;
 	char codigo[15], codCliente[15], nombre[30], estado[5], monto[15];
 	
-	lectura.open("Ficheros/carritos.txt", ios::out | ios::in);
+	lectura.open("Ficheros/carritos.txt", std::ios::out | std::ios::in);
 	InfoCarrito * listaCarrito;
 
 	if (lectura.is_open()) {
 		lectura >> codigo;  //primer registro de la linea
-		string linea;		//contador de las lineas del documento
+		std::string linea;		//contador de las lineas del documento
 		while (getline(lectura, linea)) {
-			stringstream ss(linea); //nos da un el elemento por linea
-			string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
 
-			string str(codigo);
+			std::string str(codigo);
 			str.erase(str.find(';'));
 			strcpy_s(codigo, str.c_str());
 
@@ -362,20 +362,20 @@ void ListaCarrito::cargarCarritosPendientes() {
 
 
 int ListaCarrito::leerFicheroCarritoPendientes() {
-	ifstream lectura;
+	std::ifstream lectura;
 	char codigo[15], codCliente[15], nombre[30], estado[5], monto[15];
 
-	lectura.open("Ficheros/carritos.txt", ios::out | ios::in);
+	lectura.open("Ficheros/carritos.txt", std::ios::out | std::ios::in);
 	InfoCarrito * listaCarrito;
 
 	if (lectura.is_open()) {
 		lectura >> codigo;  //primer registro de la linea
-		string linea;		//contador de las lineas del documento
+		std::string linea;		//contador de las lineas del documento
 		while (getline(lectura, linea)) {
-			stringstream ss(linea); //nos da un el elemento por linea
-			string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
 
-			string str(codigo);
+			std::string str(codigo);
 			str.erase(str.find(';'));
 			strcpy_s(codigo, str.c_str());
 
@@ -411,7 +411,7 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 }
 
 
-void ListaCarrito::convertirAChar(char *palabra, string palabraString) {
+void ListaCarrito::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
 }

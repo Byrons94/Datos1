@@ -8,8 +8,6 @@
 #include <string>
 #include <sstream>
 
-using namespace std;
-
 GestorInventario::GestorInventario(){}
 GestorInventario::~GestorInventario(){}
 
@@ -21,19 +19,19 @@ ListaArticulo* GestorInventario::cargarArticulos() {
 ListaArticulo * GestorInventario::leerFicheroArticulos() {
 	ListaArticulo *lista = new ListaArticulo();
 	
-	ifstream lectura;
+	std::ifstream lectura;
 	char codigo[15], nombre[15], marca[15];
 	double tamanio =0 , precio = 0;
-	lectura.open("Ficheros/articulos.txt", ios::out | ios::in);
+	lectura.open("Ficheros/articulos.txt", std::ios::out | std::ios::in);
 	//InfoArticulo *articulo;
 	if (lectura.is_open()) {
 		lectura >> codigo;  //primer registro de la linea
-		string linea;		//contador de las lineas del documento
+		std::string linea;		//contador de las lineas del documento
 		while (getline(lectura, linea)){
-			stringstream ss(linea); //nos da un el elemento por linea
-			string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
 			
-			string str(codigo); 
+			std::string str(codigo);
 			str.erase(str.find(";"));
 			strcpy_s(codigo, str.c_str());
 
@@ -72,21 +70,21 @@ ListaPasillos* GestorInventario::cargarPasillos() {
 ListaPasillos * GestorInventario::leerFicheroPasillos() {
 	ListaPasillos *lista = new ListaPasillos();
 
-	ifstream lectura;
+	std::ifstream lectura;
 	char numero[5], codigo[15], descripcion[30];
 
-	lectura.open("Ficheros/pasillos.txt", ios::out | ios::in);
+	lectura.open("Ficheros/pasillos.txt", std::ios::out | std::ios::in);
 	InfoPasillo *pasillo;
 
 	if (lectura.is_open()) {
 		lectura >> numero;  //primer registro de la linea
-		string linea;		//contador de las lineas del documento
+		std::string linea;		//contador de las lineas del documento
 
 		while (getline(lectura, linea)) {
-			stringstream ss(linea); //nos da un el elemento por linea
-			string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
 			
-			string str(numero);
+			std::string str(numero);
 			str.erase(str.find(';'));
 			strcpy_s(numero, str.c_str());
 
@@ -109,7 +107,7 @@ ListaPasillos * GestorInventario::leerFicheroPasillos() {
 }
 
 
-void GestorInventario::convertirAChar(char *palabra, string palabraString){
+void GestorInventario::convertirAChar(char *palabra, std::string palabraString){
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
 }

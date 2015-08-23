@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "InfoPasillo.h"
 
-using namespace std;
 class NodoPasillo
 {
 private:

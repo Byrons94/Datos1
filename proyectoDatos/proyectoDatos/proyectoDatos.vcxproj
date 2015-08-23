@@ -252,6 +252,7 @@
       <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Async</ExceptionHandling>
     </ClCompile>
+    <ClCompile Include="Utilitario.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -267,6 +268,10 @@
     <EmbeddedResource Include="UIPrincipal.resx">
       <DependentUpon>UIPrincipal.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Imagenes\128522-simple-red-square-icon-business-cart-solid_opt.png" />
+    <Image Include="Imagenes\shopping_cart_red.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

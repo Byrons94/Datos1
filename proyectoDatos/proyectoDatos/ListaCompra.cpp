@@ -203,13 +203,13 @@ void ListaCompra::guardarListas(){
 }
 
 bool ListaCompra::almacenarListaEnFichero(InfoCompra* lista) {
-	ofstream escritura;
-	escritura.open("Ficheros/pedidos.txt", ios::out | ios::app);
+	std::ofstream escritura;
+	escritura.open("Ficheros/pedidos.txt", std::ios::out | std::ios::app);
 	if (escritura.is_open()) {
 		escritura << lista->getCodCarrito() << "; " << lista->getPasillo() << "; "
 			<< lista->getGeneral() << "; " << lista->getEspecifica() << "; "
 			<< lista->getProducto() << "; " << lista->getCantidad() << "; "
-			<< lista->getMonto() << "; " << endl;
+			<< lista->getMonto() << "; " << std::endl;
 		escritura.close();
 	}
 	else {
@@ -224,22 +224,22 @@ void ListaCompra::cargarCompras(char *codCarrito) {
 }
 
 int ListaCompra::leerFicheroCompras(char *codCarrito) {
-	ifstream lectura;
+	std::ifstream lectura;
 	char carrito[15], pasillo[15], general[15], 
 			especifica[15], producto[15], cantidad[15], monto[15];
 
-	lectura.open("Ficheros/pedidos.txt", ios::out | ios::in);
+	lectura.open("Ficheros/pedidos.txt", std::ios::out | std::ios::in);
 	InfoCompra * listaCompras;
 
 	if (lectura.is_open()) {
 		lectura >> carrito;  //primer registro de la linea
-		string linea;		//contador de las lineas del documento
+		std::string linea;		//contador de las lineas del documento
 
 		while (getline(lectura, linea)) {
-			stringstream ss(linea); //nos da un el elemento por linea
-			string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
 
-			string str(codCarrito);
+			std::string str(codCarrito);
 			str.erase(str.find(';'));
 			strcpy_s(carrito, str.c_str());
 			
@@ -276,7 +276,7 @@ int ListaCompra::leerFicheroCompras(char *codCarrito) {
 	}
 }
 
-void ListaCompra::convertirAChar(char *palabra, string palabraString) {
+void ListaCompra::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
 }

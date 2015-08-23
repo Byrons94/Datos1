@@ -169,10 +169,10 @@
     <ClInclude Include="GestorCompras.h">
       <Filter>Archivos de encabezado\Gestores</Filter>
     </ClInclude>
-    <ClInclude Include="Utilitario.h">
+    <ClInclude Include="UIPrincipal.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UIPrincipal.h">
+    <ClInclude Include="Utilitario.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -258,10 +258,24 @@
     <ClCompile Include="UIPrincipal.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
+    <ClCompile Include="Utilitario.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIPrincipal.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Imagenes\128522-simple-red-square-icon-business-cart-solid_opt.png">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </Image>
+    <Image Include="Imagenes\shopping_cart_red.ico">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -1,5 +1,11 @@
 #pragma once
-
+#include "GestorInventario.h"
+#include "GestorCompras.h"
+#include <windows.h> 
+#include "stdafx.h"
+#include <string> 
+#include <iostream>
+#include "Utilitario.h"
 namespace proyectoDatos {
 
 	using namespace System;
@@ -8,6 +14,8 @@ namespace proyectoDatos {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Utilitario;
+	
 
 	/// <summary>
 	/// Summary for UIPrincipal
@@ -15,12 +23,15 @@ namespace proyectoDatos {
 	public ref class UIPrincipal : public System::Windows::Forms::Form
 	{
 	public:
-		UIPrincipal(void)
-		{
+		UIPrincipal(){
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+		}
+
+		UIPrincipal(int idRol){
+			InitializeComponent();
+			validarPermisos(idRol);
+			cargarCombos();
+
 		}
 
 	protected:
@@ -78,21 +89,7 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::ToolStripMenuItem^  entregadasToolStripMenuItem;
 
 
-
-
-
-
-
-
-
-
-
-
 	private: System::ComponentModel::IContainer^  components;
-
-
-
-
 
 
 
@@ -194,6 +191,7 @@ namespace proyectoDatos {
 			// 
 			this->splitter2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(235)), static_cast<System::Int32>(static_cast<System::Byte>(235)),
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
+			this->splitter2->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter2->Dock = System::Windows::Forms::DockStyle::Right;
 			this->splitter2->Location = System::Drawing::Point(695, 0);
 			this->splitter2->Name = L"splitter2";
@@ -205,6 +203,7 @@ namespace proyectoDatos {
 			// 
 			this->splitter1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(235)), static_cast<System::Int32>(static_cast<System::Byte>(235)),
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
+			this->splitter1->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter1->Location = System::Drawing::Point(0, 0);
 			this->splitter1->Name = L"splitter1";
 			this->splitter1->Size = System::Drawing::Size(10, 519);
@@ -231,6 +230,7 @@ namespace proyectoDatos {
 			// 
 			this->splitter3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(235)), static_cast<System::Int32>(static_cast<System::Byte>(235)),
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
+			this->splitter3->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter3->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->splitter3->Location = System::Drawing::Point(0, 66);
 			this->splitter3->Name = L"splitter3";
@@ -283,7 +283,7 @@ namespace proyectoDatos {
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				76.85185F)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				80)));
+				82)));
 			this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
@@ -649,6 +649,7 @@ namespace proyectoDatos {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1164, 661);
 			this->Controls->Add(this->panel1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -681,8 +682,33 @@ namespace proyectoDatos {
 		Application::Exit();
 	}
 
-private: System::Void UIPrincipal_Load(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void UIPrincipal_Load(System::Object^  sender, System::EventArgs^  e) {
 
-}
+	}
+	
+	private: System::Void validarPermisos(int idRol){
+		if (idRol == 3) {
+			menuStrip1->Visible = false;
+		}
+		if (idRol == 2) {
+			articulosToolStripMenuItem->Visible = false;
+			usuariosToolStripMenuItem->Visible = false;
+		}
+	}
+
+
+	private: System::Void cargarCombos(){
+		GestorInventario * gestor = new GestorInventario();
+		ListaPasillos * lista = new ListaPasillos();
+		lista->cargarPasillos();
+
+	}
+
+	private: System::Void cargarPasillos(ListaPasillos * lista){
+		NodoPasillo * nodo = lista->getCab();
+		/*while (nodo!=NULL){
+
+		}*/
+	}
 };
 }
