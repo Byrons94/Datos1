@@ -179,11 +179,11 @@ namespace proyectoDatos {
 		}
 #pragma endregion
 	private: System::Void UI_Load(System::Object^  sender, System::EventArgs^  e) {
-		
 	}
+	
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-
+	
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		GestorUsuarios * gestor = new GestorUsuarios();
 		char * userName = Utilitario::toChar(txtNombre->Text);
