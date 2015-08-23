@@ -77,11 +77,10 @@ bool ListaUsuario::insertarDespuesDe(InfoUsuario * pinfo, char * pcodigo){
 bool ListaUsuario::insertarAcendente(InfoUsuario * pinfo){
 	char* codigo = pinfo->getCodigo();
 	bool seInserta = estaVacia() || strcmp(codigo, dirCodigoDeNodo(getCab())) < 0;
-
+	
 	if (seInserta)
 		insertarInicio(pinfo);
 	else {
-
 		int i = 1;
 		NodoUsuario *nodo = getCab();
 		while (nodo->getSgte() && (i = strcmp(codigo, dirCodigoDeNodo(nodo->getSgte()))) > 0)
@@ -91,7 +90,6 @@ bool ListaUsuario::insertarAcendente(InfoUsuario * pinfo){
 			insertarDespuesDe(pinfo, nodo->getInfo()->getCodigo());
 	}
 	return seInserta;
-
 }
 
 bool ListaUsuario::insertarDecendente(InfoUsuario * pinfo){
@@ -183,4 +181,90 @@ bool ListaUsuario::modificarDatos(char * pcodigo, InfoUsuario * pinfo){
 
 bool ListaUsuario::momodificarDatoPorIndex(int pindex, InfoUsuario *pinfo){
 	return false;
+}
+
+void ListaUsuario::crearUsuario(InfoUsuario *info){
+	almacenarUsuarioEnFichero(info);
+}
+
+bool ListaUsuario::almacenarUsuarioEnFichero(InfoUsuario* usuario) {
+	ofstream escritura;
+	escritura.open("Ficheros/usuarios.txt", ios::out | ios::app);
+	if (escritura.is_open()) {
+		escritura << usuario->getCodigo() << "; " << usuario->getNombre() << "; "
+			<< usuario->getContrasenna() << "; " << usuario->getRol() <<  endl;
+		escritura.close();
+	}
+	else {
+		return false;
+	}
+	return true;
+}
+
+InfoUsuario * ListaUsuario::iniciarSesion(char * pcodigo, char * pclave){	
+	cargarUsuarios();
+	NodoUsuario * nodo = getCab();
+	InfoUsuario * usuario = NULL;
+	
+	while (nodo != NULL) {
+		if (strcmp(pcodigo, nodo->getInfo()->getCodigo()) == 0
+			&& strcmp(pclave, nodo->getInfo()->getContrasenna()) == 0) {
+			usuario = nodo->getInfo();
+		}
+		nodo = nodo->getSgte();
+	}
+	return usuario;
+}
+
+
+void  ListaUsuario::cargarUsuarios() {
+	leerFicheroUsuarios();
+}
+
+void  ListaUsuario::leerFicheroUsuarios() {
+	ifstream lectura;
+
+	char codigo[30], nombre[30], contrasena[30], rol[5];
+	lectura.open("Ficheros/usuarios.txt", ios::out | ios::in);
+
+	InfoUsuario * usuario = NULL;
+
+	if (lectura.is_open()) {
+		
+		lectura >> codigo;  //primer registro de la linea
+		string linea;		//contador de las lineas del documento
+		while (getline(lectura, linea)) {
+			stringstream ss(linea); //nos da un el elemento por linea
+			string palabraString;   // lo definimos para almacenar el dato del txt
+
+			string str(codigo);
+			str.erase(str.find(';'));
+			strcpy_s(codigo, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(nombre, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(contrasena, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(rol, palabraString);
+
+			usuario = new InfoUsuario(codigo, nombre, contrasena, covertirAEntero(rol));
+			insertarAcendente(usuario);
+
+			lectura >> codigo;
+		}
+		lectura.close();
+	}
+}
+
+void ListaUsuario::convertirAChar(char *palabra, string palabraString) {
+	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
+	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
+}
+
+int ListaUsuario::covertirAEntero(char * pcodigo) {
+	int num = atoi(pcodigo);
+	return num;
 }

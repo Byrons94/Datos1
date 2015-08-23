@@ -34,7 +34,7 @@ public:
 
 	//eliminar
 	bool elimina(char *);
-	void agregarProducto(InfoCompra * lineaDetallle);
+	bool agregarProducto(InfoCompra * lineaDetallle);
 	void vaciar();
 
 	//Estatus
@@ -50,5 +50,9 @@ public:
 	bool momodificarDatoPorIndex(int, InfoCompra *);
 	void guardarListas();
 	bool almacenarListaEnFichero(InfoCompra * lista);
+	void cargarCompras(char * codCarrito);
+	int leerFicheroCompras(char * codCarrito);
+	void convertirAChar(char * palabra, string palabraString);
+	int covertirAEntero(char * pcodigo);
 };
 

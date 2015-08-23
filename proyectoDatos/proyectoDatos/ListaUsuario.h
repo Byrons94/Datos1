@@ -48,6 +48,20 @@ public:
 	bool modificarDatos(char*, InfoUsuario *);
 	bool momodificarDatoPorIndex(int, InfoUsuario *);
 
+	void crearUsuario(InfoUsuario * info);
+
+	bool almacenarUsuarioEnFichero(InfoUsuario * usuario);
+
+	InfoUsuario * iniciarSesion(char * pcodigo, char * pcontrasenna);
+
+	void  cargarUsuarios();
+
+
+	void  leerFicheroUsuarios();
+
+	void convertirAChar(char * palabra, string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 };
 

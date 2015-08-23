@@ -9,7 +9,7 @@
 #include <string.h>
 #include "ListaArticulo.h"
 #include "ListaCarrito.h"
-
+#include "GestorUsuarios.h"
 
 void mostrarElementos() {
 	GestorInventario *a = new GestorInventario();
@@ -103,8 +103,11 @@ void mostrarCarrito(){
 
 int main(){
 	//mostrarElementos();
-	mostrarCarrito();
-
+	//mostrarCarrito();
+	GestorUsuarios *gestor = new GestorUsuarios();
+	int var = gestor->iniciarSesion("123", "123");
+	cout << var << endl;
+	system("PAUSE");
     return 0;
 }
 

@@ -58,6 +58,22 @@ public:
 	void guardarCarritos();
 
 	bool almacenarCarritoEnFichero(InfoCarrito * carrito);
+
+	void cargarCarritosUsuario(char * codUsuario);
+
+	int leerFicheroCarritoUsuario(char * codUsuario);
+
+	void cargarCarritosPendientes();
+
+	int leerFicheroCarritoPendientes();
+
+
+
+	void convertirAChar(char * palabra, string palabraString);
+
+	int covertirAEntero(char * pcodigo);
+
+	bool convertirABoolean(char * num);
 	
 
 };
