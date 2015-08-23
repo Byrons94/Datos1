@@ -5,6 +5,7 @@
 #include "stdafx.h"
 #include <string> 
 #include <iostream>
+#include <stdio.h>
 #include "Utilitario.h"
 namespace proyectoDatos {
 
@@ -16,12 +17,15 @@ namespace proyectoDatos {
 	using namespace System::Drawing;
 	using namespace Utilitario;
 	
-
 	/// <summary>
 	/// Summary for UIPrincipal
 	/// </summary>
 	public ref class UIPrincipal : public System::Windows::Forms::Form
 	{
+		ListaPasillos * lista = NULL;
+	
+	
+	
 	public:
 		UIPrincipal(){
 			InitializeComponent();
@@ -87,6 +91,23 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::ToolStripMenuItem^  modificarToolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  pendientesEntregaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  entregadasToolStripMenuItem;
+	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+
+
+
+
+
+
+
+
+
+
+
 
 
 	private: System::ComponentModel::IContainer^  components;
@@ -110,9 +131,14 @@ namespace proyectoDatos {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(UIPrincipal::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->splitter2 = (gcnew System::Windows::Forms::Splitter());
 			this->splitter1 = (gcnew System::Windows::Forms::Splitter());
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
@@ -151,8 +177,14 @@ namespace proyectoDatos {
 			this->pendientesEntregaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->entregadasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			this->panel6->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->panel5->SuspendLayout();
 			this->panel9->SuspendLayout();
 			this->panel8->SuspendLayout();
@@ -179,13 +211,72 @@ namespace proyectoDatos {
 			// panel6
 			// 
 			this->panel6->AutoScroll = true;
+			this->panel6->Controls->Add(this->dataGridView1);
 			this->panel6->Controls->Add(this->splitter2);
 			this->panel6->Controls->Add(this->splitter1);
-			this->panel6->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel6->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel6->Location = System::Drawing::Point(187, 94);
 			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(705, 519);
+			this->panel6->Size = System::Drawing::Size(698, 519);
 			this->panel6->TabIndex = 5;
+			// 
+			// dataGridView1
+			// 
+			this->dataGridView1->AllowUserToAddRows = false;
+			this->dataGridView1->AllowUserToDeleteRows = false;
+			this->dataGridView1->AllowUserToResizeColumns = false;
+			this->dataGridView1->AllowUserToResizeRows = false;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Silver;
+			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
+			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleVertical;
+			this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::Disable;
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->Column1,
+					this->Column2, this->Column5, this->Column3, this->Column4
+			});
+			this->dataGridView1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnF2;
+			this->dataGridView1->GridColor = System::Drawing::Color::White;
+			this->dataGridView1->Location = System::Drawing::Point(10, 0);
+			this->dataGridView1->MultiSelect = false;
+			this->dataGridView1->Name = L"dataGridView1";
+			this->dataGridView1->ReadOnly = true;
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::Gainsboro;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Maroon;
+			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle4;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(678, 519);
+			this->dataGridView1->StandardTab = true;
+			this->dataGridView1->TabIndex = 2;
 			// 
 			// splitter2
 			// 
@@ -193,7 +284,7 @@ namespace proyectoDatos {
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
 			this->splitter2->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter2->Dock = System::Windows::Forms::DockStyle::Right;
-			this->splitter2->Location = System::Drawing::Point(695, 0);
+			this->splitter2->Location = System::Drawing::Point(688, 0);
 			this->splitter2->Name = L"splitter2";
 			this->splitter2->Size = System::Drawing::Size(10, 519);
 			this->splitter2->TabIndex = 1;
@@ -283,7 +374,7 @@ namespace proyectoDatos {
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				76.85185F)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				82)));
+				92)));
 			this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
@@ -444,6 +535,7 @@ namespace proyectoDatos {
 			this->comboBox3->Name = L"comboBox3";
 			this->comboBox3->Size = System::Drawing::Size(171, 24);
 			this->comboBox3->TabIndex = 2;
+			this->comboBox3->SelectedIndexChanged += gcnew System::EventHandler(this, &UIPrincipal::comboBox3_SelectedIndexChanged);
 			// 
 			// comboBox2
 			// 
@@ -456,6 +548,7 @@ namespace proyectoDatos {
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(172, 24);
 			this->comboBox2->TabIndex = 1;
+			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &UIPrincipal::comboBox2_SelectedIndexChanged);
 			// 
 			// comboBox1
 			// 
@@ -468,6 +561,7 @@ namespace proyectoDatos {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(172, 24);
 			this->comboBox1->TabIndex = 0;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &UIPrincipal::comboBox1_SelectedIndexChanged);
 			// 
 			// panel3
 			// 
@@ -644,6 +738,40 @@ namespace proyectoDatos {
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
 			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Codigo";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 90;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Descripcion";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 215;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Marca";
+			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
+			this->Column5->Width = 130;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Tamaño";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"? Precio";
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			// 
 			// UIPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -660,6 +788,7 @@ namespace proyectoDatos {
 			this->Load += gcnew System::EventHandler(this, &UIPrincipal::UIPrincipal_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel6->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->panel5->ResumeLayout(false);
 			this->panel5->PerformLayout();
 			this->panel9->ResumeLayout(false);
@@ -696,19 +825,131 @@ namespace proyectoDatos {
 		}
 	}
 
-
 	private: System::Void cargarCombos(){
 		GestorInventario * gestor = new GestorInventario();
-		ListaPasillos * lista = new ListaPasillos();
-		lista->cargarPasillos();
-
+		if (lista == NULL) {
+			lista = new ListaPasillos();
+			lista->cargarPasillos();
+		}
+		cargarPasillos(lista);
 	}
 
 	private: System::Void cargarPasillos(ListaPasillos * lista){
 		NodoPasillo * nodo = lista->getCab();
-		/*while (nodo!=NULL){
-
-		}*/
+		while (nodo!=NULL){
+			char * nombre = nodo->getInfoPasillo()->getDescripcion();
+			comboBox1->Items->Add(Utilitario::toSystemString(nombre));
+			nodo = nodo->getSgte();
+		}
+		comboBox1->SelectedIndex = 0;
 	}
+
+	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		int index = comboBox1->SelectedIndex;	
+		cargarLineassGenerales(index);
+	}
+
+	private: System::Void cargarLineassGenerales(int index){
+		comboBox2->Items->Clear();
+		int contador = 0;
+		NodoPasillo * nodo = lista->getCab();
+		while (nodo != NULL) {
+			if (contador == index) {
+				NodoGenerales * nodosG = nodo->getInfoPasillo()->getListaGeneral()->getCab();
+				while (nodosG != NULL) {
+					comboBox2->Items->Add(Utilitario::toSystemString(nodosG->getInfo()->getDescripcion()));
+					nodosG = nodosG->getSgte();
+				}
+			}
+			nodo = nodo->getSgte();
+			++contador;
+		}
+		comboBox2->SelectedIndex = 0;
+	}
+
+
+	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		int index = comboBox2->SelectedIndex;
+		cargarLineasEspecificas(index);
+	}
+	
+	private: System::Void cargarLineasEspecificas(int index) {
+		comboBox3->Items->Clear();
+		int contador = 0;
+		int indexPasillo = comboBox1->SelectedIndex;
+		int contadorG = 0;
+
+		NodoPasillo * nodo = lista->getCab();
+		while (nodo != NULL) {
+			if (contador == indexPasillo) {
+				NodoGenerales * nodosG = nodo->getInfoPasillo()->getListaGeneral()->getCab();
+				while (nodosG != NULL) {
+					if (contadorG == index) {
+						NodoEspecifica * nodoE = nodosG->getInfo()->getListaEspecifica()->getCab();
+						while (nodoE!=NULL){
+							comboBox3->Items->Add(Utilitario::toSystemString(nodoE->getInfo()->getDescripcion()));
+							nodoE = nodoE->getSgte();
+						}
+					}
+					nodosG = nodosG->getSgte();
+					++contadorG;
+				}
+			}
+			nodo = nodo->getSgte();
+			++contador;
+		}
+		comboBox3->SelectedIndex = 0;
+	}
+
+	private: System::Void comboBox3_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+		int index = comboBox3->SelectedIndex;
+		cargarProductos(index);
+	}
+
+	private: System::Void cargarProductos(int index){
+		dataGridView1->Rows->Clear();
+		int contador = 0;
+		int indexPasillo = comboBox1->SelectedIndex;
+		int contadorG = 0;
+		int indexEspeficica = comboBox2->SelectedIndex;
+		int contadorE = 0;
+		NodoPasillo * nodo = lista->getCab();
+		while (nodo != NULL) {
+
+			if (contador == indexPasillo) {
+				NodoGenerales * nodosG = nodo->getInfoPasillo()->getListaGeneral()->getCab();
+				
+				while (nodosG != NULL) {
+					if (contadorG == indexEspeficica) {
+						NodoEspecifica * nodoE = nodosG->getInfo()->getListaEspecifica()->getCab();
+				
+						while (nodoE != NULL) {
+							NodoArticulo *nodoA = nodoE->getInfo()->getListaArticulos()->getCab();
+							if (contadorE == index) {
+								while (nodoA != NULL){
+								dataGridView1->Rows->Add(
+											Utilitario::toSystemString(nodoA->getInfo()->getCodigo()),
+											Utilitario::toSystemString(nodoA->getInfo()->getNombre()),
+											Utilitario::toSystemString(nodoA->getInfo()->getMarca()),
+											Utilitario::toSystemString(nodoA->getInfo()->getTamanio()),
+											gcnew System::Double(nodoA->getInfo()->getPrecio())
+										);
+									nodoA = nodoA->getSgte();
+								}
+							}
+							nodoE = nodoE->getSgte();
+							++contadorE;
+						}
+					}
+
+					nodosG = nodosG->getSgte();
+					++contadorG;
+				}
+			}
+			nodo = nodo->getSgte();
+			++contador;
+		}
+	}
+
 };
 }
