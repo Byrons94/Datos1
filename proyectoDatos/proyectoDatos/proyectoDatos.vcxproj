@@ -166,6 +166,7 @@
     <ClInclude Include="InfoArticulo.h" />
     <ClInclude Include="InfoCarrito.h" />
     <ClInclude Include="InfoCompra.h" />
+    <ClInclude Include="InfoEntrega.h" />
     <ClInclude Include="InfoEspecifica.h" />
     <ClInclude Include="InfoGenerales.h" />
     <ClInclude Include="InfoPasillo.h" />
@@ -180,10 +181,12 @@
     <ClInclude Include="NodoArticulo.h" />
     <ClInclude Include="NodoCarrito.h" />
     <ClInclude Include="NodoCompra.h" />
+    <ClInclude Include="NodoEntrega.h" />
     <ClInclude Include="NodoEspecifica.h" />
     <ClInclude Include="NodoGenerales.h" />
     <ClInclude Include="NodoPasillo.h" />
     <ClInclude Include="NodoUsuario.h" />
+    <ClInclude Include="colaEntregas.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="UI.h">
@@ -192,12 +195,14 @@
     <ClInclude Include="Utilitario.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="colaEntregas.cpp" />
     <ClCompile Include="GestorCompras.cpp" />
     <ClCompile Include="GestorInventario.cpp" />
     <ClCompile Include="GestorUsuarios.cpp" />
     <ClCompile Include="InfoArticulo.cpp" />
     <ClCompile Include="InfoCarrito.cpp" />
     <ClCompile Include="InfoCompra.cpp" />
+    <ClCompile Include="InfoEntrega.cpp" />
     <ClCompile Include="InfoEspecifica.cpp" />
     <ClCompile Include="InfoGenerales.cpp" />
     <ClCompile Include="InfoPasillo.cpp" />
@@ -212,6 +217,7 @@
     <ClCompile Include="NodoArticulo.cpp" />
     <ClCompile Include="NodoCarrito.cpp" />
     <ClCompile Include="NodoCompra.cpp" />
+    <ClCompile Include="NodoEntrega.cpp" />
     <ClCompile Include="NodoEspecifica.cpp" />
     <ClCompile Include="NodoGenerales.cpp" />
     <ClCompile Include="NodoPasillo.cpp" />
