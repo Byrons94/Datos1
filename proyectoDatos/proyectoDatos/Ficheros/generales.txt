@@ -1,0 +1,11 @@
+1; 1; Aderezos, salsas; 
+1; 2; Azucares y endulzantes; 
+2; 3; Cervezas; 
+2; 4; Vinos; 
+3; 5; Avez; 
+3; 6; Carnes rojas; 
+3; 7; Pescado y mariscos; 
+4; 8; Quesos; 
+4; 9; Yogures; 
+5; 10; Banos; 
+5; 11; Cocina; 

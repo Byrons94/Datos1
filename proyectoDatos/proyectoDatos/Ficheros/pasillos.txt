@@ -1,0 +1,6 @@
+1; 1; Abarrotes; 
+4; 4; Lacteos; 
+5; 5; Limpieza; 
+2; 2; Bebidas alcoholicas;
+3; 3; Carnes; 
+

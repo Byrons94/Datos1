@@ -5,7 +5,7 @@ InfoCarrito::InfoCarrito(){
 	setNombre("");
 	setCodClie("");
 	setEstado(false);
-	setMonto(0);
+	setMonto(0); 
 	setListaCompra(NULL);
 }
 
