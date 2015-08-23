@@ -9,7 +9,7 @@ GestorCompras::~GestorCompras()
 
 
 ListaCarrito * GestorCompras::crearCarrito(){
-	return new ListaCarrito();
+	return new ListaCarrito();  
 }
 
 ListaCompra * GestorCompras::creaListaCompras() {
