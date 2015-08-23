@@ -283,7 +283,7 @@ namespace proyectoDatos {
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				76.85185F)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				79)));
+				80)));
 			this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
@@ -656,6 +656,7 @@ namespace proyectoDatos {
 			this->Name = L"UIPrincipal";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"UIPrincipal";
+			this->Load += gcnew System::EventHandler(this, &UIPrincipal::UIPrincipal_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel6->ResumeLayout(false);
 			this->panel5->ResumeLayout(false);
@@ -680,5 +681,8 @@ namespace proyectoDatos {
 		Application::Exit();
 	}
 
+private: System::Void UIPrincipal_Load(System::Object^  sender, System::EventArgs^  e) {
+
+}
 };
 }
