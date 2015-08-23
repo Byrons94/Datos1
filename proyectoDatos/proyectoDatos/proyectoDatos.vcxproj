@@ -150,6 +150,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="Ficheros\articulos.txt" />
+    <Text Include="Ficheros\carritos.txt" />
+    <Text Include="Ficheros\especificas.txt" />
+    <Text Include="Ficheros\generales.txt" />
+    <Text Include="Ficheros\pasillos.txt" />
+    <Text Include="Ficheros\pedidos.txt" />
+    <Text Include="Ficheros\usuarios.txt" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>

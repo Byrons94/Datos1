@@ -6,7 +6,7 @@ GestorCompras::GestorCompras()
 
 GestorCompras::~GestorCompras()
 {}
-
+ 
 
 ListaCarrito * GestorCompras::crearCarrito(){
 	return new ListaCarrito();  
