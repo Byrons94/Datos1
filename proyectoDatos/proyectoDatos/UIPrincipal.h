@@ -1270,9 +1270,19 @@ namespace proyectoDatos {
 		buscarCarrito->Show();
 	}
 
-private: System::Void btnFacturar_Click(System::Object^  sender, System::EventArgs^  e) {
-	UIFacturar ^ facturar = gcnew UIFacturar(dataGridView2, listaCompra, lblTotal);
-	facturar->Show();
-}
+	private: System::Void btnFacturar_Click(System::Object^  sender, System::EventArgs^  e) {
+		UIFacturar ^ facturar = gcnew UIFacturar(dataGridView2, listaCompra, lblTotal);
+		//nombreCarrito();
+		facturar->Show();
+		listaCarrito->guardarCarritos();
+	}
+
+	private: System::Void nombreCarrito() {
+		NodoCarrito * nodo = new NodoCarrito();
+		for (int i = 0; i < listaCarrito->getTamanio(); i++){
+			nodo->getInfo()->setNombre("Compra regular");
+		}
+	}
+
 };
 }

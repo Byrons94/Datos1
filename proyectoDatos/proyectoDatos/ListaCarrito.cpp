@@ -395,9 +395,9 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 
 			if (convertirABoolean(estado) == false) {
 				ListaCompra * listaC = new ListaCompra();
-				/*listaC->cargarCompras(codigo);
+				listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),
-					covertirAEntero(monto), listaC);*/
+					covertirAEntero(monto), listaC);
 				//insertarAcendente(new NodoCarrito(listaCarrito));
 			}
 			lectura >> codigo;
