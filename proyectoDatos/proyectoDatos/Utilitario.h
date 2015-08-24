@@ -9,6 +9,7 @@ namespace Utilitario {
 
 	System::String^ toSystemString(char *);
 	System::Int32^ toInt32(int);
+	char * intToChar(int);
 
 }
 

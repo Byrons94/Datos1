@@ -7,8 +7,9 @@
 #include <iostream>
 #include <stdio.h>
 #include "Utilitario.h"
-namespace proyectoDatos {
+#include "UIGuardar.h"
 
+namespace proyectoDatos {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -20,24 +21,32 @@ namespace proyectoDatos {
 	/// <summary>
 	/// Summary for UIPrincipal
 	/// </summary>
-	public ref class UIPrincipal : public System::Windows::Forms::Form
-	{
-		ListaPasillos * lista = NULL;
+	public ref class UIPrincipal : public System::Windows::Forms::Form{
+		
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column8;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column9;
+	private: System::Windows::Forms::Button^  btnEliminar;
 	
-	
-	
+	ListaPasillos * lista = NULL;
+	GestorCompras * gestorCompras;
+	ListaCompra	  * listaCompra;
+	String ^	    codigoUsuario;
+	int totalCarrito = 0;
 	public:
 		UIPrincipal(){
 			InitializeComponent();
 		}
 
-		UIPrincipal(int idRol){
+		UIPrincipal(int idRol, String ^ codUser){
 			InitializeComponent();
 			validarPermisos(idRol);
 			cargarCombos();
-
+			gestorCompras = new GestorCompras();
+			listaCompra = new ListaCompra();
+			codigoUsuario = codUser;
 		}
-
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -72,15 +81,17 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::Splitter^  splitter1;
 	private: System::Windows::Forms::Panel^  panel7;
 	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::TableLayoutPanel^  tableLayoutPanel1;
+
 	private: System::Windows::Forms::Panel^  panel9;
 	private: System::Windows::Forms::Panel^  panel8;
 	private: System::Windows::Forms::Label^  lblTotal;
 	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::Button^  btnPagar;
+	private: System::Windows::Forms::Button^  btnVaciar;
+
 
 	private: System::Windows::Forms::Button^  btnFacturar;
-	private: System::Windows::Forms::Button^  button3;
+	private: System::Windows::Forms::Button^  btnGuardar;
+
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Splitter^  splitter3;
@@ -92,22 +103,18 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::ToolStripMenuItem^  pendientesEntregaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  entregadasToolStripMenuItem;
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::Label^  lblProducto;
+	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
+	private: System::Windows::Forms::Button^  btnAgregar;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Label^  label9;
+	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::Panel^  panel10;
+	private: System::Windows::Forms::DataGridView^  dataGridView2;
 
 
 	private: System::ComponentModel::IContainer^  components;
@@ -131,25 +138,45 @@ namespace proyectoDatos {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle13 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle14 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle15 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle16 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(UIPrincipal::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->lblProducto = (gcnew System::Windows::Forms::Label());
+			this->numericUpDown1 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->btnAgregar = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->splitter2 = (gcnew System::Windows::Forms::Splitter());
 			this->splitter1 = (gcnew System::Windows::Forms::Splitter());
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
+			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->splitter3 = (gcnew System::Windows::Forms::Splitter());
 			this->lblTotal = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
-			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->panel10 = (gcnew System::Windows::Forms::Panel());
+			this->dataGridView2 = (gcnew System::Windows::Forms::DataGridView());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel8 = (gcnew System::Windows::Forms::Panel());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->btnPagar = (gcnew System::Windows::Forms::Button());
+			this->btnGuardar = (gcnew System::Windows::Forms::Button());
+			this->btnVaciar = (gcnew System::Windows::Forms::Button());
 			this->btnFacturar = (gcnew System::Windows::Forms::Button());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -177,16 +204,14 @@ namespace proyectoDatos {
 			this->pendientesEntregaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->entregadasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel1->SuspendLayout();
 			this->panel6->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->panel5->SuspendLayout();
 			this->panel9->SuspendLayout();
+			this->panel10->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			this->panel8->SuspendLayout();
 			this->panel4->SuspendLayout();
 			this->panel3->SuspendLayout();
@@ -211,6 +236,10 @@ namespace proyectoDatos {
 			// panel6
 			// 
 			this->panel6->AutoScroll = true;
+			this->panel6->Controls->Add(this->label9);
+			this->panel6->Controls->Add(this->lblProducto);
+			this->panel6->Controls->Add(this->numericUpDown1);
+			this->panel6->Controls->Add(this->btnAgregar);
 			this->panel6->Controls->Add(this->dataGridView1);
 			this->panel6->Controls->Add(this->splitter2);
 			this->panel6->Controls->Add(this->splitter1);
@@ -220,63 +249,158 @@ namespace proyectoDatos {
 			this->panel6->Size = System::Drawing::Size(698, 519);
 			this->panel6->TabIndex = 5;
 			// 
+			// label9
+			// 
+			this->label9->AutoSize = true;
+			this->label9->BackColor = System::Drawing::Color::White;
+			this->label9->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label9->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label9->Location = System::Drawing::Point(360, 20);
+			this->label9->Name = L"label9";
+			this->label9->Size = System::Drawing::Size(70, 14);
+			this->label9->TabIndex = 7;
+			this->label9->Text = L"Cantidad:";
+			// 
+			// lblProducto
+			// 
+			this->lblProducto->AutoSize = true;
+			this->lblProducto->BackColor = System::Drawing::Color::White;
+			this->lblProducto->Font = (gcnew System::Drawing::Font(L"Verdana", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblProducto->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->lblProducto->Location = System::Drawing::Point(16, 14);
+			this->lblProducto->Name = L"lblProducto";
+			this->lblProducto->Size = System::Drawing::Size(0, 23);
+			this->lblProducto->TabIndex = 7;
+			// 
+			// numericUpDown1
+			// 
+			this->numericUpDown1->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->numericUpDown1->Location = System::Drawing::Point(435, 14);
+			this->numericUpDown1->Name = L"numericUpDown1";
+			this->numericUpDown1->Size = System::Drawing::Size(120, 23);
+			this->numericUpDown1->TabIndex = 5;
+			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
+			// 
+			// btnAgregar
+			// 
+			this->btnAgregar->BackColor = System::Drawing::Color::DarkRed;
+			this->btnAgregar->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnAgregar->Enabled = false;
+			this->btnAgregar->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnAgregar->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnAgregar->ForeColor = System::Drawing::Color::White;
+			this->btnAgregar->Location = System::Drawing::Point(561, 3);
+			this->btnAgregar->Name = L"btnAgregar";
+			this->btnAgregar->Size = System::Drawing::Size(121, 34);
+			this->btnAgregar->TabIndex = 4;
+			this->btnAgregar->Text = L"Agregar";
+			this->btnAgregar->UseVisualStyleBackColor = false;
+			this->btnAgregar->Click += gcnew System::EventHandler(this, &UIPrincipal::btnAgregar_Click);
+			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->AllowUserToAddRows = false;
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->AllowUserToResizeColumns = false;
 			this->dataGridView1->AllowUserToResizeRows = false;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Silver;
-			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-			this->dataGridView1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
+			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::Color::Silver;
+			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleVertical;
 			this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::Disable;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle10->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle10->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->Column1,
 					this->Column2, this->Column5, this->Column3, this->Column4
 			});
 			this->dataGridView1->Cursor = System::Windows::Forms::Cursors::Hand;
+			dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle11->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle11->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle11->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle11;
+			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnF2;
 			this->dataGridView1->GridColor = System::Drawing::Color::White;
-			this->dataGridView1->Location = System::Drawing::Point(10, 0);
+			this->dataGridView1->Location = System::Drawing::Point(10, 40);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle12->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle12->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::Color::Gainsboro;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle12->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle12->SelectionBackColor = System::Drawing::Color::Gainsboro;
+			dataGridViewCellStyle12->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle12->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+			dataGridViewCellStyle13->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle13->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Maroon;
-			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle13->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle13->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle13->SelectionForeColor = System::Drawing::Color::Maroon;
+			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle13;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(678, 519);
+			this->dataGridView1->Size = System::Drawing::Size(678, 479);
 			this->dataGridView1->StandardTab = true;
 			this->dataGridView1->TabIndex = 2;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UIPrincipal::dataGridView1_CellContentClick);
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Codigo";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 90;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Descripcion";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 215;
+			// 
+			// Column5
+			// 
+			this->Column5->HeaderText = L"Marca";
+			this->Column5->Name = L"Column5";
+			this->Column5->ReadOnly = true;
+			this->Column5->Width = 130;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Tamaño";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			// 
+			// Column4
+			// 
+			this->Column4->HeaderText = L"Precio";
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
 			// 
 			// splitter2
 			// 
@@ -304,6 +428,7 @@ namespace proyectoDatos {
 			// panel5
 			// 
 			this->panel5->AutoScroll = true;
+			this->panel5->Controls->Add(this->btnEliminar);
 			this->panel5->Controls->Add(this->splitter3);
 			this->panel5->Controls->Add(this->lblTotal);
 			this->panel5->Controls->Add(this->label5);
@@ -317,15 +442,32 @@ namespace proyectoDatos {
 			this->panel5->Size = System::Drawing::Size(279, 519);
 			this->panel5->TabIndex = 4;
 			// 
+			// btnEliminar
+			// 
+			this->btnEliminar->BackColor = System::Drawing::Color::DarkRed;
+			this->btnEliminar->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnEliminar->Enabled = false;
+			this->btnEliminar->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnEliminar->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnEliminar->ForeColor = System::Drawing::Color::White;
+			this->btnEliminar->Location = System::Drawing::Point(0, 49);
+			this->btnEliminar->Name = L"btnEliminar";
+			this->btnEliminar->Size = System::Drawing::Size(78, 28);
+			this->btnEliminar->TabIndex = 7;
+			this->btnEliminar->Text = L"Eliminar";
+			this->btnEliminar->UseVisualStyleBackColor = false;
+			this->btnEliminar->Click += gcnew System::EventHandler(this, &UIPrincipal::btnEliminar_Click);
+			// 
 			// splitter3
 			// 
 			this->splitter3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(235)), static_cast<System::Int32>(static_cast<System::Byte>(235)),
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
 			this->splitter3->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->splitter3->Location = System::Drawing::Point(0, 66);
+			this->splitter3->Location = System::Drawing::Point(0, 77);
 			this->splitter3->Name = L"splitter3";
-			this->splitter3->Size = System::Drawing::Size(279, 10);
+			this->splitter3->Size = System::Drawing::Size(262, 10);
 			this->splitter3->TabIndex = 6;
 			this->splitter3->TabStop = false;
 			// 
@@ -336,7 +478,7 @@ namespace proyectoDatos {
 			this->lblTotal->Font = (gcnew System::Drawing::Font(L"Verdana", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblTotal->ForeColor = System::Drawing::Color::Maroon;
-			this->lblTotal->Location = System::Drawing::Point(200, 43);
+			this->lblTotal->Location = System::Drawing::Point(195, 49);
 			this->lblTotal->Name = L"lblTotal";
 			this->lblTotal->Size = System::Drawing::Size(46, 18);
 			this->lblTotal->TabIndex = 5;
@@ -350,7 +492,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label5->Location = System::Drawing::Point(139, 43);
+			this->label5->Location = System::Drawing::Point(134, 49);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(55, 18);
 			this->label5->TabIndex = 4;
@@ -359,76 +501,167 @@ namespace proyectoDatos {
 			// panel9
 			// 
 			this->panel9->AutoScroll = true;
-			this->panel9->Controls->Add(this->tableLayoutPanel1);
+			this->panel9->Controls->Add(this->button2);
+			this->panel9->Controls->Add(this->panel10);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel9->Location = System::Drawing::Point(0, 76);
+			this->panel9->Location = System::Drawing::Point(0, 87);
 			this->panel9->Name = L"panel9";
-			this->panel9->Size = System::Drawing::Size(279, 410);
+			this->panel9->Size = System::Drawing::Size(262, 404);
 			this->panel9->TabIndex = 3;
 			// 
-			// tableLayoutPanel1
+			// button2
 			// 
-			this->tableLayoutPanel1->ColumnCount = 3;
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				23.14815F)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				76.85185F)));
-			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				92)));
-			this->tableLayoutPanel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->tableLayoutPanel1->Location = System::Drawing::Point(0, 0);
-			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
-			this->tableLayoutPanel1->RowCount = 1;
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 27)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(279, 410);
-			this->tableLayoutPanel1->TabIndex = 2;
+			this->button2->BackColor = System::Drawing::Color::DarkRed;
+			this->button2->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->ForeColor = System::Drawing::Color::White;
+			this->button2->Location = System::Drawing::Point(0, 0);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(262, 28);
+			this->button2->TabIndex = 8;
+			this->button2->Text = L"Mis carritos";
+			this->button2->UseVisualStyleBackColor = false;
+			// 
+			// panel10
+			// 
+			this->panel10->Controls->Add(this->dataGridView2);
+			this->panel10->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->panel10->Location = System::Drawing::Point(0, 28);
+			this->panel10->Name = L"panel10";
+			this->panel10->Size = System::Drawing::Size(262, 376);
+			this->panel10->TabIndex = 0;
+			// 
+			// dataGridView2
+			// 
+			this->dataGridView2->AllowUserToAddRows = false;
+			this->dataGridView2->AllowUserToDeleteRows = false;
+			this->dataGridView2->BackgroundColor = System::Drawing::Color::White;
+			dataGridViewCellStyle14->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle14->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle14->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle14->ForeColor = System::Drawing::Color::Maroon;
+			dataGridViewCellStyle14->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle14->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle14->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Column6,
+					this->Column7, this->Column8, this->Column9
+			});
+			dataGridViewCellStyle15->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle15->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle15->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle15->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle15->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle15->SelectionForeColor = System::Drawing::Color::Maroon;
+			dataGridViewCellStyle15->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView2->DefaultCellStyle = dataGridViewCellStyle15;
+			this->dataGridView2->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->dataGridView2->GridColor = System::Drawing::Color::White;
+			this->dataGridView2->Location = System::Drawing::Point(0, 0);
+			this->dataGridView2->MultiSelect = false;
+			this->dataGridView2->Name = L"dataGridView2";
+			this->dataGridView2->ReadOnly = true;
+			this->dataGridView2->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			dataGridViewCellStyle16->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle16->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle16->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle16->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			dataGridViewCellStyle16->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle16->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle16->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView2->RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+			this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
+			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView2->Size = System::Drawing::Size(262, 376);
+			this->dataGridView2->TabIndex = 0;
+			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UIPrincipal::dataGridView2_CellContentClick);
+			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Cod";
+			this->Column6->Name = L"Column6";
+			this->Column6->ReadOnly = true;
+			this->Column6->Width = 35;
+			// 
+			// Column7
+			// 
+			this->Column7->HeaderText = L"Nombre";
+			this->Column7->Name = L"Column7";
+			this->Column7->ReadOnly = true;
+			this->Column7->Width = 90;
+			// 
+			// Column8
+			// 
+			this->Column8->HeaderText = L"Cant";
+			this->Column8->Name = L"Column8";
+			this->Column8->ReadOnly = true;
+			this->Column8->Width = 40;
+			// 
+			// Column9
+			// 
+			this->Column9->HeaderText = L"Precio";
+			this->Column9->Name = L"Column9";
+			this->Column9->ReadOnly = true;
+			this->Column9->Width = 70;
 			// 
 			// panel8
 			// 
-			this->panel8->Controls->Add(this->button3);
-			this->panel8->Controls->Add(this->btnPagar);
+			this->panel8->Controls->Add(this->btnGuardar);
+			this->panel8->Controls->Add(this->btnVaciar);
 			this->panel8->Controls->Add(this->btnFacturar);
 			this->panel8->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel8->Location = System::Drawing::Point(0, 486);
+			this->panel8->Location = System::Drawing::Point(0, 491);
 			this->panel8->Name = L"panel8";
-			this->panel8->Size = System::Drawing::Size(279, 33);
+			this->panel8->Size = System::Drawing::Size(262, 33);
 			this->panel8->TabIndex = 2;
 			// 
-			// button3
+			// btnGuardar
 			// 
-			this->button3->AutoEllipsis = true;
-			this->button3->BackColor = System::Drawing::Color::White;
-			this->button3->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->button3->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->button3->FlatAppearance->BorderColor = System::Drawing::Color::Red;
-			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnGuardar->AutoEllipsis = true;
+			this->btnGuardar->BackColor = System::Drawing::Color::White;
+			this->btnGuardar->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnGuardar->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->btnGuardar->Enabled = false;
+			this->btnGuardar->FlatAppearance->BorderColor = System::Drawing::Color::Red;
+			this->btnGuardar->FlatStyle = System::Windows::Forms::FlatStyle::System;
+			this->btnGuardar->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button3->ForeColor = System::Drawing::Color::Black;
-			this->button3->Location = System::Drawing::Point(99, 0);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(93, 33);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Guardar";
-			this->button3->UseVisualStyleBackColor = false;
+			this->btnGuardar->ForeColor = System::Drawing::Color::Black;
+			this->btnGuardar->Location = System::Drawing::Point(99, 0);
+			this->btnGuardar->Name = L"btnGuardar";
+			this->btnGuardar->Size = System::Drawing::Size(76, 33);
+			this->btnGuardar->TabIndex = 3;
+			this->btnGuardar->Text = L"Guardar";
+			this->btnGuardar->UseVisualStyleBackColor = false;
+			this->btnGuardar->Click += gcnew System::EventHandler(this, &UIPrincipal::button3_Click);
 			// 
-			// btnPagar
+			// btnVaciar
 			// 
-			this->btnPagar->AutoEllipsis = true;
-			this->btnPagar->BackColor = System::Drawing::Color::White;
-			this->btnPagar->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->btnPagar->Dock = System::Windows::Forms::DockStyle::Right;
-			this->btnPagar->FlatAppearance->BorderColor = System::Drawing::Color::Red;
-			this->btnPagar->FlatStyle = System::Windows::Forms::FlatStyle::System;
-			this->btnPagar->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnVaciar->AutoEllipsis = true;
+			this->btnVaciar->BackColor = System::Drawing::Color::White;
+			this->btnVaciar->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnVaciar->Dock = System::Windows::Forms::DockStyle::Right;
+			this->btnVaciar->FlatAppearance->BorderColor = System::Drawing::Color::Red;
+			this->btnVaciar->FlatStyle = System::Windows::Forms::FlatStyle::System;
+			this->btnVaciar->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnPagar->ForeColor = System::Drawing::Color::Black;
-			this->btnPagar->Location = System::Drawing::Point(192, 0);
-			this->btnPagar->Name = L"btnPagar";
-			this->btnPagar->Size = System::Drawing::Size(87, 33);
-			this->btnPagar->TabIndex = 2;
-			this->btnPagar->Text = L"Vaciar";
-			this->btnPagar->UseVisualStyleBackColor = false;
+			this->btnVaciar->ForeColor = System::Drawing::Color::Black;
+			this->btnVaciar->Location = System::Drawing::Point(175, 0);
+			this->btnVaciar->Name = L"btnVaciar";
+			this->btnVaciar->Size = System::Drawing::Size(87, 33);
+			this->btnVaciar->TabIndex = 2;
+			this->btnVaciar->Text = L"Vaciar";
+			this->btnVaciar->UseVisualStyleBackColor = false;
+			this->btnVaciar->Click += gcnew System::EventHandler(this, &UIPrincipal::btnPagar_Click);
 			// 
 			// btnFacturar
 			// 
@@ -436,6 +669,7 @@ namespace proyectoDatos {
 			this->btnFacturar->BackColor = System::Drawing::Color::White;
 			this->btnFacturar->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->btnFacturar->Dock = System::Windows::Forms::DockStyle::Left;
+			this->btnFacturar->Enabled = false;
 			this->btnFacturar->FlatAppearance->BorderColor = System::Drawing::Color::White;
 			this->btnFacturar->FlatStyle = System::Windows::Forms::FlatStyle::System;
 			this->btnFacturar->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -451,7 +685,7 @@ namespace proyectoDatos {
 			// panel7
 			// 
 			this->panel7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel7.BackgroundImage")));
-			this->panel7->Location = System::Drawing::Point(26, 2);
+			this->panel7->Location = System::Drawing::Point(26, 5);
 			this->panel7->Name = L"panel7";
 			this->panel7->Size = System::Drawing::Size(32, 26);
 			this->panel7->TabIndex = 1;
@@ -464,7 +698,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label4->Location = System::Drawing::Point(63, 7);
+			this->label4->Location = System::Drawing::Point(63, 10);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(113, 23);
 			this->label4->TabIndex = 0;
@@ -738,40 +972,6 @@ namespace proyectoDatos {
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
 			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Codigo";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			this->Column1->Width = 90;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Descripcion";
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
-			this->Column2->Width = 215;
-			// 
-			// Column5
-			// 
-			this->Column5->HeaderText = L"Marca";
-			this->Column5->Name = L"Column5";
-			this->Column5->ReadOnly = true;
-			this->Column5->Width = 130;
-			// 
-			// Column3
-			// 
-			this->Column3->HeaderText = L"Tamaño";
-			this->Column3->Name = L"Column3";
-			this->Column3->ReadOnly = true;
-			this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::False;
-			// 
-			// Column4
-			// 
-			this->Column4->HeaderText = L"? Precio";
-			this->Column4->Name = L"Column4";
-			this->Column4->ReadOnly = true;
-			// 
 			// UIPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -788,10 +988,14 @@ namespace proyectoDatos {
 			this->Load += gcnew System::EventHandler(this, &UIPrincipal::UIPrincipal_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel6->ResumeLayout(false);
+			this->panel6->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->panel5->ResumeLayout(false);
 			this->panel5->PerformLayout();
 			this->panel9->ResumeLayout(false);
+			this->panel10->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
 			this->panel8->ResumeLayout(false);
 			this->panel8->PerformLayout();
 			this->panel4->ResumeLayout(false);
@@ -867,7 +1071,6 @@ namespace proyectoDatos {
 		comboBox2->SelectedIndex = 0;
 	}
 
-
 	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		int index = comboBox2->SelectedIndex;
 		cargarLineasEspecificas(index);
@@ -927,13 +1130,13 @@ namespace proyectoDatos {
 							NodoArticulo *nodoA = nodoE->getInfo()->getListaArticulos()->getCab();
 							if (contadorE == index) {
 								while (nodoA != NULL){
-								dataGridView1->Rows->Add(
-											Utilitario::toSystemString(nodoA->getInfo()->getCodigo()),
-											Utilitario::toSystemString(nodoA->getInfo()->getNombre()),
-											Utilitario::toSystemString(nodoA->getInfo()->getMarca()),
-											Utilitario::toSystemString(nodoA->getInfo()->getTamanio()),
-											gcnew System::Double(nodoA->getInfo()->getPrecio())
-										);
+									dataGridView1->Rows->Add(
+												Utilitario::toSystemString(nodoA->getInfo()->getCodigo()),
+												Utilitario::toSystemString(nodoA->getInfo()->getNombre()),
+												Utilitario::toSystemString(nodoA->getInfo()->getMarca()),
+												Utilitario::toSystemString(nodoA->getInfo()->getTamanio()),
+												gcnew System::Double(nodoA->getInfo()->getPrecio())
+											);
 									nodoA = nodoA->getSgte();
 								}
 							}
@@ -951,5 +1154,81 @@ namespace proyectoDatos {
 		}
 	}
 
+	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		cargarContenidoRow();
+	}
+
+	private: System::Void cargarContenidoRow(){
+		int fila = dataGridView1->CurrentCell->RowIndex;
+		lblProducto->Text = dataGridView1->Rows[fila]->Cells[1]->Value->ToString();
+		btnAgregar->Enabled = true;
+	}
+
+
+	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
+		//pasillo, general, especifica
+		int pasillo    = Utilitario::toInt(comboBox1->SelectedIndex + 1);
+		int general    = Utilitario::toInt(comboBox2->SelectedIndex + 1);
+		int especifica = Utilitario::toInt(comboBox3->SelectedIndex + 1);
+		
+		int fila = dataGridView1->CurrentCell->RowIndex;
+		String^ cod = gcnew System::String(dataGridView1->Rows[fila]->Cells[0]->Value->ToString());
+		String^ precio = gcnew System::String(dataGridView1->Rows[fila]->Cells[4]->Value->ToString());
+		String^ nombre = dataGridView1->Rows[fila]->Cells[1]->Value->ToString();
+		int precioFinal = int::Parse(precio);
+		char * codigoProd = Utilitario::toChar(cod);
+		int cantidad    = (int)numericUpDown1->Value;
+		int montoTotal = (precioFinal*cantidad);
+		bool existe = gestorCompras->agregarProductoALista(Utilitario::intToChar(pasillo), Utilitario::intToChar(general), 
+											Utilitario::intToChar(especifica), codigoProd, cantidad, montoTotal, listaCompra);
+		if(existe)
+			agregarAlCarrito(cod, nombre, cantidad, montoTotal);
+	}
+	
+	
+	private: System::Void agregarAlCarrito(String^ cod, String^ nombre, int cantidad, int monto){
+		btnFacturar->Enabled = true;
+		btnGuardar->Enabled = true;
+		calcularTotal();
+		dataGridView2->Rows->Add(cod, nombre, Utilitario::toInt32(cantidad), Utilitario::toInt32(monto));
+	}
+
+	private: System::Void calcularTotal() {
+		NodoCompra * nodo = listaCompra->getCab();
+		double total = 0;
+		while (nodo != NULL) {
+			total = total + nodo->getLineaDetalle()->getMonto();
+			nodo = nodo->getSgte();
+		}
+		lblTotal->Text = Utilitario::toInt32(total)->ToString();
+		totalCarrito = total;
+	}
+	
+	private: System::Void dataGridView2_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		btnEliminar->Enabled = true;
+	}
+
+	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
+		int fila = dataGridView2->CurrentCell->RowIndex;
+		String^ codigoSis = dataGridView2->Rows[fila]->Cells[0]->Value->ToString();
+		dataGridView2->Rows->RemoveAt(fila);
+		char * codigo = Utilitario::toChar(codigoSis);
+		listaCompra->elimina(codigo);
+		calcularTotal();
+	}
+	
+	private: System::Void btnPagar_Click(System::Object^  sender, System::EventArgs^  e) {
+		dataGridView2->Rows->Clear();
+		listaCompra->vaciar();
+		calcularTotal();
+		btnEliminar->Enabled = false;
+		btnFacturar->Enabled = false;
+		btnGuardar->Enabled = false;
+	}
+	
+	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+		UIGuardar ^ guardar = gcnew UIGuardar(/*codigoUsuario, totalCarrito, 0, listaCompra*/);
+		guardar->Show();
+	}
 };
 }

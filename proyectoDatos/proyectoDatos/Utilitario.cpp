@@ -21,4 +21,9 @@ System::Int32 ^ Utilitario::toInt32(int numero){
 	return valor;
 }
 
+char * Utilitario::intToChar(int numero){
+	System::String^	var = System::Convert::ToString(numero);
+	return toChar(var);
+}
+
 
