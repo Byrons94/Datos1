@@ -268,3 +268,41 @@ int ListaUsuario::covertirAEntero(char * pcodigo) {
 	int num = atoi(pcodigo);
 	return num;
 }
+
+void ListaUsuario::modificarUsuario(InfoUsuario * usr)
+{
+	std::ofstream aux;
+	std::ifstream lectura;
+	bool encontrado = false;
+
+	//(char * pcodigo, char * pnombre, char * pcontrasenna, int prol)
+
+	char codigo[30], nombre[30], contrasena[30], rol[5];
+	aux.open("Ficheros/auxiliar.txt", std::ios::out);
+	lectura.open("Ficheros/usuarios.txt", std::ios::in);
+	if (aux.is_open() && lectura.is_open()) {
+		lectura >> codigo;
+		while (!lectura.eof()) {
+
+
+			lectura >> nombre >> contrasena >> rol;
+			if (codigo == usr->getCodigo()) {
+				encontrado = true;
+
+				aux << usr->getCodigo() << "; " << usr->getNombre() << "; "
+					<< usr->getContrasenna() << "; " << usr->getRol() << "; " << std::endl;
+
+			}
+			else {
+				aux << codigo << "; " << nombre << "; "
+					<< contrasena << "; " << rol << "; " << std::endl;
+			}
+			lectura >> contrasena;
+		}
+	}
+
+	aux.close();
+	lectura.close();
+	remove("Ficheros/usuarios.txt");
+	rename("Ficheros/auxiliar.txt", "Ficheros/usuarios.txt");
+}

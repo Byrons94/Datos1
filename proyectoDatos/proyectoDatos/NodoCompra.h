@@ -13,6 +13,8 @@ public:
 	NodoCompra(InfoCompra *);
 	~NodoCompra();
 
+	void setListaCompra(InfoCompra * plinea);
+
 	void setLineaDetalle(InfoCompra * );
 	void setSgte(NodoCompra *);
 

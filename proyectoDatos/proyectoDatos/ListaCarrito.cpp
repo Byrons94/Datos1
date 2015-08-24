@@ -410,6 +410,28 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 	}
 }
 
+
+				aux << carrito->getCodigo() << "; " << carrito->getCodClie() << "; "
+					<< carrito->getNombre() << "; " << carrito->getEstado() << "; "
+					<< carrito->getMonto() << "; " << std::endl;
+				
+			}
+			else {
+				aux << codigo << "; " << codCliente << "; "
+					<< nombre << "; " << estado << "; "
+					<< monto << "; " << std::endl;
+			}
+			lectura >> estado;
+		}
+	}
+	
+	aux.close();
+	lectura.close();
+	remove("Ficheros/carritos.txt");
+	rename("Ficheros/auxiliar.txt", "Ficheros/carritos.txt");
+}
+
+
 void ListaCarrito::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
@@ -426,3 +448,4 @@ bool ListaCarrito::convertirABoolean(char *num){
 
 	return true;
 }
+

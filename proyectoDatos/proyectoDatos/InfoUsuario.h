@@ -12,6 +12,7 @@ private:
 public:
 	InfoUsuario();
 	InfoUsuario(char *, char * , char*, int);
+	InfoUsuario(char * pnombre, char * pcontrasenna, int prol);
 	~InfoUsuario();
 	
 	void setCodigo(char *);
@@ -23,6 +24,14 @@ public:
 	char * getNombre();
 	char * getContrasenna();
 	int    getRol();
+
+	char * autoIncrementar();
+
+	int ultimoRegistro();
+
+	void convertirAChar(char * palabra, std::string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 };
 

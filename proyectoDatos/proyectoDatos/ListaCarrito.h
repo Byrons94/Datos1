@@ -67,6 +67,7 @@ public:
 
 	int leerFicheroCarritoPendientes();
 
+	void modificarCarrito(InfoCarrito *info);
 
 
 	void convertirAChar(char * palabra, std::string palabraString);

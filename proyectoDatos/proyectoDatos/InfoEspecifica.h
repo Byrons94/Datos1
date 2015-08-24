@@ -11,6 +11,7 @@ class InfoEspecifica
 public:
 	InfoEspecifica();
 	InfoEspecifica(int, char *, char * ,ListaArticulo *);
+	InfoEspecifica(int pnumero, char * pdescripcion, ListaArticulo * plista);
 	InfoEspecifica(int, char *, char *);
 
 	~InfoEspecifica();
@@ -28,6 +29,14 @@ public:
 	ListaArticulo * getListaArticulos();
 
 	void cargarArticulos();
+
+	char * autoIncrementar();
+
+	int ultimoRegistro();
+
+	void convertirAChar(char * palabra, std::string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 };
 

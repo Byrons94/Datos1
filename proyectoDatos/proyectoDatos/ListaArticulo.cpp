@@ -397,6 +397,45 @@ int ListaArticulo::covertirAEntero(char * pcodigo) {
 }
 
 
+void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
+{
+	std::ofstream aux;
+	std::ifstream lectura;
+	bool encontrado = false;
+
+	char lineaEsp[30], codigo[30], nombre[30], marca[30], tamanio[30], precio[15];
+	aux.open("Ficheros/auxiliar.txt", std::ios::out);
+	lectura.open("Ficheros/articulos.txt", std::ios::in);
+	if (aux.is_open() && lectura.is_open()) {
+		lectura >> codigo;
+		while (!lectura.eof()) {
+
+
+			lectura >> lineaEsp >> nombre >> marca >> tamanio >> precio;
+			if (codigo == articulo->getCodigo()) {
+				encontrado = true;
+
+				aux << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
+					<< articulo->getMarca() << "; " << articulo->getTamanio() << "; "
+					<< articulo->getPrecio() << "; " << std::endl;
+
+			}
+			else {
+				aux << codigo << "; " << nombre << "; "
+					<< marca << "; " << tamanio << "; "
+					<< precio << "; " << std::endl;
+			}
+			lectura >> precio;
+		}
+	}
+
+	aux.close();
+	lectura.close();
+	remove("Ficheros/articulos.txt");
+	rename("Ficheros/auxiliar.txt", "Ficheros/articulos.txt");
+}
+
+
 //
 //bool ListaArticulo::Agregar(InfoArticulo * articulo){
 //	NodoArticulo *temp = new NodoArticulo(articulo);

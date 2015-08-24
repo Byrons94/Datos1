@@ -10,11 +10,14 @@ private:
 	bool   estado; // false  = no entregado, true = entregado
 	double monto;
 	ListaCompra * lista;
+	int contador = 0;
 
 public:	
 	InfoCarrito();
 	InfoCarrito(char *, char *, ListaCompra*);
 	InfoCarrito(char *, char *, char*, bool, double, ListaCompra* );
+	InfoCarrito::InfoCarrito(char * pNombre, char * pCodClie, bool pEntregado,
+		double pmonto, ListaCompra * plista);
 	~InfoCarrito();
 
 	void setCodigo(char *);
@@ -24,6 +27,7 @@ public:
 	void setMonto(double);
 	void setListaCompra(ListaCompra * );
 
+	char * autoIncrementar();
 
 	char * getCodigo();
 	char * getNombre();
@@ -31,6 +35,12 @@ public:
 	bool   getEstado();
 	double getMonto();
 	ListaCompra * getListaCompra();
+
+	int ultimoRegistro();
+
+	void convertirAChar(char * palabra, std::string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 
 };

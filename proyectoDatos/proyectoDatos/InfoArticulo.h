@@ -14,6 +14,8 @@ public:
 	InfoArticulo();
 	~InfoArticulo();
 	InfoArticulo(int, char*, char*, char*, char *, double);
+
+	InfoArticulo(int codigoLinea, char * pnombre, char * pmarca, char * ptamanio, double pprecio);
 	
 	void   setCodLinea(int);	
 	void   setCodigo(char *);
@@ -28,6 +30,14 @@ public:
 	char   *getMarca();
 	char    *getTamanio();
 	double getPrecio();
+
+	char * autoIncrementar();
+
+	int ultimoRegistro();
+
+	void convertirAChar(char * palabra, std::string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 
 

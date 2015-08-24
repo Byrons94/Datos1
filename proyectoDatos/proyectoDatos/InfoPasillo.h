@@ -14,6 +14,7 @@ public:
 	InfoPasillo();
 	InfoPasillo(int, char*, char*);
 	InfoPasillo(int, char*, char*, ListaGenerales*);
+	InfoPasillo(int pnumero, char * pdescripcion, ListaGenerales * plista);
 	~InfoPasillo();
 
 	void setNumero(int);
@@ -28,6 +29,14 @@ public:
 	ListaGenerales * getListaGeneral();
 
 	void cargarGeneralesPasillo();
+
+	char * autoIncrementar();
+
+	int ultimoRegistro();
+
+	void convertirAChar(char * palabra, std::string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 	
 

@@ -9,6 +9,7 @@
 #include "Utilitario.h"
 #include "UIGuardar.h"
 #include "BuscarCarritos.h"
+#include "UIFacturar.h"
 
 
 namespace proyectoDatos {
@@ -704,6 +705,7 @@ namespace proyectoDatos {
 			this->btnFacturar->TabIndex = 0;
 			this->btnFacturar->Text = L"Facturar";
 			this->btnFacturar->UseVisualStyleBackColor = false;
+			this->btnFacturar->Click += gcnew System::EventHandler(this, &UIPrincipal::btnFacturar_Click);
 			// 
 			// panel7
 			// 
@@ -1230,9 +1232,9 @@ namespace proyectoDatos {
 	private: System::Void dataGridView2_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 		btnEliminar->Enabled = true;
 	}
-
+	//revisar
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
-		int fila = dataGridView2->CurrentCell->RowIndex;
+		int fila = dataGridView2->CurrentRow->Index;
 		String^ codigoSis = dataGridView2->Rows[fila]->Cells[0]->Value->ToString();
 		dataGridView2->Rows->RemoveAt(fila);
 		char * codigo = Utilitario::toChar(codigoSis);
@@ -1264,9 +1266,13 @@ namespace proyectoDatos {
 	}
 
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-		
 		BuscarCarritos ^ buscarCarrito = gcnew BuscarCarritos(codigoUsuario, dataGridView2, listaCarrito, listaCompra, lblTotal);
 		buscarCarrito->Show();
 	}
+
+private: System::Void btnFacturar_Click(System::Object^  sender, System::EventArgs^  e) {
+	UIFacturar ^ facturar = gcnew UIFacturar(dataGridView2, listaCompra, lblTotal);
+	facturar->Show();
+}
 };
 }

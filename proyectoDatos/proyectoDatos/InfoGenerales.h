@@ -15,6 +15,7 @@ public:
 	InfoGenerales();
 	InfoGenerales(int, char*, char*);
 	InfoGenerales(int, char*, char*, ListaEspecifica*);
+	InfoGenerales(int numero, char * descripcion, ListaEspecifica * lista);
 	~InfoGenerales();
 
 	void setNumero(int);
@@ -28,6 +29,14 @@ public:
 	ListaEspecifica * getListaEspecifica();
 
 	void cargarEspecificas();
+
+	char * autoIncrementar();
+
+	int ultimoRegistro();
+
+	void convertirAChar(char * palabra, std::string palabraString);
+
+	int covertirAEntero(char * pcodigo);
 
 
 };

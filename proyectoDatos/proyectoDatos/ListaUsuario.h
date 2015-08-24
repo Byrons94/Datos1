@@ -56,6 +56,7 @@ public:
 
 	void  cargarUsuarios();
 
+	void ListaUsuario::modificarUsuario(InfoUsuario * usr);
 
 	void  leerFicheroUsuarios();
 

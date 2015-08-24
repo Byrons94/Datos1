@@ -475,7 +475,7 @@ namespace proyectoDatos {
 			{
 				if (strcmp(nodoArti->getInfo()->getCodigo(), nodo->getLineaDetalle()->getProducto()) == 0) {
 						total = total + nodo->getLineaDetalle()->getMonto();
-					dataprincipal->Rows->Add(Utilitario::toSystemString(nodo->getLineaDetalle()->getProducto()),
+						dataprincipal->Rows->Add(Utilitario::toSystemString(nodo->getLineaDetalle()->getProducto()),
 						Utilitario::toSystemString(nodoArti->getInfo()->getNombre()),
 						Utilitario::toInt32(nodo->getLineaDetalle()->getCantidad()),
 						Utilitario::toInt32(nodo->getLineaDetalle()->getMonto()));

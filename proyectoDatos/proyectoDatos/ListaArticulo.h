@@ -52,7 +52,7 @@ public:
 
 	int covertirAEntero(char * pcodigo);
 
-
+	void ListaArticulo::modificarArticulo(InfoArticulo * usr);
 
 
 	//eliminar
