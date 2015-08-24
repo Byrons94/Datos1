@@ -18,6 +18,10 @@ public:
 
 	void agregarListaCompras(ListaCarrito * carrito, char * codigo, char * nombre, char * codClie, bool estado, double monto, ListaCompra * listaCompra);
 
+	ListaCarrito * obtenerCarritoUsuario(char * codUsuario);
+
+	ListaCarrito * obtenerCarritosPendientes();
+
 
 	ListaCarrito * crearPedido();
 	void * almacenarPedido();

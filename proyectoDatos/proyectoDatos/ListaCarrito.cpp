@@ -49,11 +49,12 @@ void ListaCarrito::agregarNodoDespuesDe(NodoCarrito * nuevo, NodoCarrito *nodo){
 	nodo->getSgte()->setAnte(nuevo);
 	nodo->setSgte(nuevo);
 		
+	if (nodo == getCab())
+		setCab(nuevo);
 	++tamanio;
 }
 
 void ListaCarrito::agregarNodoAntesDe(NodoCarrito *nodo, NodoCarrito *nuevo){
-	std::cout << "perrito";
 	nuevo->setSgte(nodo);
 	nuevo->setAnte(nodo->getAnte());
 	nodo->getAnte()->setSgte(nuevo);
@@ -270,6 +271,7 @@ void ListaCarrito::agregarListaCompra(char* codigo, char * nombre,
 	insertarAcendente(pinfo);
 }
 
+
 //falta implementar
 void ListaCarrito::mostrarLista(){
 }
@@ -392,16 +394,14 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 			convertirAChar(monto, palabraString);
 
 			if (convertirABoolean(estado) == false) {
-
 				ListaCompra * listaC = new ListaCompra();
-				listaC->cargarCompras(codigo);
+				/*listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),
-					covertirAEntero(monto), listaC);
-				insertarAcendente(listaCarrito);
+					covertirAEntero(monto), listaC);*/
+				//insertarAcendente(new NodoCarrito(listaCarrito));
 			}
 			lectura >> codigo;
 		}
-
 		lectura.close();
 		return 1;
 	}
@@ -409,7 +409,6 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 		return 0;
 	}
 }
-
 
 void ListaCarrito::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
@@ -422,7 +421,7 @@ int ListaCarrito::covertirAEntero(char * pcodigo) {
 }
 //0 entregado, 1 pendiente
 bool ListaCarrito::convertirABoolean(char *num){
-	if (num == "1")
+	if (num == "0")
 		return false;
 
 	return true;

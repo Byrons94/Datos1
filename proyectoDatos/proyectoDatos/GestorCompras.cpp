@@ -1,5 +1,5 @@
 #include "GestorCompras.h"
-#include "ListaCarrito.h"
+
 
 GestorCompras::GestorCompras()
 {}
@@ -36,19 +36,20 @@ bool GestorCompras::editarCantProduc(int cantidad, InfoCompra * lista, double mo
 void GestorCompras::agregarListaCompras(ListaCarrito *carrito, char* codigo, char * nombre,
 	char * codClie, bool estado, double monto, ListaCompra * listaCompra){
 	carrito->agregarListaCompra(codigo, nombre, codClie, estado, monto, listaCompra);
+	carrito->guardarCarritos();
 }
 
 void vaciarCarrito(ListaCarrito * carrito){
 	carrito->vaciar();
 }
 
-ListaCarrito * obtenerCarritoUsuario(char *codUsuario){
+ListaCarrito * GestorCompras::obtenerCarritoUsuario(char *codUsuario){
 	ListaCarrito * lista = new ListaCarrito();
 	lista->cargarCarritosUsuario(codUsuario);
 	return lista;
 }
 
-ListaCarrito * obtenerCarritosPendientes(){
+ListaCarrito * GestorCompras::obtenerCarritosPendientes(){
 	ListaCarrito * lista = new ListaCarrito();
 	lista->cargarCarritosPendientes();
 	return lista;

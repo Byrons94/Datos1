@@ -8,8 +8,6 @@ InfoArticulo::InfoArticulo(){
 	setTamanio(0);
 	setPrecio (0);
 }
-
-
 InfoArticulo::~InfoArticulo(){}
 
 

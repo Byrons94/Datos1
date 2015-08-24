@@ -46,6 +46,8 @@ public:
 	ListaArticulo * leerFicheroArticulos(int codigoEspecificas);
 
 
+	ListaArticulo * cargarArticulos();
+
 	void convertirAChar(char * palabra, std::string palabraString);
 
 	int covertirAEntero(char * pcodigo);

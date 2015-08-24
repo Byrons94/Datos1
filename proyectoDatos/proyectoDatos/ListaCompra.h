@@ -35,6 +35,7 @@ public:
 	//eliminar
 	bool elimina(char *);
 	bool agregarProducto(InfoCompra * lineaDetallle);
+	bool agregarProductoEspecifico(char * pasillo, char * general, char * especifica, char * producto, int cantidad, double monto);
 	void vaciar();
 
 	//Estatus

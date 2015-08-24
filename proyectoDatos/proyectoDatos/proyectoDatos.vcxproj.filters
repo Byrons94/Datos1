@@ -178,6 +178,9 @@
     <ClInclude Include="UIGuardar.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="BuscarCarritos.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -267,12 +270,18 @@
     <ClCompile Include="UIGuardar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
+    <ClCompile Include="BuscarCarritos.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="UIPrincipal.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIGuardar.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#include "ListaCompra.h"
+	#include "ListaCompra.h"
 
 NodoCompra * ListaCompra::dirNodo(char * pcodigo){
 	NodoCompra *nodo = getCab();
@@ -151,6 +151,19 @@ bool ListaCompra::agregarProducto(InfoCompra * lineaDetallle){
 	}
 }
 
+bool ListaCompra::agregarProductoEspecifico(char * pasillo, char *general, char *especifica, 
+												char *producto, int cantidad, double monto) {
+	InfoCompra * info = new InfoCompra(pasillo, general, especifica, producto, cantidad, monto);
+	NodoCompra * nodo = dirNodo(info->getProducto());
+	if (nodo != NULL)
+		return false;
+	
+	else {
+		insertarFinal(info);
+		return true;
+	}
+}
+
 void ListaCompra::vaciar() {
 	NodoCompra *nodo = getCab();
 	while (nodo != nullptr) {
@@ -240,7 +253,7 @@ int ListaCompra::leerFicheroCompras(char *codCarrito) {
 			std::stringstream ss(linea); //nos da un el elemento por linea
 			std::string palabraString;   // lo definimos para almacenar el dato del txt
 
-			std::string str(codCarrito);
+			std::string str(carrito);
 			str.erase(str.find(';'));
 			strcpy_s(carrito, str.c_str());
 			
