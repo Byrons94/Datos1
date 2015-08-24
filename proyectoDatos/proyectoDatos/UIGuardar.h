@@ -1,5 +1,8 @@
 #pragma once
-
+#include "ListaCompra.h"
+#include "ListaCarrito.h"
+#include "Utilitario.h"
+#include "GestorCompras.h"
 namespace proyectoDatos {
 
 	using namespace System;
@@ -8,16 +11,22 @@ namespace proyectoDatos {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Utilitario;
 
 	/// <summary>
 	/// Summary for UIGuardar
 	/// </summary>
-	public ref class UIGuardar : public System::Windows::Forms::Form
-	{
-	/*	String ^codigoUsuario;
+	public ref class UIGuardar : public System::Windows::Forms::Form{
+		
+		String ^codigoUsuario = "";
 		int totalCarrito=0;
-		int estado=0;
-		ListaCompra * listaCompra;*/
+		int estado = 0;
+		ListaCarrito * listaCarrito = NULL;
+		ListaCompra * listaCompra = NULL;
+
+
+	private: System::Windows::Forms::Button^  button2;
+			
 
 	public:
 		UIGuardar(void)
@@ -28,13 +37,25 @@ namespace proyectoDatos {
 			//
 		}
 
-	/*	UIGuardar(String^ pcodigoUsuario, int ptotalCarrito, int pestado, ListaCompra * plistaCompra){
+	UIGuardar(String^ pcodigoUsuario, int ptotalCarrito, int pestado, 
+						ListaCompra * plistaCompra, ListaCarrito *plistaCarrito){
 			InitializeComponent();
 			codigoUsuario = pcodigoUsuario;
 			totalCarrito = ptotalCarrito;
 			estado = pestado;
 			listaCompra = plistaCompra;
-		}*/
+			listaCarrito = plistaCarrito;
+
+			if (pestado == 0) {
+				comboBox1->Items->Add("Sin entregar");
+			}else {
+				comboBox1->Items->Add("Entregado");
+			}
+			comboBox1->SelectedItem = 0;
+			txtCodUsuario->Text = pcodigoUsuario;
+			txtMonto->Text = Utilitario::toInt32(ptotalCarrito)->ToString();
+
+		}
 
 	protected:
 		/// <summary>
@@ -50,7 +71,8 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::Panel^  panel2;
 	protected:
 	private: System::Windows::Forms::Panel^  panel1;
-	private: System::Windows::Forms::TextBox^  txtClave;
+	private: System::Windows::Forms::TextBox^  txtCodUsuario;
+
 	private: System::Windows::Forms::TextBox^  txtNombre;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::Label^  label2;
@@ -59,8 +81,10 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::ComboBox^  comboBox1;
 	private: System::Windows::Forms::Label^  label4;
 	private: System::Windows::Forms::Label^  label5;
-	private: System::Windows::Forms::TextBox^  textBox1;
-	private: System::Windows::Forms::Label^  requerido;
+	private: System::Windows::Forms::TextBox^  txtMonto;
+	private: System::Windows::Forms::Label^  lblrequerido;
+
+
 
 
 
@@ -89,12 +113,13 @@ namespace proyectoDatos {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(UIGuardar::typeid));
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->requerido = (gcnew System::Windows::Forms::Label());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->lblrequerido = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->txtMonto = (gcnew System::Windows::Forms::TextBox());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->txtClave = (gcnew System::Windows::Forms::TextBox());
+			this->txtCodUsuario = (gcnew System::Windows::Forms::TextBox());
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -114,12 +139,13 @@ namespace proyectoDatos {
 			// 
 			// panel1
 			// 
-			this->panel1->Controls->Add(this->requerido);
+			this->panel1->Controls->Add(this->button2);
+			this->panel1->Controls->Add(this->lblrequerido);
 			this->panel1->Controls->Add(this->label5);
-			this->panel1->Controls->Add(this->textBox1);
+			this->panel1->Controls->Add(this->txtMonto);
 			this->panel1->Controls->Add(this->comboBox1);
 			this->panel1->Controls->Add(this->label4);
-			this->panel1->Controls->Add(this->txtClave);
+			this->panel1->Controls->Add(this->txtCodUsuario);
 			this->panel1->Controls->Add(this->txtNombre);
 			this->panel1->Controls->Add(this->label3);
 			this->panel1->Controls->Add(this->label2);
@@ -131,16 +157,28 @@ namespace proyectoDatos {
 			this->panel1->Size = System::Drawing::Size(434, 286);
 			this->panel1->TabIndex = 3;
 			// 
-			// requerido
+			// button2
 			// 
-			this->requerido->AutoSize = true;
-			this->requerido->ForeColor = System::Drawing::Color::DarkRed;
-			this->requerido->Location = System::Drawing::Point(249, 59);
-			this->requerido->Name = L"requerido";
-			this->requerido->Size = System::Drawing::Size(102, 13);
-			this->requerido->TabIndex = 20;
-			this->requerido->Text = L"Necesita un nombre";
-			this->requerido->Visible = false;
+			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button2->Location = System::Drawing::Point(48, 226);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(119, 39);
+			this->button2->TabIndex = 21;
+			this->button2->Text = L"Cancelar";
+			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &UIGuardar::button2_Click);
+			// 
+			// lblrequerido
+			// 
+			this->lblrequerido->AutoSize = true;
+			this->lblrequerido->ForeColor = System::Drawing::Color::DarkRed;
+			this->lblrequerido->Location = System::Drawing::Point(208, 59);
+			this->lblrequerido->Name = L"lblrequerido";
+			this->lblrequerido->Size = System::Drawing::Size(102, 13);
+			this->lblrequerido->TabIndex = 20;
+			this->lblrequerido->Text = L"Necesita un nombre";
+			this->lblrequerido->Visible = false;
 			// 
 			// label5
 			// 
@@ -155,27 +193,25 @@ namespace proyectoDatos {
 			this->label5->TabIndex = 19;
 			this->label5->Text = L"Monto:";
 			// 
-			// textBox1
+			// txtMonto
 			// 
-			this->textBox1->Enabled = false;
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtMonto->Enabled = false;
+			this->txtMonto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(171, 174);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->PasswordChar = '*';
-			this->textBox1->Size = System::Drawing::Size(180, 31);
-			this->textBox1->TabIndex = 18;
+			this->txtMonto->Location = System::Drawing::Point(171, 174);
+			this->txtMonto->Name = L"txtMonto";
+			this->txtMonto->Size = System::Drawing::Size(180, 31);
+			this->txtMonto->TabIndex = 18;
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->BackColor = System::Drawing::Color::White;
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->comboBox1->FormattingEnabled = true;
 			this->comboBox1->Location = System::Drawing::Point(171, 135);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(180, 21);
-			this->comboBox1->TabIndex = 17;
+			this->comboBox1->TabIndex = 0;
 			// 
 			// label4
 			// 
@@ -190,16 +226,15 @@ namespace proyectoDatos {
 			this->label4->TabIndex = 16;
 			this->label4->Text = L"Estado:";
 			// 
-			// txtClave
+			// txtCodUsuario
 			// 
-			this->txtClave->Enabled = false;
-			this->txtClave->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->txtCodUsuario->Enabled = false;
+			this->txtCodUsuario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtClave->Location = System::Drawing::Point(171, 78);
-			this->txtClave->Name = L"txtClave";
-			this->txtClave->PasswordChar = '*';
-			this->txtClave->Size = System::Drawing::Size(180, 31);
-			this->txtClave->TabIndex = 15;
+			this->txtCodUsuario->Location = System::Drawing::Point(171, 78);
+			this->txtCodUsuario->Name = L"txtCodUsuario";
+			this->txtCodUsuario->Size = System::Drawing::Size(180, 31);
+			this->txtCodUsuario->TabIndex = 15;
 			// 
 			// txtNombre
 			// 
@@ -247,6 +282,7 @@ namespace proyectoDatos {
 			this->button1->TabIndex = 10;
 			this->button1->Text = L"Guardar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &UIGuardar::button1_Click);
 			// 
 			// label1
 			// 
@@ -277,6 +313,23 @@ namespace proyectoDatos {
 			this->ResumeLayout(false);
 
 		}
-#pragma endregion
-	};
+	
+	#pragma endregion
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		char * nombreCarrito = Utilitario::toChar(txtNombre->Text);
+		if (nombreCarrito == "") {
+			lblrequerido->Visible = true;
+		}
+		else {
+			GestorCompras * gestor = new GestorCompras();
+			gestor->agregarListaCompras(listaCarrito, "123", nombreCarrito, 
+						Utilitario::toChar(codigoUsuario), 0, totalCarrito, listaCompra);
+	
+			Close();
+		}
+	}
+private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+	Close();
+}
+};
 }

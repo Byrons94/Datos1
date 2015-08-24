@@ -160,6 +160,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BuscarCarritos.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="GestorCompras.h" />
     <ClInclude Include="GestorInventario.h" />
     <ClInclude Include="GestorUsuarios.h" />
@@ -206,7 +209,6 @@
     <ClInclude Include="Utilitario.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="colaEntregas.cpp" />
     <ClCompile Include="GestorCompras.cpp" />
     <ClCompile Include="GestorInventario.cpp" />
     <ClCompile Include="GestorUsuarios.cpp" />
@@ -323,6 +325,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="BuscarCarritos.resx">
+      <DependentUpon>BuscarCarritos.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI.resx">
       <DependentUpon>UI.h</DependentUpon>
     </EmbeddedResource>

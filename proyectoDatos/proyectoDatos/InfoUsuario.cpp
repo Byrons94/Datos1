@@ -79,6 +79,7 @@ int InfoUsuario::ultimoRegistro()
 {
 	std::ifstream lectura;
 	char codigo[30], nombre[30], contrasena[30], rol[5];
+	char aux[30];
 	
 	lectura.open("Ficheros/usuarios.txt", std::ios::out | std::ios::in);
 
@@ -93,6 +94,8 @@ int InfoUsuario::ultimoRegistro()
 			std::string str(codigo);
 			str.erase(str.find(';'));
 			strcpy_s(codigo, str.c_str());
+
+			//convertirAChar(aux, palabraString);
 
 			getline(ss, palabraString, ';');
 			convertirAChar(nombre, palabraString);

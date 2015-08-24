@@ -178,16 +178,10 @@
     <ClInclude Include="UIGuardar.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="NodoEntrega.h">
+    <ClInclude Include="BuscarCarritos.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="colaEntregas.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="UIRegistro.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="UIRegArticulo.h">
+    <ClInclude Include="UIFacturar.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -279,16 +273,10 @@
     <ClCompile Include="UIGuardar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
-    <ClCompile Include="colaEntregas.cpp">
+    <ClCompile Include="BuscarCarritos.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
-    <ClCompile Include="NodoEntrega.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="UIRegistro.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="UIRegArticulo.cpp">
+    <ClCompile Include="UIFacturar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -300,6 +288,9 @@
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="UIGuardar.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarCarritos.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

@@ -49,11 +49,12 @@ void ListaCarrito::agregarNodoDespuesDe(NodoCarrito * nuevo, NodoCarrito *nodo){
 	nodo->getSgte()->setAnte(nuevo);
 	nodo->setSgte(nuevo);
 		
+	if (nodo == getCab())
+		setCab(nuevo);
 	++tamanio;
 }
 
 void ListaCarrito::agregarNodoAntesDe(NodoCarrito *nodo, NodoCarrito *nuevo){
-	std::cout << "perrito";
 	nuevo->setSgte(nodo);
 	nuevo->setAnte(nodo->getAnte());
 	nodo->getAnte()->setSgte(nuevo);
@@ -270,6 +271,7 @@ void ListaCarrito::agregarListaCompra(char* codigo, char * nombre,
 	insertarAcendente(pinfo);
 }
 
+
 //falta implementar
 void ListaCarrito::mostrarLista(){
 }
@@ -392,16 +394,14 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 			convertirAChar(monto, palabraString);
 
 			if (convertirABoolean(estado) == false) {
-
 				ListaCompra * listaC = new ListaCompra();
 				listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),
 					covertirAEntero(monto), listaC);
-				insertarAcendente(listaCarrito);
+				//insertarAcendente(new NodoCarrito(listaCarrito));
 			}
 			lectura >> codigo;
 		}
-
 		lectura.close();
 		return 1;
 	}
@@ -409,45 +409,6 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 		return 0;
 	}
 }
-
-void ListaCarrito::modificarCarrito(InfoCarrito * carrito)
-{
-	std::ofstream aux;
-	std::ifstream lectura;
-	bool encontrado = false;
-
-	char codigo[15], codCliente[15], nombre[30], estado[5], monto[15];
-	aux.open("Ficheros/auxiliar.txt", std::ios::out);
-	lectura.open("Ficheros/carritos.txt", std::ios::in);
-	if (aux.is_open() && lectura.is_open()) {
-		lectura >> codigo;
-		while (!lectura.eof()) {
-
-
-			lectura >> codCliente >> nombre >> estado >> monto;
-			if (codigo == carrito->getCodigo()) {
-				encontrado = true;
-			
-				aux << carrito->getCodigo() << "; " << carrito->getCodClie() << "; "
-					<< carrito->getNombre() << "; " << carrito->getEstado() << "; "
-					<< carrito->getMonto() << "; " << std::endl;
-				
-			}
-			else {
-				aux << codigo << "; " << codCliente << "; "
-					<< nombre << "; " << estado << "; "
-					<< monto << "; " << std::endl;
-			}
-			lectura >> estado;
-		}
-	}
-	
-	aux.close();
-	lectura.close();
-	remove("Ficheros/carritos.txt");
-	rename("Ficheros/auxiliar.txt", "Ficheros/carritos.txt");
-}
-
 
 void ListaCarrito::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
@@ -460,7 +421,7 @@ int ListaCarrito::covertirAEntero(char * pcodigo) {
 }
 //0 entregado, 1 pendiente
 bool ListaCarrito::convertirABoolean(char *num){
-	if (num == "1")
+	if (num == "0")
 		return false;
 
 	return true;

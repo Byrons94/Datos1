@@ -8,7 +8,9 @@
 #include <stdio.h>
 #include "Utilitario.h"
 #include "UIGuardar.h"
-#include "UIRegistro.h"
+#include "BuscarCarritos.h"
+#include "UIFacturar.h"
+
 
 namespace proyectoDatos {
 	using namespace System;
@@ -33,8 +35,11 @@ namespace proyectoDatos {
 	ListaPasillos * lista = NULL;
 	GestorCompras * gestorCompras;
 	ListaCompra	  * listaCompra;
+	ListaCarrito  * listaCarrito;
 	String ^	    codigoUsuario;
-	int totalCarrito = 0;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  nombre;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  marca;
+			 int totalCarrito = 0;
 	public:
 		UIPrincipal(){
 			InitializeComponent();
@@ -46,6 +51,7 @@ namespace proyectoDatos {
 			cargarCombos();
 			gestorCompras = new GestorCompras();
 			listaCompra = new ListaCompra();
+			listaCarrito = new ListaCarrito();
 			codigoUsuario = codUser;
 		}
 	protected:
@@ -175,6 +181,8 @@ namespace proyectoDatos {
 			this->Column7 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column8 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column9 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->nombre = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->marca = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel8 = (gcnew System::Windows::Forms::Panel());
 			this->btnGuardar = (gcnew System::Windows::Forms::Button());
 			this->btnVaciar = (gcnew System::Windows::Forms::Button());
@@ -231,7 +239,7 @@ namespace proyectoDatos {
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1164, 661);
+			this->panel1->Size = System::Drawing::Size(1164, 671);
 			this->panel1->TabIndex = 0;
 			// 
 			// panel6
@@ -247,7 +255,7 @@ namespace proyectoDatos {
 			this->panel6->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel6->Location = System::Drawing::Point(187, 94);
 			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(698, 519);
+			this->panel6->Size = System::Drawing::Size(698, 529);
 			this->panel6->TabIndex = 5;
 			// 
 			// label9
@@ -343,7 +351,7 @@ namespace proyectoDatos {
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnF2;
 			this->dataGridView1->GridColor = System::Drawing::Color::White;
-			this->dataGridView1->Location = System::Drawing::Point(10, 40);
+			this->dataGridView1->Location = System::Drawing::Point(10, 50);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
@@ -411,7 +419,7 @@ namespace proyectoDatos {
 			this->splitter2->Dock = System::Windows::Forms::DockStyle::Right;
 			this->splitter2->Location = System::Drawing::Point(688, 0);
 			this->splitter2->Name = L"splitter2";
-			this->splitter2->Size = System::Drawing::Size(10, 519);
+			this->splitter2->Size = System::Drawing::Size(10, 529);
 			this->splitter2->TabIndex = 1;
 			this->splitter2->TabStop = false;
 			// 
@@ -422,7 +430,7 @@ namespace proyectoDatos {
 			this->splitter1->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter1->Location = System::Drawing::Point(0, 0);
 			this->splitter1->Name = L"splitter1";
-			this->splitter1->Size = System::Drawing::Size(10, 519);
+			this->splitter1->Size = System::Drawing::Size(10, 529);
 			this->splitter1->TabIndex = 0;
 			this->splitter1->TabStop = false;
 			// 
@@ -440,7 +448,7 @@ namespace proyectoDatos {
 			this->panel5->Dock = System::Windows::Forms::DockStyle::Right;
 			this->panel5->Location = System::Drawing::Point(885, 94);
 			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(279, 519);
+			this->panel5->Size = System::Drawing::Size(279, 529);
 			this->panel5->TabIndex = 4;
 			// 
 			// btnEliminar
@@ -452,7 +460,7 @@ namespace proyectoDatos {
 			this->btnEliminar->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnEliminar->ForeColor = System::Drawing::Color::White;
-			this->btnEliminar->Location = System::Drawing::Point(0, 49);
+			this->btnEliminar->Location = System::Drawing::Point(3, 53);
 			this->btnEliminar->Name = L"btnEliminar";
 			this->btnEliminar->Size = System::Drawing::Size(78, 28);
 			this->btnEliminar->TabIndex = 7;
@@ -466,9 +474,9 @@ namespace proyectoDatos {
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
 			this->splitter3->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->splitter3->Location = System::Drawing::Point(0, 77);
+			this->splitter3->Location = System::Drawing::Point(0, 82);
 			this->splitter3->Name = L"splitter3";
-			this->splitter3->Size = System::Drawing::Size(262, 10);
+			this->splitter3->Size = System::Drawing::Size(279, 10);
 			this->splitter3->TabIndex = 6;
 			this->splitter3->TabStop = false;
 			// 
@@ -505,9 +513,9 @@ namespace proyectoDatos {
 			this->panel9->Controls->Add(this->button2);
 			this->panel9->Controls->Add(this->panel10);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel9->Location = System::Drawing::Point(0, 87);
+			this->panel9->Location = System::Drawing::Point(0, 92);
 			this->panel9->Name = L"panel9";
-			this->panel9->Size = System::Drawing::Size(262, 404);
+			this->panel9->Size = System::Drawing::Size(279, 404);
 			this->panel9->TabIndex = 3;
 			// 
 			// button2
@@ -521,10 +529,11 @@ namespace proyectoDatos {
 			this->button2->ForeColor = System::Drawing::Color::White;
 			this->button2->Location = System::Drawing::Point(0, 0);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(262, 28);
+			this->button2->Size = System::Drawing::Size(279, 28);
 			this->button2->TabIndex = 8;
 			this->button2->Text = L"Mis carritos";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &UIPrincipal::button2_Click);
 			// 
 			// panel10
 			// 
@@ -532,7 +541,7 @@ namespace proyectoDatos {
 			this->panel10->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->panel10->Location = System::Drawing::Point(0, 28);
 			this->panel10->Name = L"panel10";
-			this->panel10->Size = System::Drawing::Size(262, 376);
+			this->panel10->Size = System::Drawing::Size(279, 376);
 			this->panel10->TabIndex = 0;
 			// 
 			// dataGridView2
@@ -550,9 +559,9 @@ namespace proyectoDatos {
 			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
 			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Column6,
-					this->Column7, this->Column8, this->Column9
+					this->Column7, this->Column8, this->Column9, this->nombre, this->marca
 			});
 			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			dataGridViewCellStyle7->BackColor = System::Drawing::SystemColors::Window;
@@ -582,7 +591,7 @@ namespace proyectoDatos {
 			this->dataGridView2->RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
 			this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView2->Size = System::Drawing::Size(262, 376);
+			this->dataGridView2->Size = System::Drawing::Size(279, 376);
 			this->dataGridView2->TabIndex = 0;
 			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UIPrincipal::dataGridView2_CellContentClick);
 			// 
@@ -614,15 +623,29 @@ namespace proyectoDatos {
 			this->Column9->ReadOnly = true;
 			this->Column9->Width = 70;
 			// 
+			// nombre
+			// 
+			this->nombre->HeaderText = L"Column10";
+			this->nombre->Name = L"nombre";
+			this->nombre->ReadOnly = true;
+			this->nombre->Visible = false;
+			// 
+			// marca
+			// 
+			this->marca->HeaderText = L"Column10";
+			this->marca->Name = L"marca";
+			this->marca->ReadOnly = true;
+			this->marca->Visible = false;
+			// 
 			// panel8
 			// 
 			this->panel8->Controls->Add(this->btnGuardar);
 			this->panel8->Controls->Add(this->btnVaciar);
 			this->panel8->Controls->Add(this->btnFacturar);
 			this->panel8->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel8->Location = System::Drawing::Point(0, 491);
+			this->panel8->Location = System::Drawing::Point(0, 496);
 			this->panel8->Name = L"panel8";
-			this->panel8->Size = System::Drawing::Size(262, 33);
+			this->panel8->Size = System::Drawing::Size(279, 33);
 			this->panel8->TabIndex = 2;
 			// 
 			// btnGuardar
@@ -639,7 +662,7 @@ namespace proyectoDatos {
 			this->btnGuardar->ForeColor = System::Drawing::Color::Black;
 			this->btnGuardar->Location = System::Drawing::Point(99, 0);
 			this->btnGuardar->Name = L"btnGuardar";
-			this->btnGuardar->Size = System::Drawing::Size(76, 33);
+			this->btnGuardar->Size = System::Drawing::Size(93, 33);
 			this->btnGuardar->TabIndex = 3;
 			this->btnGuardar->Text = L"Guardar";
 			this->btnGuardar->UseVisualStyleBackColor = false;
@@ -656,7 +679,7 @@ namespace proyectoDatos {
 			this->btnVaciar->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnVaciar->ForeColor = System::Drawing::Color::Black;
-			this->btnVaciar->Location = System::Drawing::Point(175, 0);
+			this->btnVaciar->Location = System::Drawing::Point(192, 0);
 			this->btnVaciar->Name = L"btnVaciar";
 			this->btnVaciar->Size = System::Drawing::Size(87, 33);
 			this->btnVaciar->TabIndex = 2;
@@ -682,6 +705,7 @@ namespace proyectoDatos {
 			this->btnFacturar->TabIndex = 0;
 			this->btnFacturar->Text = L"Facturar";
 			this->btnFacturar->UseVisualStyleBackColor = false;
+			this->btnFacturar->Click += gcnew System::EventHandler(this, &UIPrincipal::btnFacturar_Click);
 			// 
 			// panel7
 			// 
@@ -717,7 +741,7 @@ namespace proyectoDatos {
 			this->panel4->Dock = System::Windows::Forms::DockStyle::Left;
 			this->panel4->Location = System::Drawing::Point(0, 94);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(187, 519);
+			this->panel4->Size = System::Drawing::Size(187, 529);
 			this->panel4->TabIndex = 2;
 			// 
 			// label3
@@ -803,7 +827,7 @@ namespace proyectoDatos {
 			this->panel3->BackColor = System::Drawing::Color::DarkRed;
 			this->panel3->Controls->Add(this->label8);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel3->Location = System::Drawing::Point(0, 613);
+			this->panel3->Location = System::Drawing::Point(0, 623);
 			this->panel3->Name = L"panel3";
 			this->panel3->Size = System::Drawing::Size(1164, 48);
 			this->panel3->TabIndex = 3;
@@ -892,7 +916,7 @@ namespace proyectoDatos {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(846, 65);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(375, 26);
+			this->menuStrip1->Size = System::Drawing::Size(283, 26);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -937,7 +961,6 @@ namespace proyectoDatos {
 			this->registrarToolStripMenuItem1->Name = L"registrarToolStripMenuItem1";
 			this->registrarToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
 			this->registrarToolStripMenuItem1->Text = L"Registrar";
-			this->registrarToolStripMenuItem1->Click += gcnew System::EventHandler(this, &UIPrincipal::registrarToolStripMenuItem1_Click);
 			// 
 			// modificarToolStripMenuItem1
 			// 
@@ -980,7 +1003,7 @@ namespace proyectoDatos {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1164, 661);
+			this->ClientSize = System::Drawing::Size(1164, 671);
 			this->Controls->Add(this->panel1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
@@ -1209,9 +1232,9 @@ namespace proyectoDatos {
 	private: System::Void dataGridView2_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 		btnEliminar->Enabled = true;
 	}
-
+	//revisar
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
-		int fila = dataGridView2->CurrentCell->RowIndex;
+		int fila = dataGridView2->CurrentRow->Index;
 		String^ codigoSis = dataGridView2->Rows[fila]->Cells[0]->Value->ToString();
 		dataGridView2->Rows->RemoveAt(fila);
 		char * codigo = Utilitario::toChar(codigoSis);
@@ -1228,16 +1251,38 @@ namespace proyectoDatos {
 		btnGuardar->Enabled = false;
 	}
 	
+	public: System::Void limpiarLista(){
+		dataGridView2->Rows->Clear();
+		listaCompra->vaciar();
+		calcularTotal();
+		btnEliminar->Enabled = false;
+		btnFacturar->Enabled = false;
+		btnGuardar->Enabled = false;
+	}
+
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-		UIGuardar ^ guardar = gcnew UIGuardar(/*codigoUsuario, totalCarrito, 0, listaCompra*/);
+		UIGuardar ^ guardar = gcnew UIGuardar(codigoUsuario, totalCarrito, 0, listaCompra, listaCarrito);
 		guardar->Show();
 	}
-private: System::Void registrarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	UIRegistro ^registroUsuario = gcnew UIRegistro();
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		BuscarCarritos ^ buscarCarrito = gcnew BuscarCarritos(codigoUsuario, dataGridView2, listaCarrito, listaCompra, lblTotal);
+		buscarCarrito->Show();
+	}
 
-	registroUsuario->Show();
+	private: System::Void btnFacturar_Click(System::Object^  sender, System::EventArgs^  e) {
+		UIFacturar ^ facturar = gcnew UIFacturar(dataGridView2, listaCompra, lblTotal);
+		//nombreCarrito();
+		facturar->Show();
+		listaCarrito->guardarCarritos();
+	}
 
-}
+	private: System::Void nombreCarrito() {
+		NodoCarrito * nodo = new NodoCarrito();
+		for (int i = 0; i < listaCarrito->getTamanio(); i++){
+			nodo->getInfo()->setNombre("Compra regular");
+		}
+	}
+
 };
 }
