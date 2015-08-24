@@ -192,7 +192,7 @@ bool ListaUsuario::almacenarUsuarioEnFichero(InfoUsuario* usuario) {
 	escritura.open("Ficheros/usuarios.txt", std::ios::out | std::ios::app);
 	if (escritura.is_open()) {
 		escritura << usuario->getCodigo() << "; " << usuario->getNombre() << "; "
-			<< usuario->getContrasenna() << "; " << usuario->getRol() << std::endl;
+			<< usuario->getContrasenna() << "; " << usuario->getRol() << "; " << std::endl;
 		escritura.close();
 	}
 	else {
