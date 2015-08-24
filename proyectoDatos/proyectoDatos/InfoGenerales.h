@@ -26,7 +26,7 @@ public:
 	int getNumero();
 	char * getCodigo();
 	char * getDescripcion();
-	ListaEspecifica * getListaGeneral();
+	ListaEspecifica * getListaEspecifica();
 
 	void cargarEspecificas();
 

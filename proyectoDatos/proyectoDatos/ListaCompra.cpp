@@ -126,6 +126,7 @@ bool ListaCompra::insertarIndex(InfoCompra * pinfo, int pindex) {
 	return false;
 }
 
+//revisar
 bool ListaCompra::elimina(char * pcodigo) {
 	if (estaVacia())
 		return false;

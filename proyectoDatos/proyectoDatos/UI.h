@@ -107,17 +107,17 @@ namespace proyectoDatos {
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->label1);
-			this->panel1->Dock = System::Windows::Forms::DockStyle::Top;
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(373, 257);
+			this->panel1->Size = System::Drawing::Size(434, 331);
 			this->panel1->TabIndex = 0;
 			// 
 			// txtClave
 			// 
 			this->txtClave->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtClave->Location = System::Drawing::Point(116, 120);
+			this->txtClave->Location = System::Drawing::Point(140, 120);
 			this->txtClave->Name = L"txtClave";
 			this->txtClave->PasswordChar = '*';
 			this->txtClave->Size = System::Drawing::Size(180, 31);
@@ -127,7 +127,7 @@ namespace proyectoDatos {
 			// 
 			this->label4->AutoSize = true;
 			this->label4->ForeColor = System::Drawing::Color::DarkRed;
-			this->label4->Location = System::Drawing::Point(127, 161);
+			this->label4->Location = System::Drawing::Point(151, 161);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(152, 13);
 			this->label4->TabIndex = 14;
@@ -138,7 +138,7 @@ namespace proyectoDatos {
 			// 
 			this->txtNombre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtNombre->Location = System::Drawing::Point(116, 59);
+			this->txtNombre->Location = System::Drawing::Point(140, 59);
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(180, 31);
 			this->txtNombre->TabIndex = 13;
@@ -150,7 +150,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label3->Location = System::Drawing::Point(13, 133);
+			this->label3->Location = System::Drawing::Point(37, 133);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(92, 18);
 			this->label3->TabIndex = 12;
@@ -163,7 +163,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label2->Location = System::Drawing::Point(13, 67);
+			this->label2->Location = System::Drawing::Point(37, 67);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(97, 18);
 			this->label2->TabIndex = 11;
@@ -173,7 +173,7 @@ namespace proyectoDatos {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(130, 192);
+			this->button1->Location = System::Drawing::Point(154, 192);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(149, 39);
 			this->button1->TabIndex = 10;
@@ -188,7 +188,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label1->Location = System::Drawing::Point(3, 9);
+			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(130, 23);
 			this->label1->TabIndex = 8;
@@ -198,9 +198,9 @@ namespace proyectoDatos {
 			// 
 			this->panel2->BackColor = System::Drawing::Color::DarkRed;
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel2->Location = System::Drawing::Point(0, 254);
+			this->panel2->Location = System::Drawing::Point(0, 286);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(373, 45);
+			this->panel2->Size = System::Drawing::Size(434, 45);
 			this->panel2->TabIndex = 1;
 			// 
 			// UI
@@ -209,7 +209,7 @@ namespace proyectoDatos {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(373, 299);
+			this->ClientSize = System::Drawing::Size(434, 331);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -242,7 +242,8 @@ private: System::Void button1_Click_1(System::Object^  sender, System::EventArgs
 	}
 	else {
 		label4->Visible = false;
-		UIPrincipal ^ principal = gcnew UIPrincipal(Utilitario::toInt(b));
+		String ^ codUser = txtNombre->Text;
+		UIPrincipal ^ principal = gcnew UIPrincipal(Utilitario::toInt(b), codUser);
 		Hide();
 		principal->Show();
 	}

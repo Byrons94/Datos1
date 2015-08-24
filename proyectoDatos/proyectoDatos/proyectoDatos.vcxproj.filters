@@ -175,6 +175,9 @@
     <ClInclude Include="Utilitario.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="UIGuardar.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -259,6 +262,9 @@
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="Utilitario.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="UIGuardar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
   </ItemGroup>
