@@ -6,21 +6,21 @@ NodoEntrega::NodoEntrega()
 {
 }
 
-NodoEntrega::NodoEntrega(InfoEntrega *pinfo)
+NodoEntrega::NodoEntrega(NodoCarrito *pcarrito)
 {
-	setLineaDetalle(pinfo);
+	setCarrito(pcarrito);
 	setSgte(NULL);
 }
+
+
 
 
 NodoEntrega::~NodoEntrega()
 {
 }
 
-void NodoEntrega::setLineaDetalle(InfoEntrega *plinea)
+void NodoEntrega::setCarrito(NodoCarrito *)
 {
-	this->lineaDetalle = plinea;
-
 }
 
 void NodoEntrega::setSgte(NodoEntrega *sgte)
@@ -28,9 +28,11 @@ void NodoEntrega::setSgte(NodoEntrega *sgte)
 	this->sgte = sgte;
 }
 
-InfoEntrega * NodoEntrega::getLineaDetalle()
+
+
+NodoCarrito * NodoEntrega::getCarrito()
 {
-	return this->lineaDetalle;
+	return carrito;
 }
 
 NodoEntrega * NodoEntrega::getSgte()

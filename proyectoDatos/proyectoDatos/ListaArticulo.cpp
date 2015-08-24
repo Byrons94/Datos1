@@ -65,12 +65,12 @@ int ListaArticulo::convertirAEntero(char * pcodigo){
 }
 
 bool ListaArticulo::almacenarArticuloEnFichero(InfoArticulo* articulo) {
-	ofstream escritura;
-	escritura.open("Ficheros/articulos.txt", ios::out | ios::app);
+	std::ofstream escritura;
+	escritura.open("Ficheros/articulos.txt", std::ios::out | std::ios::app);
 	if (escritura.is_open()) {
 		escritura << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
 			<< articulo->getMarca() << "; " << articulo->getTamanio() << "; "
-			<< articulo->getPrecio() << "; " << endl;
+			<< articulo->getPrecio() << "; " << std::endl;
 		escritura.close();
 	}
 	else {
@@ -289,20 +289,20 @@ ListaArticulo* ListaArticulo::cargarArticulos(int codigoEspecificas) {
 }
 
 ListaArticulo * ListaArticulo::leerFicheroArticulos(int codigoEspecificas) {
-	ifstream lectura;
+	std::ifstream lectura;
 	char lineaEsp[30], codigo[30], nombre[30], marca[30], tamanio[30], precio[15];
-	lectura.open("Ficheros/articulos.txt", ios::out | ios::in);
+	lectura.open("Ficheros/articulos.txt", std::ios::out | std::ios::in);
 	
 	InfoArticulo *articulo;
 	
 	if (lectura.is_open()){
 		lectura >> lineaEsp;  //primer registro de la linea
-		string linea;		//contador de las lineas del documento
+		std::string linea;		//contador de las lineas del documento
 		while (getline(lectura, linea)) {
-			stringstream ss(linea); //nos da un el elemento por linea
-			string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
 			
-			string str(lineaEsp);
+			std::string str(lineaEsp);
 			str.erase(str.find(';'));
 			strcpy_s(lineaEsp, str.c_str());
 
@@ -336,7 +336,7 @@ ListaArticulo * ListaArticulo::leerFicheroArticulos(int codigoEspecificas) {
 	}
 }
 
-void ListaArticulo::convertirAChar(char *palabra, string palabraString) {
+void ListaArticulo::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
 }
@@ -344,6 +344,45 @@ void ListaArticulo::convertirAChar(char *palabra, string palabraString) {
 int ListaArticulo::covertirAEntero(char * pcodigo) {
 	int num = atoi(pcodigo);
 	return num;
+}
+
+
+void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
+{
+	std::ofstream aux;
+	std::ifstream lectura;
+	bool encontrado = false;
+
+	char lineaEsp[30], codigo[30], nombre[30], marca[30], tamanio[30], precio[15];
+	aux.open("Ficheros/auxiliar.txt", std::ios::out);
+	lectura.open("Ficheros/articulos.txt", std::ios::in);
+	if (aux.is_open() && lectura.is_open()) {
+		lectura >> codigo;
+		while (!lectura.eof()) {
+
+
+			lectura >> lineaEsp >> nombre >> marca >> tamanio >> precio;
+			if (codigo == articulo->getCodigo()) {
+				encontrado = true;
+
+				aux << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
+					<< articulo->getMarca() << "; " << articulo->getTamanio() << "; "
+					<< articulo->getPrecio() << "; " << std::endl;
+
+			}
+			else {
+				aux << codigo << "; " << nombre << "; "
+					<< marca << "; " << tamanio << "; "
+					<< precio << "; " << std::endl;
+			}
+			lectura >> precio;
+		}
+	}
+
+	aux.close();
+	lectura.close();
+	remove("Ficheros/articulos.txt");
+	rename("Ficheros/auxiliar.txt", "Ficheros/articulos.txt");
 }
 
 

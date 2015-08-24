@@ -34,6 +34,8 @@ InfoCompra::InfoCompra(char * pasillo, char *general, char *especifica, char *pr
 InfoCompra::~InfoCompra()
 {}
 
+
+
 void InfoCompra::setCodCarrito(char * pcod){
 	strcpy_s(this->codigoCarrito, pcod);
 }

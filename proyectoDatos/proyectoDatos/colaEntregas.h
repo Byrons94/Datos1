@@ -1,8 +1,12 @@
 #pragma once
 #define STACK_MAX 100
 #include "NodoEntrega.h"
-#include "InfoEntrega.h"
 #include "stdafx.h"
+#include "ListaCarrito.h"
+#include<cstdlib>
+#include<iostream>
+#include<fstream>
+#include<string.h>
 
 class ColaEntregas
 {
@@ -24,11 +28,13 @@ public:
 	~ColaEntregas();
 
 	bool vacio();
-	void encolar(InfoEntrega *);
-	InfoEntrega * desencolar();
+	void encolar(NodoCarrito *);
+	NodoCarrito * desencolar();
 	NodoEntrega * frente();
 	int largo();
 	void mostrar();
+
+	void cargarColaPendientes();
 
 
 

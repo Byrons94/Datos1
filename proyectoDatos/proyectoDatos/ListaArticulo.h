@@ -46,11 +46,11 @@ public:
 	ListaArticulo * leerFicheroArticulos(int codigoEspecificas);
 
 
-	void convertirAChar(char * palabra, string palabraString);
+	void convertirAChar(char * palabra, std::string palabraString);
 
 	int covertirAEntero(char * pcodigo);
 
-
+	void ListaArticulo::modificarArticulo(InfoArticulo * usr);
 
 
 	//eliminar

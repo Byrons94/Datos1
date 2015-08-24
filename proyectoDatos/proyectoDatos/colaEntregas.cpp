@@ -54,11 +54,11 @@ bool ColaEntregas::vacio()
 		
 }
 
-void ColaEntregas::encolar(InfoEntrega * pinfo)
+void ColaEntregas::encolar(NodoCarrito * pcarrito)
 {
 
 	NodoEntrega *nuevo;
-	nuevo = new NodoEntrega(pinfo);
+	nuevo = new NodoEntrega(pcarrito);
 	nuevo->setSgte(NULL) ;
 
 	if (vacio())
@@ -74,12 +74,12 @@ void ColaEntregas::encolar(InfoEntrega * pinfo)
 	setSize(getSize() + 1);
 }
 
-InfoEntrega * ColaEntregas::desencolar()
+NodoCarrito * ColaEntregas::desencolar()
 {
 	if (!vacio()) {
 		NodoEntrega *aux;
 		aux = getFrente();
-		InfoEntrega *info = aux->getLineaDetalle();
+		NodoCarrito *carrito = aux->getCarrito();
 		if (getSize() == 1){
 			setFrente(NULL);
 			setFinal(NULL);
@@ -87,9 +87,19 @@ InfoEntrega * ColaEntregas::desencolar()
 		else {
 			setFrente(aux->getSgte());
 		}
+		//cambiar el estado del carrito
+		InfoCarrito *info = carrito->getInfo();
+		
+
+
+		ListaCarrito *lista = new ListaCarrito();
+		lista->cargarCarritosPendientes();
+		lista->modificarCarrito(new InfoCarrito(info->getCodigo(),info->getNombre(), info->getCodClie(),
+			!info->getEstado(), info->getMonto(), info->getListaCompra()));
+
 		delete aux;
 		setSize(getSize() - 1);
-		return info;
+		return carrito;
 	}
 
 	return NULL;
@@ -110,5 +120,22 @@ int ColaEntregas::largo()
 
 void ColaEntregas::mostrar()
 {
+}
+
+void ColaEntregas::cargarColaPendientes()
+{
+	ListaCarrito *lista = new ListaCarrito();
+	lista->cargarCarritosPendientes();
+
+	NodoCarrito *nodo = lista->getCab();
+
+
+	while (nodo->getSgte() != lista->getCab())
+	{
+		encolar(nodo);
+		nodo = nodo->getSgte();
+	}
+
+	
 }
 

@@ -18,6 +18,7 @@ public:
 	InfoCompra(char * pasillo, char * general, char * especifica, char * producto, int cantidad, double monto);
 	~InfoCompra();
 
+
 	void setCodCarrito(char *);
 	void setPasillo(char *);
 	void setGeneral(char *);

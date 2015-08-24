@@ -1,22 +1,22 @@
 #pragma once
-#include "InfoEntrega.h"
 #include "stdafx.h"
+#include "ListaCarrito.h"
 
 class NodoEntrega
 {
 private:
-	InfoEntrega * lineaDetalle;
+	NodoCarrito * carrito;
 	NodoEntrega *sgte;
 
 public:
 	NodoEntrega();
-	NodoEntrega(InfoEntrega *);
+	NodoEntrega(NodoCarrito *);
 	~NodoEntrega();
 
-	void setLineaDetalle(InfoEntrega *);
+	void setCarrito(NodoCarrito *);
 	void setSgte(NodoEntrega *);
 
-	InfoEntrega * getLineaDetalle();
+	NodoCarrito * getCarrito();
 	NodoEntrega * getSgte();
 
 };

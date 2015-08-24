@@ -56,10 +56,11 @@ public:
 
 	void  cargarUsuarios();
 
+	void ListaUsuario::modificarUsuario(InfoUsuario * usr);
 
 	void  leerFicheroUsuarios();
 
-	void convertirAChar(char * palabra, string palabraString);
+	void convertirAChar(char * palabra, std::string palabraString);
 
 	int covertirAEntero(char * pcodigo);
 
