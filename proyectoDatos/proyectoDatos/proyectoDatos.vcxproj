@@ -163,6 +163,9 @@
     <ClInclude Include="BuscarCarritos.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Facturar.h">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="GestorCompras.h" />
     <ClInclude Include="GestorInventario.h" />
     <ClInclude Include="GestorUsuarios.h" />
@@ -222,6 +225,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="colaEntregas.cpp" />
+    <ClCompile Include="Facturar.cpp" />
     <ClCompile Include="GestorCompras.cpp" />
     <ClCompile Include="GestorInventario.cpp" />
     <ClCompile Include="GestorUsuarios.cpp" />

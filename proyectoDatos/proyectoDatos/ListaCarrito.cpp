@@ -43,14 +43,12 @@ NodoCarrito * ListaCarrito::dirIndex(int pindex){
 	return NULL;
 }
 
-void ListaCarrito::agregarNodoDespuesDe(NodoCarrito * nuevo, NodoCarrito *nodo){
+void ListaCarrito::agregarNodoDespuesDe(NodoCarrito * nodo, NodoCarrito *nuevo){
 	nuevo->setAnte(nodo);
 	nuevo->setSgte(nodo->getSgte());
 	nodo->getSgte()->setAnte(nuevo);
 	nodo->setSgte(nuevo);
-		
-	if (nodo == getCab())
-		setCab(nuevo);
+
 	++tamanio;
 }
 
@@ -158,7 +156,7 @@ bool ListaCarrito::insertarAcendente(InfoCarrito * pinfo){
 					&& strcmp(pinfo->getCodigo(), nodo->getSgte()->getInfo()->getCodigo()) > 0) {
 				nodo = nodo->getSgte();
 			}
-			agregarNodoDespuesDe(new NodoCarrito(pinfo), nodo);
+			agregarNodoDespuesDe(nodo,new NodoCarrito(pinfo));
 			return true;
 		}
 	return false;
@@ -226,6 +224,7 @@ void ListaCarrito::vaciar(){
 		--tamanio;
 	}
 	setCab(NULL);
+	setTamanio(0);
 }
 
 bool ListaCarrito::estaVacia(){
@@ -338,7 +337,6 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 
 			if (covertirAEntero(codUsuario) == covertirAEntero(codCliente) 
 								&& convertirABoolean(estado) == true){
-
 				ListaCompra * listaC = new ListaCompra();
 				listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),

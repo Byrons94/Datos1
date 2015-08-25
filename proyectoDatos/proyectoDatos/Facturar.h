@@ -1,14 +1,11 @@
 #pragma once
+
 #include "GestorCompras.h"
 #include "GestorInventario.h"
-#include "Utilitario.h"
 #include "ListaCompra.h"
 #include "ListaCarrito.h"
-#include <iostream>
-#include <iostream>
-#include <cstdio>
-#include <stdlib.h>
-#include <stdio.h>
+#include "Utilitario.h"
+
 namespace proyectoDatos {
 
 	using namespace System;
@@ -28,18 +25,18 @@ namespace proyectoDatos {
 		int totalCarrito=0;
 		ListaCarrito * listaCarrito = NULL;
 		ListaCompra * listaCompra = NULL;
+		Label^   lblTotal1;
 
-
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
-	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	private: System::Windows::Forms::Button^  btnAgregar;
-			 Label^   lblTotal1;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+		private: System::Windows::Forms::DataGridView^  dataGridView1;
+		private: System::Windows::Forms::Button^  btnAgregar;
+				 
 
 
 	public:
@@ -52,12 +49,12 @@ namespace proyectoDatos {
 
 		Facturar(String^ usuario, int ptotalCarrito, ListaCompra * plistaCompra, ListaCarrito *plistaCarrito) {
 			InitializeComponent();
-			codigoUsuario = usuario;
+		/*	codigoUsuario = usuario;
 			totalCarrito = ptotalCarrito;
 			
 			listaCompra = plistaCompra;
-			listaCarrito = plistaCarrito;
-			cargarFactura();
+			listaCarrito = plistaCarrito;*/
+			//cargarFactura();
 		}
 
 	protected:
@@ -383,48 +380,48 @@ namespace proyectoDatos {
 
 		}
 #pragma endregion
-	private: System::Void cargarFactura() {
-		ListaArticulo * listaArticulos = new ListaArticulo();
-		listaArticulos->cargarArticulos();
 
-		NodoCompra * nodo = listaCompra->getCab();
-		double total = 0;
-		while (nodo != NULL) {
-			NodoArticulo * nodoArti = listaArticulos->getCab();
-			while (nodoArti != NULL)
-			{
-				if (strcmp(nodoArti->getInfo()->getCodigo(), nodo->getLineaDetalle()->getProducto()) == 0) {
-					total = total + nodo->getLineaDetalle()->getMonto();
+	//private: System::Void cargarFactura() {
+	//	ListaArticulo * listaArticulos = new ListaArticulo();
+	//	listaArticulos->cargarArticulos();
 
-					dataGridView1->Rows->Add(Utilitario::toSystemString(nodo->getLineaDetalle()->getProducto()),
-						Utilitario::toSystemString(nodoArti->getInfo()->getNombre()),
-						Utilitario::toSystemString(nodoArti->getInfo()->getMarca()),
-						Utilitario::toSystemString(nodoArti->getInfo()->getTamanio()),
-						Utilitario::toInt32(nodoArti->getInfo()->getPrecio()),
-						Utilitario::toInt32(nodo->getLineaDetalle()->getCantidad()),
-						Utilitario::toInt32(nodo->getLineaDetalle()->getMonto()));
-				}
-				nodoArti = nodoArti->getSgte();
-			}
-			nodo = nodo->getSgte();
-		}
-		lblTotal->Text = Utilitario::toInt32(total)->ToString();
-	}
+	//	NodoCompra * nodo = listaCompra->getCab();
+	//	double total = 0;
+	//	while (nodo != NULL) {
+	//		NodoArticulo * nodoArti = listaArticulos->getCab();
+	//		while (nodoArti != NULL)
+	//		{
+	//			if (strcmp(nodoArti->getInfo()->getCodigo(), nodo->getLineaDetalle()->getProducto()) == 0) {
+	//				total = total + nodo->getLineaDetalle()->getMonto();
 
+	//				dataGridView1->Rows->Add(Utilitario::toSystemString(nodo->getLineaDetalle()->getProducto()),
+	//					Utilitario::toSystemString(nodoArti->getInfo()->getNombre()),
+	//					Utilitario::toSystemString(nodoArti->getInfo()->getMarca()),
+	//					Utilitario::toSystemString(nodoArti->getInfo()->getTamanio()),
+	//					Utilitario::toInt32(nodoArti->getInfo()->getPrecio()),
+	//					Utilitario::toInt32(nodo->getLineaDetalle()->getCantidad()),
+	//					Utilitario::toInt32(nodo->getLineaDetalle()->getMonto()));
+	//			}
+	//			nodoArti = nodoArti->getSgte();
+	//		}
+	//		nodo = nodo->getSgte();
+	//	}
+	//	lblTotal->Text = Utilitario::toInt32(total)->ToString();
+	//}
 
+	
 	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
 		ListaCarrito * lista = new ListaCarrito();
-		
-		int numero = lista->ulitmoNumero() + 1;
-		std::string s = std::to_string(numero);
+		GestorCompras * gestor = new GestorCompras();
+
+
+		std::string s = std::to_string(5);
 		char palabra[15];
 		std::string palabraString;
 		std::memcpy(palabra, s.c_str(), s.size() + 1);
-
-		
-		GestorCompras * gestor = new GestorCompras();
+		/*
 		gestor->agregarListaCompras(listaCarrito, palabra, "Regular",
-			Utilitario::toChar(codigoUsuario), 1, totalCarrito, listaCompra);
+			Utilitario::toChar(codigoUsuario), 1, totalCarrito, listaCompra);*/
 		Close();
 	}
 };

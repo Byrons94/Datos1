@@ -76,16 +76,34 @@
     <Filter Include="Interfaz">
       <UniqueIdentifier>{0c339ac4-6d33-48b4-8469-40f1e44fe0cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de codigo fuente\Interfaz">
+      <UniqueIdentifier>{197576fb-c533-4765-af9a-0f2b18d38796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ficheros">
+      <UniqueIdentifier>{5ef125ff-ff98-4de7-ab5d-d2bbd209285e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
-    <Text Include="Ficheros\articulos.txt" />
-    <Text Include="Ficheros\carritos.txt" />
-    <Text Include="Ficheros\especificas.txt" />
-    <Text Include="Ficheros\generales.txt" />
-    <Text Include="Ficheros\pasillos.txt" />
-    <Text Include="Ficheros\pedidos.txt" />
     <Text Include="Ficheros\usuarios.txt" />
+    <Text Include="Ficheros\pedidos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\pasillos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\generales.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\especificas.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\carritos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\articulos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -205,6 +223,9 @@
     <ClInclude Include="ModificarArticulo2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Facturar.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -282,40 +303,43 @@
     <ClCompile Include="GestorCompras.cpp">
       <Filter>Archivos de codigo fuente\Gestores</Filter>
     </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="UIPrincipal.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
     <ClCompile Include="Utilitario.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="UIGuardar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="NodoEntrega.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
-    <ClCompile Include="UIRegistro.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="UIRegArticulo.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="ModificarUsuario.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="ModificarUsuario2.cpp">
+    <ClCompile Include="colaEntregas.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="ModificarArticulo.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
     <ClCompile Include="ModificarArticulo2.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
-    <ClCompile Include="colaEntregas.cpp">
+    <ClCompile Include="ModificarUsuario.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="ModificarUsuario2.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIGuardar.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPrincipal.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRegArticulo.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRegistro.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="Facturar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -336,6 +360,18 @@
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="UIRegistro.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarArticulo.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarArticulo2.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarUsuario.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarUsuario2.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

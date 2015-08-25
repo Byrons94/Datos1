@@ -1259,7 +1259,7 @@ namespace proyectoDatos {
 			agregarAlCarrito(cod, nombre, cantidad, montoTotal);
 	}
 	
-	
+
 	private: System::Void agregarAlCarrito(String^ cod, String^ nombre, int cantidad, int monto){
 		btnFacturar->Enabled = true;
 		btnGuardar->Enabled = true;
@@ -1318,39 +1318,32 @@ namespace proyectoDatos {
 		BuscarCarritos ^ buscarCarrito = gcnew BuscarCarritos(codigoUsuario, dataGridView2, listaCarrito, listaCompra, lblTotal);
 		buscarCarrito->Show();
 	}
-
+			 
 	private: System::Void btnFacturar_Click(System::Object^  sender, System::EventArgs^  e) {
-		UIFacturar ^ facturar = gcnew UIFacturar(dataGridView2, listaCompra, lblTotal);
-	
+		UIFacturar ^ facturar = gcnew UIFacturar(codigoUsuario, totalCarrito, 0, listaCompra, listaCarrito);
 		facturar->Show();
 		listaCarrito->guardarCarritos();
 	}
 
-	private: System::Void nombreCarrito() {
-		NodoCarrito * nodo = new NodoCarrito();
-		for (int i = 0; i < listaCarrito->getTamanio(); i++){
-			nodo->getInfo()->setNombre("Compra regular");
-		}
+
+	private: System::Void registrarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+		UIRegistro ^ regUsuario = gcnew UIRegistro();
+		regUsuario->Show();
 	}
+	private: System::Void modificarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-private: System::Void registrarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
-	UIRegistro ^ regUsuario = gcnew UIRegistro();
-	regUsuario->Show();
-}
-private: System::Void modificarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+		ModificarUsuario ^ modif = gcnew ModificarUsuario();
+		modif->Show();
+	}
+	private: System::Void modificarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		ModificarArticulo ^modif = gcnew ModificarArticulo();
 
-	ModificarUsuario ^ modif = gcnew ModificarUsuario();
-	modif->Show();
-}
-private: System::Void modificarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	ModificarArticulo ^modif = gcnew ModificarArticulo();
+		modif->Show();
+	}
+	private: System::Void registrarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+		UIRegArticulo ^reg = gcnew UIRegArticulo;
 
-	modif->Show();
-}
-private: System::Void registrarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	UIRegArticulo ^reg = gcnew UIRegArticulo;
-
-	reg->Show();
-}
+		reg->Show();
+	}
 };
 }

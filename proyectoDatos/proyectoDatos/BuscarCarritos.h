@@ -18,28 +18,36 @@ namespace proyectoDatos {
 	public ref class BuscarCarritos : public System::Windows::Forms::Form
 	{
 
-	GestorCompras * gestor = NULL;
-	ListaCarrito * lista = new ListaCarrito();
-	ListaCarrito * listaActual;
-	ListaCompra  * listaCompra = new ListaCompra();
+	GestorCompras * gestor			= NULL;
+	ListaCarrito  * lista			= new ListaCarrito();
+	ListaArticulo * listaArticulos  = new ListaArticulo();
+	ListaCompra   * listaCompra		= new ListaCompra();
+	ListaCarrito  * listaActual;
+	
 	DataGridView^ dataprincipal;
 	Label^   lblTotal;
+	String^ idUsuario;
+
+
 	private: System::Windows::Forms::Label^  lblCarrito;
+	
 	public:
 		BuscarCarritos(void)
 		{
 			InitializeComponent();
 		}
 
-		BuscarCarritos(String^ idUsuario, DataGridView^ data, ListaCarrito * lista, ListaCompra *plistaCompra, Label^ lbl)
+		BuscarCarritos(String^ pidUsuario, DataGridView^ data, ListaCarrito * lista, ListaCompra *plistaCompra, Label^ lbl)
 		{
 			InitializeComponent();
 			gestor = new GestorCompras();
-			cargarCombobox(idUsuario);
+			idUsuario = pidUsuario;
 			listaActual = lista;
 			listaCompra = plistaCompra;
 			dataprincipal = data;
 			lblTotal = lbl;
+			listaArticulos->cargarArticulos();
+			cargarCombobox(pidUsuario);
 		}
 
 	protected:
@@ -298,7 +306,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label1->Location = System::Drawing::Point(588, 67);
+			this->label1->Location = System::Drawing::Point(396, 65);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(172, 18);
 			this->label1->TabIndex = 5;
@@ -311,7 +319,7 @@ namespace proyectoDatos {
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(778, 61);
+			this->comboBox1->Location = System::Drawing::Point(586, 59);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(172, 24);
 			this->comboBox1->TabIndex = 4;
@@ -395,57 +403,67 @@ namespace proyectoDatos {
 	private: System::Void cargarCombobox(String^ idUsuario){
 		lista = gestor->obtenerCarritoUsuario(Utilitario::toChar(idUsuario));
 		NodoCarrito * nodo = lista->getCab();
-		for (size_t i = 0; i < lista->getTamanio(); i++){
+		for (int i = 0; i < lista->getTamanio(); i++){
 			comboBox1->Items->Add(Utilitario::toSystemString(nodo->getInfo()->getNombre()));
 			nodo = nodo->getSgte();
 		}
 	}
 
-				
+
+	// te voy a arreglar infeliz!!! xS			
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		btnAgregar->Enabled = true;
 		dataGridView1->Rows->Clear();
-		GestorInventario * gestorInventario = new GestorInventario();
-		ListaArticulo * listaArticulos = new ListaArticulo();
-		listaArticulos->cargarArticulos();
-		NodoCarrito * nodo = lista->getCab();
+
 		int indexCombo = comboBox1->SelectedIndex;
-		for (int i = 0; i < lista->getTamanio(); i++) {
-			if (i == indexCombo){
+		int contadorArticulos = 0; // cuenta la cantidad de articulos por pedido guardado.
 
-				NodoCompra * nodoCompra = nodo->getInfo()->getListaCompra()->getCab();
-				lblCarrito->Text = Utilitario::toSystemString(nodo->getInfo()->getNombre());
-				while (nodoCompra!=NULL){
-					NodoArticulo * nodoArticulo = listaArticulos->getCab();
-					while (nodoArticulo != NULL) {
-						if (strcmp(nodoArticulo->getInfo()->getCodigo(), nodoCompra->getLineaDetalle()->getProducto()) == 0) {
-							dataGridView1->Rows->Add(Utilitario::toSystemString(nodoArticulo->getInfo()->getCodigo()),
-								Utilitario::toSystemString(nodoArticulo->getInfo()->getNombre()),
-								Utilitario::toSystemString(nodoArticulo->getInfo()->getMarca()),
-								Utilitario::toSystemString(nodoArticulo->getInfo()->getTamanio()),
-								Utilitario::toInt32(nodoArticulo->getInfo()->getPrecio()),
-								Utilitario::toInt32(nodoCompra->getLineaDetalle()->getCantidad()),
-								Utilitario::toInt32(nodoCompra->getLineaDetalle()->getMonto()));
-						}
-						nodoArticulo = nodoArticulo->getSgte();
-					}
-					nodoCompra = nodoCompra->getSgte();
-				}
-			}
-		}
-	}
-
-
-
-	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
 		NodoCarrito * nodo = lista->getCab();
-		NodoCarrito *nodoActual = listaActual->getCab();
-		int indexCombo = comboBox1->SelectedIndex;
+
 		for (int i = 0; i < lista->getTamanio(); i++){
 			if (i == indexCombo) {
+
+				NodoCompra * nodoC = nodo->getInfo()->getListaCompra()->getCab();
+				if (strcmp(nodoC->getLineaDetalle()->getCodCarrito(), nodoC->getLineaDetalle()->getCodCarrito())==0 ) {
+					
+					while (nodoC != NULL){
+						NodoArticulo * nodoA = listaArticulos->getCab();
+					
+						while (nodoA != NULL && contadorArticulos < nodo->getInfo()->getListaCompra()->getTamanio()) {
+							InfoArticulo * articulo = nodoA->getInfo();
+							
+							if (strcmp(nodoC->getLineaDetalle()->getProducto(), nodoA->getInfo()->getCodigo()) == 0) {
+								dataGridView1->Rows->Add(Utilitario::toSystemString(nodoC->getLineaDetalle()->getProducto()),
+														Utilitario::toSystemString(articulo->getNombre()),
+														Utilitario::toSystemString(articulo->getMarca()),
+														Utilitario::toInt32(articulo->getPrecio()),
+														Utilitario::toInt32(nodoC->getLineaDetalle()->getCantidad()),
+														Utilitario::toInt32(nodoC->getLineaDetalle()->getMonto()));
+								++contadorArticulos;
+							}
+
+							nodoA = nodoA->getSgte();
+						}
+						nodoC = nodoC->getSgte();
+					}
+				}
+			}	
+				nodo = nodo->getSgte();
+		}
+	}
+	
+
+	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
+		NodoCarrito *nodoActual = listaActual->getCab();
+		NodoCarrito * nodo = lista->getCab();
+		int indexCombo = comboBox1->SelectedIndex;
+
+		for (int i = 0; i < lista->getTamanio(); i++){
+			
+			if (i == indexCombo) {
 				NodoCompra * compra = nodo->getInfo()->getListaCompra()->getCab();
-				while (compra!=NULL){
 				
+				while (compra!=NULL){
 					listaCompra->agregarProductoEspecifico(compra->getLineaDetalle()->getPasillo(),
 															compra->getLineaDetalle()->getGeneral(),
 															compra->getLineaDetalle()->getEspecifica(), 
@@ -463,9 +481,9 @@ namespace proyectoDatos {
 
 	private: System::Void actualizarCarrito() {
 		ListaArticulo * listaArticulos = new ListaArticulo();
+		NodoCompra * nodo = listaCompra->getCab();
 		listaArticulos->cargarArticulos();
 		dataprincipal->Rows->Clear();
-		NodoCompra * nodo = listaCompra->getCab();
 		double total = 0;
 		
 		while (nodo != NULL) {
@@ -474,20 +492,21 @@ namespace proyectoDatos {
 			while (nodoArti!=NULL)
 			{
 				if (strcmp(nodoArti->getInfo()->getCodigo(), nodo->getLineaDetalle()->getProducto()) == 0) {
-						total = total + nodo->getLineaDetalle()->getMonto();
 						dataprincipal->Rows->Add(Utilitario::toSystemString(nodo->getLineaDetalle()->getProducto()),
-						Utilitario::toSystemString(nodoArti->getInfo()->getNombre()),
-						Utilitario::toInt32(nodo->getLineaDetalle()->getCantidad()),
-						Utilitario::toInt32(nodo->getLineaDetalle()->getMonto()));
+												 Utilitario::toSystemString(nodoArti->getInfo()->getNombre()),
+												 Utilitario::toInt32(nodo->getLineaDetalle()->getCantidad()),
+												 Utilitario::toInt32(nodo->getLineaDetalle()->getMonto()));
+
+						total = total + nodo->getLineaDetalle()->getMonto();
 				}
+
 				nodoArti = nodoArti->getSgte();
 			}
+
 			nodo = nodo->getSgte();
 		}
 		lblTotal->Text = Utilitario::toInt32(total)->ToString();
 		
 	}
-
-
 };
 }
