@@ -221,6 +221,7 @@
     <ClInclude Include="Utilitario.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="colaEntregas.cpp" />
     <ClCompile Include="GestorCompras.cpp" />
     <ClCompile Include="GestorInventario.cpp" />
     <ClCompile Include="GestorUsuarios.cpp" />

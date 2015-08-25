@@ -410,6 +410,10 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 	}
 }
 
+void ListaCarrito::modificarCarrito(InfoCarrito * info)
+{
+}
+
 void ListaCarrito::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array

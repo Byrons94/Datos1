@@ -73,6 +73,13 @@ char * InfoUsuario::autoIncrementar()
 	strcpy_s(perrito, str.c_str());
 
 	return perrito;
+
+	/*if (ultimoRegistro() == 789)
+	{
+		return "Bien";
+	}else{
+		return "Mamo";
+	}*/
 }
 
 int InfoUsuario::ultimoRegistro()

@@ -315,6 +315,9 @@
     <ClCompile Include="ModificarArticulo2.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
+    <ClCompile Include="colaEntregas.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UI.resx">
