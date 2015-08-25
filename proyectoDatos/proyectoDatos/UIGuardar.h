@@ -324,12 +324,12 @@ namespace proyectoDatos {
 			GestorCompras * gestor = new GestorCompras();
 			gestor->agregarListaCompras(listaCarrito, "123", nombreCarrito, 
 						Utilitario::toChar(codigoUsuario), 0, totalCarrito, listaCompra);
-	
 			Close();
 		}
 	}
-private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-	Close();
-}
+
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		Close();
+	}
 };
 }

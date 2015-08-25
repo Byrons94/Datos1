@@ -7,7 +7,7 @@ public:
 	~GestorUsuarios();
 
 
-	void agregarUsuario(char *, char *, char *, int);
+	void agregarUsuario( char *, char *, int);
 	int iniciarSesion(char *, char *);
 };
 

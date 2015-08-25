@@ -10,6 +10,10 @@
 #include "UIGuardar.h"
 #include "BuscarCarritos.h"
 #include "UIFacturar.h"
+#include "UIRegistro.h"
+#include "ModificarUsuario.h"
+#include "ModificarArticulo.h"
+#include "UIRegArticulo.h"
 
 
 namespace proyectoDatos {
@@ -238,8 +242,9 @@ namespace proyectoDatos {
 			this->panel1->Controls->Add(this->panel2);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1164, 671);
+			this->panel1->Size = System::Drawing::Size(1552, 826);
 			this->panel1->TabIndex = 0;
 			// 
 			// panel6
@@ -253,9 +258,10 @@ namespace proyectoDatos {
 			this->panel6->Controls->Add(this->splitter2);
 			this->panel6->Controls->Add(this->splitter1);
 			this->panel6->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel6->Location = System::Drawing::Point(187, 94);
+			this->panel6->Location = System::Drawing::Point(249, 116);
+			this->panel6->Margin = System::Windows::Forms::Padding(4);
 			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(698, 529);
+			this->panel6->Size = System::Drawing::Size(931, 651);
 			this->panel6->TabIndex = 5;
 			// 
 			// label9
@@ -266,9 +272,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label9->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label9->Location = System::Drawing::Point(360, 20);
+			this->label9->Location = System::Drawing::Point(480, 25);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(70, 14);
+			this->label9->Size = System::Drawing::Size(86, 18);
 			this->label9->TabIndex = 7;
 			this->label9->Text = L"Cantidad:";
 			// 
@@ -280,18 +287,20 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->lblProducto->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->lblProducto->Location = System::Drawing::Point(16, 14);
+			this->lblProducto->Location = System::Drawing::Point(21, 17);
+			this->lblProducto->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblProducto->Name = L"lblProducto";
-			this->lblProducto->Size = System::Drawing::Size(0, 23);
+			this->lblProducto->Size = System::Drawing::Size(0, 29);
 			this->lblProducto->TabIndex = 7;
 			// 
 			// numericUpDown1
 			// 
 			this->numericUpDown1->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->numericUpDown1->Location = System::Drawing::Point(435, 14);
+			this->numericUpDown1->Location = System::Drawing::Point(580, 17);
+			this->numericUpDown1->Margin = System::Windows::Forms::Padding(4);
 			this->numericUpDown1->Name = L"numericUpDown1";
-			this->numericUpDown1->Size = System::Drawing::Size(120, 23);
+			this->numericUpDown1->Size = System::Drawing::Size(160, 27);
 			this->numericUpDown1->TabIndex = 5;
 			this->numericUpDown1->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1, 0, 0, 0 });
 			// 
@@ -304,9 +313,10 @@ namespace proyectoDatos {
 			this->btnAgregar->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAgregar->ForeColor = System::Drawing::Color::White;
-			this->btnAgregar->Location = System::Drawing::Point(561, 3);
+			this->btnAgregar->Location = System::Drawing::Point(748, 4);
+			this->btnAgregar->Margin = System::Windows::Forms::Padding(4);
 			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(121, 34);
+			this->btnAgregar->Size = System::Drawing::Size(161, 42);
 			this->btnAgregar->TabIndex = 4;
 			this->btnAgregar->Text = L"Agregar";
 			this->btnAgregar->UseVisualStyleBackColor = false;
@@ -351,7 +361,8 @@ namespace proyectoDatos {
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnF2;
 			this->dataGridView1->GridColor = System::Drawing::Color::White;
-			this->dataGridView1->Location = System::Drawing::Point(10, 50);
+			this->dataGridView1->Location = System::Drawing::Point(13, 61);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
@@ -372,7 +383,7 @@ namespace proyectoDatos {
 			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::Maroon;
 			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle5;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(678, 479);
+			this->dataGridView1->Size = System::Drawing::Size(905, 590);
 			this->dataGridView1->StandardTab = true;
 			this->dataGridView1->TabIndex = 2;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UIPrincipal::dataGridView1_CellContentClick);
@@ -417,9 +428,10 @@ namespace proyectoDatos {
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
 			this->splitter2->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter2->Dock = System::Windows::Forms::DockStyle::Right;
-			this->splitter2->Location = System::Drawing::Point(688, 0);
+			this->splitter2->Location = System::Drawing::Point(918, 0);
+			this->splitter2->Margin = System::Windows::Forms::Padding(4);
 			this->splitter2->Name = L"splitter2";
-			this->splitter2->Size = System::Drawing::Size(10, 529);
+			this->splitter2->Size = System::Drawing::Size(13, 651);
 			this->splitter2->TabIndex = 1;
 			this->splitter2->TabStop = false;
 			// 
@@ -429,8 +441,9 @@ namespace proyectoDatos {
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
 			this->splitter1->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter1->Location = System::Drawing::Point(0, 0);
+			this->splitter1->Margin = System::Windows::Forms::Padding(4);
 			this->splitter1->Name = L"splitter1";
-			this->splitter1->Size = System::Drawing::Size(10, 529);
+			this->splitter1->Size = System::Drawing::Size(13, 651);
 			this->splitter1->TabIndex = 0;
 			this->splitter1->TabStop = false;
 			// 
@@ -446,9 +459,10 @@ namespace proyectoDatos {
 			this->panel5->Controls->Add(this->panel7);
 			this->panel5->Controls->Add(this->label4);
 			this->panel5->Dock = System::Windows::Forms::DockStyle::Right;
-			this->panel5->Location = System::Drawing::Point(885, 94);
+			this->panel5->Location = System::Drawing::Point(1180, 116);
+			this->panel5->Margin = System::Windows::Forms::Padding(4);
 			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(279, 529);
+			this->panel5->Size = System::Drawing::Size(372, 651);
 			this->panel5->TabIndex = 4;
 			// 
 			// btnEliminar
@@ -460,9 +474,10 @@ namespace proyectoDatos {
 			this->btnEliminar->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnEliminar->ForeColor = System::Drawing::Color::White;
-			this->btnEliminar->Location = System::Drawing::Point(3, 53);
+			this->btnEliminar->Location = System::Drawing::Point(4, 65);
+			this->btnEliminar->Margin = System::Windows::Forms::Padding(4);
 			this->btnEliminar->Name = L"btnEliminar";
-			this->btnEliminar->Size = System::Drawing::Size(78, 28);
+			this->btnEliminar->Size = System::Drawing::Size(104, 34);
 			this->btnEliminar->TabIndex = 7;
 			this->btnEliminar->Text = L"Eliminar";
 			this->btnEliminar->UseVisualStyleBackColor = false;
@@ -474,9 +489,10 @@ namespace proyectoDatos {
 				static_cast<System::Int32>(static_cast<System::Byte>(235)));
 			this->splitter3->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->splitter3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->splitter3->Location = System::Drawing::Point(0, 82);
+			this->splitter3->Location = System::Drawing::Point(0, 101);
+			this->splitter3->Margin = System::Windows::Forms::Padding(4);
 			this->splitter3->Name = L"splitter3";
-			this->splitter3->Size = System::Drawing::Size(279, 10);
+			this->splitter3->Size = System::Drawing::Size(372, 12);
 			this->splitter3->TabIndex = 6;
 			this->splitter3->TabStop = false;
 			// 
@@ -487,9 +503,10 @@ namespace proyectoDatos {
 			this->lblTotal->Font = (gcnew System::Drawing::Font(L"Verdana", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblTotal->ForeColor = System::Drawing::Color::Maroon;
-			this->lblTotal->Location = System::Drawing::Point(195, 49);
+			this->lblTotal->Location = System::Drawing::Point(260, 60);
+			this->lblTotal->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblTotal->Name = L"lblTotal";
-			this->lblTotal->Size = System::Drawing::Size(46, 18);
+			this->lblTotal->Size = System::Drawing::Size(59, 23);
 			this->lblTotal->TabIndex = 5;
 			this->lblTotal->Text = L"0.00";
 			// 
@@ -501,9 +518,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label5->Location = System::Drawing::Point(134, 49);
+			this->label5->Location = System::Drawing::Point(179, 60);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(55, 18);
+			this->label5->Size = System::Drawing::Size(73, 23);
 			this->label5->TabIndex = 4;
 			this->label5->Text = L"Total:";
 			// 
@@ -513,9 +531,10 @@ namespace proyectoDatos {
 			this->panel9->Controls->Add(this->button2);
 			this->panel9->Controls->Add(this->panel10);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel9->Location = System::Drawing::Point(0, 92);
+			this->panel9->Location = System::Drawing::Point(0, 113);
+			this->panel9->Margin = System::Windows::Forms::Padding(4);
 			this->panel9->Name = L"panel9";
-			this->panel9->Size = System::Drawing::Size(279, 404);
+			this->panel9->Size = System::Drawing::Size(372, 497);
 			this->panel9->TabIndex = 3;
 			// 
 			// button2
@@ -528,8 +547,9 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::White;
 			this->button2->Location = System::Drawing::Point(0, 0);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(279, 28);
+			this->button2->Size = System::Drawing::Size(372, 34);
 			this->button2->TabIndex = 8;
 			this->button2->Text = L"Mis carritos";
 			this->button2->UseVisualStyleBackColor = false;
@@ -539,9 +559,10 @@ namespace proyectoDatos {
 			// 
 			this->panel10->Controls->Add(this->dataGridView2);
 			this->panel10->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel10->Location = System::Drawing::Point(0, 28);
+			this->panel10->Location = System::Drawing::Point(0, 34);
+			this->panel10->Margin = System::Windows::Forms::Padding(4);
 			this->panel10->Name = L"panel10";
-			this->panel10->Size = System::Drawing::Size(279, 376);
+			this->panel10->Size = System::Drawing::Size(372, 463);
 			this->panel10->TabIndex = 0;
 			// 
 			// dataGridView2
@@ -575,6 +596,7 @@ namespace proyectoDatos {
 			this->dataGridView2->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView2->GridColor = System::Drawing::Color::White;
 			this->dataGridView2->Location = System::Drawing::Point(0, 0);
+			this->dataGridView2->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridView2->MultiSelect = false;
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->ReadOnly = true;
@@ -591,7 +613,7 @@ namespace proyectoDatos {
 			this->dataGridView2->RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
 			this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 			this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView2->Size = System::Drawing::Size(279, 376);
+			this->dataGridView2->Size = System::Drawing::Size(372, 463);
 			this->dataGridView2->TabIndex = 0;
 			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UIPrincipal::dataGridView2_CellContentClick);
 			// 
@@ -643,9 +665,10 @@ namespace proyectoDatos {
 			this->panel8->Controls->Add(this->btnVaciar);
 			this->panel8->Controls->Add(this->btnFacturar);
 			this->panel8->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel8->Location = System::Drawing::Point(0, 496);
+			this->panel8->Location = System::Drawing::Point(0, 610);
+			this->panel8->Margin = System::Windows::Forms::Padding(4);
 			this->panel8->Name = L"panel8";
-			this->panel8->Size = System::Drawing::Size(279, 33);
+			this->panel8->Size = System::Drawing::Size(372, 41);
 			this->panel8->TabIndex = 2;
 			// 
 			// btnGuardar
@@ -660,9 +683,10 @@ namespace proyectoDatos {
 			this->btnGuardar->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnGuardar->ForeColor = System::Drawing::Color::Black;
-			this->btnGuardar->Location = System::Drawing::Point(99, 0);
+			this->btnGuardar->Location = System::Drawing::Point(132, 0);
+			this->btnGuardar->Margin = System::Windows::Forms::Padding(4);
 			this->btnGuardar->Name = L"btnGuardar";
-			this->btnGuardar->Size = System::Drawing::Size(93, 33);
+			this->btnGuardar->Size = System::Drawing::Size(124, 41);
 			this->btnGuardar->TabIndex = 3;
 			this->btnGuardar->Text = L"Guardar";
 			this->btnGuardar->UseVisualStyleBackColor = false;
@@ -679,9 +703,10 @@ namespace proyectoDatos {
 			this->btnVaciar->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnVaciar->ForeColor = System::Drawing::Color::Black;
-			this->btnVaciar->Location = System::Drawing::Point(192, 0);
+			this->btnVaciar->Location = System::Drawing::Point(256, 0);
+			this->btnVaciar->Margin = System::Windows::Forms::Padding(4);
 			this->btnVaciar->Name = L"btnVaciar";
-			this->btnVaciar->Size = System::Drawing::Size(87, 33);
+			this->btnVaciar->Size = System::Drawing::Size(116, 41);
 			this->btnVaciar->TabIndex = 2;
 			this->btnVaciar->Text = L"Vaciar";
 			this->btnVaciar->UseVisualStyleBackColor = false;
@@ -700,8 +725,9 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->btnFacturar->ForeColor = System::Drawing::Color::Black;
 			this->btnFacturar->Location = System::Drawing::Point(0, 0);
+			this->btnFacturar->Margin = System::Windows::Forms::Padding(4);
 			this->btnFacturar->Name = L"btnFacturar";
-			this->btnFacturar->Size = System::Drawing::Size(99, 33);
+			this->btnFacturar->Size = System::Drawing::Size(132, 41);
 			this->btnFacturar->TabIndex = 0;
 			this->btnFacturar->Text = L"Facturar";
 			this->btnFacturar->UseVisualStyleBackColor = false;
@@ -710,9 +736,10 @@ namespace proyectoDatos {
 			// panel7
 			// 
 			this->panel7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel7.BackgroundImage")));
-			this->panel7->Location = System::Drawing::Point(26, 5);
+			this->panel7->Location = System::Drawing::Point(35, 6);
+			this->panel7->Margin = System::Windows::Forms::Padding(4);
 			this->panel7->Name = L"panel7";
-			this->panel7->Size = System::Drawing::Size(32, 26);
+			this->panel7->Size = System::Drawing::Size(43, 32);
 			this->panel7->TabIndex = 1;
 			// 
 			// label4
@@ -723,9 +750,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label4->Location = System::Drawing::Point(63, 10);
+			this->label4->Location = System::Drawing::Point(84, 12);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(113, 23);
+			this->label4->Size = System::Drawing::Size(141, 29);
 			this->label4->TabIndex = 0;
 			this->label4->Text = L"Mi carrito";
 			// 
@@ -739,9 +767,10 @@ namespace proyectoDatos {
 			this->panel4->Controls->Add(this->comboBox2);
 			this->panel4->Controls->Add(this->comboBox1);
 			this->panel4->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel4->Location = System::Drawing::Point(0, 94);
+			this->panel4->Location = System::Drawing::Point(0, 116);
+			this->panel4->Margin = System::Windows::Forms::Padding(4);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(187, 529);
+			this->panel4->Size = System::Drawing::Size(249, 651);
 			this->panel4->TabIndex = 2;
 			// 
 			// label3
@@ -751,9 +780,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label3->Location = System::Drawing::Point(12, 183);
+			this->label3->Location = System::Drawing::Point(16, 225);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(164, 18);
+			this->label3->Size = System::Drawing::Size(215, 25);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"Lineas Específicas";
 			// 
@@ -764,9 +794,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label2->Location = System::Drawing::Point(16, 98);
+			this->label2->Location = System::Drawing::Point(21, 121);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(158, 18);
+			this->label2->Size = System::Drawing::Size(202, 25);
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"Lineas Generales";
 			// 
@@ -777,9 +808,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label1->Location = System::Drawing::Point(98, 19);
+			this->label1->Location = System::Drawing::Point(131, 23);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(72, 18);
+			this->label1->Size = System::Drawing::Size(99, 25);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Pasillos";
 			// 
@@ -790,9 +822,10 @@ namespace proyectoDatos {
 			this->comboBox3->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox3->FormattingEnabled = true;
-			this->comboBox3->Location = System::Drawing::Point(7, 204);
+			this->comboBox3->Location = System::Drawing::Point(9, 251);
+			this->comboBox3->Margin = System::Windows::Forms::Padding(4);
 			this->comboBox3->Name = L"comboBox3";
-			this->comboBox3->Size = System::Drawing::Size(171, 24);
+			this->comboBox3->Size = System::Drawing::Size(227, 26);
 			this->comboBox3->TabIndex = 2;
 			this->comboBox3->SelectedIndexChanged += gcnew System::EventHandler(this, &UIPrincipal::comboBox3_SelectedIndexChanged);
 			// 
@@ -803,9 +836,10 @@ namespace proyectoDatos {
 			this->comboBox2->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(7, 119);
+			this->comboBox2->Location = System::Drawing::Point(9, 146);
+			this->comboBox2->Margin = System::Windows::Forms::Padding(4);
 			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(172, 24);
+			this->comboBox2->Size = System::Drawing::Size(228, 26);
 			this->comboBox2->TabIndex = 1;
 			this->comboBox2->SelectedIndexChanged += gcnew System::EventHandler(this, &UIPrincipal::comboBox2_SelectedIndexChanged);
 			// 
@@ -816,9 +850,10 @@ namespace proyectoDatos {
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(7, 40);
+			this->comboBox1->Location = System::Drawing::Point(9, 49);
+			this->comboBox1->Margin = System::Windows::Forms::Padding(4);
 			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(172, 24);
+			this->comboBox1->Size = System::Drawing::Size(228, 26);
 			this->comboBox1->TabIndex = 0;
 			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &UIPrincipal::comboBox1_SelectedIndexChanged);
 			// 
@@ -827,9 +862,10 @@ namespace proyectoDatos {
 			this->panel3->BackColor = System::Drawing::Color::DarkRed;
 			this->panel3->Controls->Add(this->label8);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel3->Location = System::Drawing::Point(0, 623);
+			this->panel3->Location = System::Drawing::Point(0, 767);
+			this->panel3->Margin = System::Windows::Forms::Padding(4);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(1164, 48);
+			this->panel3->Size = System::Drawing::Size(1552, 59);
 			this->panel3->TabIndex = 3;
 			// 
 			// label8
@@ -840,9 +876,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label8->Location = System::Drawing::Point(3, 28);
+			this->label8->Location = System::Drawing::Point(4, 34);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(135, 21);
+			this->label8->Size = System::Drawing::Size(168, 26);
 			this->label8->TabIndex = 4;
 			this->label8->Text = L"Derechos reservados.";
 			// 
@@ -855,8 +892,9 @@ namespace proyectoDatos {
 			this->panel2->Controls->Add(this->menuStrip1);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Top;
 			this->panel2->Location = System::Drawing::Point(0, 0);
+			this->panel2->Margin = System::Windows::Forms::Padding(4);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(1164, 94);
+			this->panel2->Size = System::Drawing::Size(1552, 116);
 			this->panel2->TabIndex = 0;
 			// 
 			// label7
@@ -867,9 +905,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label7->Location = System::Drawing::Point(94, 65);
+			this->label7->Location = System::Drawing::Point(125, 80);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(92, 18);
+			this->label7->Size = System::Drawing::Size(113, 24);
 			this->label7->TabIndex = 3;
 			this->label7->Text = L"Supermercados";
 			// 
@@ -881,9 +920,10 @@ namespace proyectoDatos {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label6->Location = System::Drawing::Point(53, 33);
+			this->label6->Location = System::Drawing::Point(71, 41);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(72, 39);
+			this->label6->Size = System::Drawing::Size(89, 49);
 			this->label6->TabIndex = 2;
 			this->label6->Text = L"CFT";
 			// 
@@ -896,9 +936,10 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->button1->Location = System::Drawing::Point(1078, 10);
+			this->button1->Location = System::Drawing::Point(1437, 12);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 28);
+			this->button1->Size = System::Drawing::Size(100, 34);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Salir";
 			this->button1->UseVisualStyleBackColor = false;
@@ -910,13 +951,15 @@ namespace proyectoDatos {
 			this->menuStrip1->Dock = System::Windows::Forms::DockStyle::None;
 			this->menuStrip1->Font = (gcnew System::Drawing::Font(L"Verdana", 11.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->articulosToolStripMenuItem,
 					this->usuariosToolStripMenuItem, this->comprasToolStripMenuItem
 			});
-			this->menuStrip1->Location = System::Drawing::Point(846, 65);
+			this->menuStrip1->Location = System::Drawing::Point(1128, 80);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(283, 26);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(8, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(473, 31);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -929,20 +972,22 @@ namespace proyectoDatos {
 			this->articulosToolStripMenuItem->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->articulosToolStripMenuItem->Name = L"articulosToolStripMenuItem";
-			this->articulosToolStripMenuItem->Size = System::Drawing::Size(91, 22);
+			this->articulosToolStripMenuItem->Size = System::Drawing::Size(118, 27);
 			this->articulosToolStripMenuItem->Text = L"Articulos";
 			// 
 			// registrarToolStripMenuItem
 			// 
 			this->registrarToolStripMenuItem->Name = L"registrarToolStripMenuItem";
-			this->registrarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->registrarToolStripMenuItem->Size = System::Drawing::Size(185, 28);
 			this->registrarToolStripMenuItem->Text = L"Registrar";
+			this->registrarToolStripMenuItem->Click += gcnew System::EventHandler(this, &UIPrincipal::registrarToolStripMenuItem_Click);
 			// 
 			// modificarToolStripMenuItem
 			// 
 			this->modificarToolStripMenuItem->Name = L"modificarToolStripMenuItem";
-			this->modificarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->modificarToolStripMenuItem->Size = System::Drawing::Size(185, 28);
 			this->modificarToolStripMenuItem->Text = L"Modificar";
+			this->modificarToolStripMenuItem->Click += gcnew System::EventHandler(this, &UIPrincipal::modificarToolStripMenuItem_Click);
 			// 
 			// usuariosToolStripMenuItem
 			// 
@@ -953,20 +998,22 @@ namespace proyectoDatos {
 			this->usuariosToolStripMenuItem->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
-			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(91, 22);
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(115, 27);
 			this->usuariosToolStripMenuItem->Text = L"Usuarios";
 			// 
 			// registrarToolStripMenuItem1
 			// 
 			this->registrarToolStripMenuItem1->Name = L"registrarToolStripMenuItem1";
-			this->registrarToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
+			this->registrarToolStripMenuItem1->Size = System::Drawing::Size(185, 28);
 			this->registrarToolStripMenuItem1->Text = L"Registrar";
+			this->registrarToolStripMenuItem1->Click += gcnew System::EventHandler(this, &UIPrincipal::registrarToolStripMenuItem1_Click);
 			// 
 			// modificarToolStripMenuItem1
 			// 
 			this->modificarToolStripMenuItem1->Name = L"modificarToolStripMenuItem1";
-			this->modificarToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
+			this->modificarToolStripMenuItem1->Size = System::Drawing::Size(185, 28);
 			this->modificarToolStripMenuItem1->Text = L"Modificar";
+			this->modificarToolStripMenuItem1->Click += gcnew System::EventHandler(this, &UIPrincipal::modificarToolStripMenuItem1_Click);
 			// 
 			// comprasToolStripMenuItem
 			// 
@@ -977,35 +1024,37 @@ namespace proyectoDatos {
 			this->comprasToolStripMenuItem->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
 			this->comprasToolStripMenuItem->Name = L"comprasToolStripMenuItem";
-			this->comprasToolStripMenuItem->Size = System::Drawing::Size(93, 22);
+			this->comprasToolStripMenuItem->Size = System::Drawing::Size(115, 27);
 			this->comprasToolStripMenuItem->Text = L"Compras";
 			// 
 			// pendientesEntregaToolStripMenuItem
 			// 
 			this->pendientesEntregaToolStripMenuItem->Name = L"pendientesEntregaToolStripMenuItem";
-			this->pendientesEntregaToolStripMenuItem->Size = System::Drawing::Size(169, 22);
+			this->pendientesEntregaToolStripMenuItem->Size = System::Drawing::Size(207, 28);
 			this->pendientesEntregaToolStripMenuItem->Text = L"Pendientes";
 			// 
 			// entregadasToolStripMenuItem
 			// 
 			this->entregadasToolStripMenuItem->Name = L"entregadasToolStripMenuItem";
-			this->entregadasToolStripMenuItem->Size = System::Drawing::Size(169, 22);
+			this->entregadasToolStripMenuItem->Size = System::Drawing::Size(207, 28);
 			this->entregadasToolStripMenuItem->Text = L"Entregadas";
 			// 
 			// contextMenuStrip1
 			// 
+			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
+			this->contextMenuStrip1->Size = System::Drawing::Size(67, 4);
 			// 
 			// UIPrincipal
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1164, 671);
+			this->ClientSize = System::Drawing::Size(1552, 826);
 			this->Controls->Add(this->panel1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->Name = L"UIPrincipal";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -1284,5 +1333,24 @@ namespace proyectoDatos {
 		}
 	}
 
+private: System::Void registrarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+	UIRegistro ^ regUsuario = gcnew UIRegistro();
+	regUsuario->Show();
+}
+private: System::Void modificarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	ModificarUsuario ^ modif = gcnew ModificarUsuario();
+	modif->Show();
+}
+private: System::Void modificarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	ModificarArticulo ^modif = gcnew ModificarArticulo();
+
+	modif->Show();
+}
+private: System::Void registrarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+	UIRegArticulo ^reg = gcnew UIRegArticulo;
+
+	reg->Show();
+}
 };
 }

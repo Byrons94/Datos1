@@ -1,5 +1,4 @@
 #pragma once
-#define STACK_MAX 100
 #include "NodoEntrega.h"
 #include "stdafx.h"
 #include "ListaCarrito.h"
