@@ -306,7 +306,6 @@ ListaArticulo * ListaArticulo::leerFicheroArticulos(int codigoEspecificas) {
 			str.erase(str.find(';'));
 			strcpy_s(lineaEsp, str.c_str());
 
-
 			getline(ss, palabraString, ';');
 			convertirAChar(codigo, palabraString);
 

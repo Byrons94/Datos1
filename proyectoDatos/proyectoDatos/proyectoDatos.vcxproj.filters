@@ -181,7 +181,16 @@
     <ClInclude Include="BuscarCarritos.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="NodoEntrega.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="colaEntregas.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="UIFacturar.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Facturar.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -273,10 +282,13 @@
     <ClCompile Include="UIGuardar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
-    <ClCompile Include="BuscarCarritos.cpp">
+    <ClCompile Include="NodoEntrega.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="UIFacturar.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="Facturar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -291,6 +303,9 @@
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="BuscarCarritos.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFacturar.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

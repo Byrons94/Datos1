@@ -70,11 +70,18 @@ public:
 	void modificarCarrito(InfoCarrito *info);
 
 
+	int ulitmoNumero();
+
 	void convertirAChar(char * palabra, std::string palabraString);
 
 	int covertirAEntero(char * pcodigo);
 
 	bool convertirABoolean(char * num);
+
+
+	char * convertirACharNum(int numero);
+
+	int sgte();
 	
 
 };
