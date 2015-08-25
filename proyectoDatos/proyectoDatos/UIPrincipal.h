@@ -1272,7 +1272,7 @@ namespace proyectoDatos {
 
 	private: System::Void btnFacturar_Click(System::Object^  sender, System::EventArgs^  e) {
 		UIFacturar ^ facturar = gcnew UIFacturar(dataGridView2, listaCompra, lblTotal);
-		//nombreCarrito();
+	
 		facturar->Show();
 		listaCarrito->guardarCarritos();
 	}

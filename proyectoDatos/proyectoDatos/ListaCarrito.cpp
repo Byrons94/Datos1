@@ -271,7 +271,6 @@ void ListaCarrito::agregarListaCompra(char* codigo, char * nombre,
 	insertarAcendente(pinfo);
 }
 
-
 //falta implementar
 void ListaCarrito::mostrarLista(){
 }
