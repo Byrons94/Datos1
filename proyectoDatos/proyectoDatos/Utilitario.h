@@ -11,6 +11,8 @@ namespace Utilitario {
 	System::Int32^ toInt32(int);
 	char * intToChar(int);
 
+	double toDouble(System::String ^ variable);
+
 }
 
 

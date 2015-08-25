@@ -3,7 +3,7 @@
 class InfoUsuario
 {
 private: 
-	char codigo[15];
+	char  codigo[15];
 	char nombre[15];
 	char contrasenna[15];
 	int rol; //1 admin, 2 // dependiente, // 3 cliente
@@ -25,7 +25,7 @@ public:
 	char * getContrasenna();
 	int    getRol();
 
-	char * autoIncrementar();
+	char  * autoIncrementar();
 
 	int ultimoRegistro();
 

@@ -63,16 +63,31 @@ int InfoUsuario::getRol(){
 /////////////////////////////////////////////////////////////////////////////
 char * InfoUsuario::autoIncrementar()
 {
-	std::string s = std::to_string(ultimoRegistro() + 1);
-	char const *pchar = s.c_str();
+	//std::string s = std::to_string(ultimoRegistro() + 1);
+	//char const *pchar = s.c_str();
 
-	return (char*)s.c_str();
+	
+
+	std::string str = std::to_string(ultimoRegistro() + 1);
+	char perrito[15];
+	strcpy_s(perrito, str.c_str());
+
+	return perrito;
+
+	/*if (ultimoRegistro() == 789)
+	{
+		return "Bien";
+	}else{
+		return "Mamo";
+	}*/
 }
 
 int InfoUsuario::ultimoRegistro()
 {
 	std::ifstream lectura;
 	char codigo[30], nombre[30], contrasena[30], rol[5];
+	char *aux = "";
+	
 	lectura.open("Ficheros/usuarios.txt", std::ios::out | std::ios::in);
 
 	if (lectura.is_open()) {
@@ -87,6 +102,8 @@ int InfoUsuario::ultimoRegistro()
 			str.erase(str.find(';'));
 			strcpy_s(codigo, str.c_str());
 
+			//convertirAChar(aux, palabraString);
+
 			getline(ss, palabraString, ';');
 			convertirAChar(nombre, palabraString);
 
@@ -96,11 +113,13 @@ int InfoUsuario::ultimoRegistro()
 			getline(ss, palabraString, ';');
 			convertirAChar(rol, palabraString);
 
+			aux = codigo;
+
 			lectura >> codigo;
 		}
 
 		lectura.close();
-		return covertirAEntero(codigo);
+		return covertirAEntero(aux);
 	}
 	else {
 		return covertirAEntero(0);

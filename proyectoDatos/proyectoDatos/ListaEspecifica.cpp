@@ -247,6 +247,8 @@ void ListaEspecifica::cargarEspecificas(int numLineaGeneral) {
 	leerFicheroEspecificas(numLineaGeneral);
 }
 
+
+
 int ListaEspecifica::leerFicheroEspecificas(int numLineaGeneral) {
 
 	std::ifstream lectura;
@@ -288,6 +290,49 @@ int ListaEspecifica::leerFicheroEspecificas(int numLineaGeneral) {
 		return 0;
 	}
 }
+
+int ListaEspecifica::leerFicheroEspecificas2() {
+
+	std::ifstream lectura;
+	char numero[15], codigo[15], descripcion[30];
+
+	lectura.open("Ficheros/especificas.txt", std::ios::out | std::ios::in);
+	InfoEspecifica * lineaEspecifica;
+
+	if (lectura.is_open()) {
+		lectura >> numero;  //primer registro de la linea
+		std::string linea;		//contador de las lineas del documento
+
+		while (getline(lectura, linea)) {
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
+
+			std::string str(numero);
+			str.erase(str.find(';'));
+			strcpy_s(numero, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(codigo, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(descripcion, palabraString);
+
+			
+				lineaEspecifica = new InfoEspecifica(covertirAEntero(numero), codigo, descripcion);
+				insertarAcendente(lineaEspecifica);
+
+				lineaEspecifica->cargarArticulos();
+			
+			lectura >> numero;
+		}
+		lectura.close();
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
 
 void ListaEspecifica::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio

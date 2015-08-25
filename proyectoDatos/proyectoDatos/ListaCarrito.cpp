@@ -1,7 +1,4 @@
 #include "ListaCarrito.h"
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
 
 NodoCarrito * ListaCarrito::dirNodo(char * codigo){
 	NodoCarrito *nodo = getCab();
@@ -275,6 +272,7 @@ void ListaCarrito::agregarListaCompra(char* codigo, char * nombre,
 }
 
 
+//falta implementar
 void ListaCarrito::mostrarLista(){
 }
 
@@ -289,7 +287,6 @@ void  ListaCarrito::guardarCarritos() {
 }
 
 bool ListaCarrito::almacenarCarritoEnFichero(InfoCarrito* carrito) {
-
 	std::ofstream escritura;
 	escritura.open("Ficheros/carritos.txt", std::ios::out | std::ios::app);
 	if (escritura.is_open()) {
@@ -303,6 +300,7 @@ bool ListaCarrito::almacenarCarritoEnFichero(InfoCarrito* carrito) {
 	}
 	return true;
 }
+
 
 void ListaCarrito::cargarCarritosUsuario(char *codUsuario) {
 	leerFicheroCarritoUsuario(codUsuario);
@@ -338,8 +336,9 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 			getline(ss, palabraString, ';');
 			convertirAChar(monto, palabraString);
 
+
 			if (covertirAEntero(codUsuario) == covertirAEntero(codCliente) 
-								&& convertirABoolean(estado) == true && strcmp(nombre, "Regular")!=0){
+								&& convertirABoolean(estado) == true){
 
 				ListaCompra * listaC = new ListaCompra();
 				listaC->cargarCompras(codigo);
@@ -347,6 +346,7 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 							covertirAEntero(monto), listaC);
 				insertarAcendente(listaCarrito);
 			}
+
 			lectura >> codigo;
 		}
 
@@ -358,10 +358,10 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 	}
 }
 
-
 void ListaCarrito::cargarCarritosPendientes() {
 	leerFicheroCarritoPendientes();
 }
+
 
 int ListaCarrito::leerFicheroCarritoPendientes() {
 	std::ifstream lectura;
@@ -393,12 +393,12 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 			getline(ss, palabraString, ';');
 			convertirAChar(monto, palabraString);
 
-			if (convertirABoolean(estado) == false && strcmp(nombre, "Regular") != 0){
+			if (convertirABoolean(estado) == false) {
 				ListaCompra * listaC = new ListaCompra();
 				listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),
 					covertirAEntero(monto), listaC);
-	
+				//insertarAcendente(new NodoCarrito(listaCarrito));
 			}
 			lectura >> codigo;
 		}
@@ -410,67 +410,24 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 	}
 }
 
-
-
-int ListaCarrito::ulitmoNumero() {
-	int numero = 0;
-	std::ifstream lectura;
-	char codigo[15], codCliente[15], nombre[30], estado[5], monto[15];
-
-	lectura.open("Ficheros/carritos.txt", std::ios::out | std::ios::in);
-	InfoCarrito * listaCarrito;
-
-	if (lectura.is_open()) {
-		lectura >> codigo;  //primer registro de la linea
-		std::string linea;		//contador de las lineas del documento
-		while (getline(lectura, linea)) {
-			std::stringstream ss(linea); //nos da un el elemento por linea
-			std::string palabraString;   // lo definimos para almacenar el dato del txt
-
-			std::string str(codigo);
-			str.erase(str.find(';'));
-			strcpy_s(codigo, str.c_str());
-
-			getline(ss, palabraString, ';');
-			convertirAChar(codCliente, palabraString);
-
-			getline(ss, palabraString, ';');
-			convertirAChar(nombre, palabraString);
-
-			getline(ss, palabraString, ';');
-			convertirAChar(estado, palabraString);
-
-			getline(ss, palabraString, ';');
-			convertirAChar(monto, palabraString);
-
-			numero = covertirAEntero(codigo);
-	
-			lectura >> codigo;
-		}
-		lectura.close();
-		return numero;
-	}
-	else {
-		return numero;
-	}
+void ListaCarrito::modificarCarrito(InfoCarrito * info)
+{
 }
-
 
 void ListaCarrito::convertirAChar(char *palabra, std::string palabraString) {
 	palabraString.erase(palabraString.find(' '), 1); //elimina los espacios en blanco que se hacen al principio
 	std::memcpy(palabra, palabraString.c_str(), palabraString.size() + 1); // convierte el string en char array
 }
 
-
 int ListaCarrito::covertirAEntero(char * pcodigo) {
 	int num = atoi(pcodigo);
 	return num;
 }
-
-
+//0 entregado, 1 pendiente
 bool ListaCarrito::convertirABoolean(char *num){
 	if (num == "0")
 		return false;
 
 	return true;
 }
+
