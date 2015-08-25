@@ -408,7 +408,50 @@ void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 	lectura.open("Ficheros/articulos.txt", std::ios::in);
 	if (aux.is_open() && lectura.is_open()) {
 		lectura >> codigo;
-		while (!lectura.eof()) {
+
+		std::string linea;		//contador de las lineas del documento
+		while (getline(lectura, linea)) {
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
+
+			std::string str(codigo);
+			str.erase(str.find(';'));
+			strcpy_s(codigo, str.c_str());
+
+
+			getline(ss, palabraString, ';');
+			convertirAChar(lineaEsp, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(nombre, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(marca, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(tamanio, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(precio, palabraString);
+
+			if (codigo == articulo->getCodigo()) {
+				encontrado = true;
+
+				aux << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
+					<< articulo->getMarca() << "; " << articulo->getTamanio() << "; "
+					<< articulo->getPrecio() << "; " << std::endl;
+
+			}
+			else {
+				aux << codigo << "; " << nombre << "; "
+					<< marca << "; " << tamanio << "; "
+					<< precio << "; " << std::endl;
+			}
+
+			lectura >> codigo;
+		}
+
+		/*while (!lectura.eof()) {
 
 
 			lectura >> lineaEsp >> nombre >> marca >> tamanio >> precio;
@@ -426,7 +469,7 @@ void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 					<< precio << "; " << std::endl;
 			}
 			lectura >> precio;
-		}
+		}*/
 	}
 
 	aux.close();

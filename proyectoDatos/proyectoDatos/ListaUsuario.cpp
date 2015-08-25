@@ -275,18 +275,34 @@ void ListaUsuario::modificarUsuario(InfoUsuario * usr)
 	std::ifstream lectura;
 	bool encontrado = false;
 
-	//(char * pcodigo, char * pnombre, char * pcontrasenna, int prol)
-
 	char codigo[30], nombre[30], contrasena[30], rol[5];
 	aux.open("Ficheros/auxiliar.txt", std::ios::out);
 	lectura.open("Ficheros/usuarios.txt", std::ios::in);
+
+	std::string linea;
+
 	if (aux.is_open() && lectura.is_open()) {
 		lectura >> codigo;
-		while (!lectura.eof()) {
+
+		while (getline(lectura, linea)) {
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
+
+			std::string str(codigo);
+			str.erase(str.find(';'));
+			strcpy_s(codigo, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(nombre, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(contrasena, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(rol, palabraString);
 
 
-			lectura >> nombre >> contrasena >> rol;
-			if (codigo == usr->getCodigo()) {
+			if (strcmp(codigo, usr->getCodigo()) == 0) {
 				encontrado = true;
 
 				aux << usr->getCodigo() << "; " << usr->getNombre() << "; "
@@ -296,8 +312,10 @@ void ListaUsuario::modificarUsuario(InfoUsuario * usr)
 			else {
 				aux << codigo << "; " << nombre << "; "
 					<< contrasena << "; " << rol << "; " << std::endl;
+				
 			}
-			lectura >> contrasena;
+
+			lectura >> codigo;
 		}
 	}
 

@@ -38,6 +38,8 @@ public:
 
 	void cargarEspecificas(int numLineaGeneral);
 
+	int leerFicheroEspecificas2();
+
 	int leerFicheroEspecificas(int numLineaGeneral);
 
 	void convertirAChar(char * palabra, std::string palabraString);

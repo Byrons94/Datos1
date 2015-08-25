@@ -16,6 +16,10 @@ public:
 	InfoArticulo(int, char*, char*, char*, char *, double);
 
 	InfoArticulo(int codigoLinea, char * pnombre, char * pmarca, char * ptamanio, double pprecio);
+
+	InfoArticulo(char * pcodigo, char * pnombre, char * pmarca, char * ptamanio, double pprecio);
+
+	InfoArticulo(char * pnombre, char * pmarca, char * ptamanio, double pprecio);
 	
 	void   setCodLinea(int);	
 	void   setCodigo(char *);

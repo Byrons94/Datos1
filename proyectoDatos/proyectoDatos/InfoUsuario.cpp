@@ -79,7 +79,7 @@ int InfoUsuario::ultimoRegistro()
 {
 	std::ifstream lectura;
 	char codigo[30], nombre[30], contrasena[30], rol[5];
-	char aux[30];
+	char *aux = "";
 	
 	lectura.open("Ficheros/usuarios.txt", std::ios::out | std::ios::in);
 
@@ -106,13 +106,13 @@ int InfoUsuario::ultimoRegistro()
 			getline(ss, palabraString, ';');
 			convertirAChar(rol, palabraString);
 
-			
-			lectura >> codigo;
+			aux = codigo;
 
+			lectura >> codigo;
 		}
 
 		lectura.close();
-		return covertirAEntero(codigo);
+		return covertirAEntero(aux);
 	}
 	else {
 		return covertirAEntero(0);

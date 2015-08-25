@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include "InfoArticulo.h"
 
 GestorInventario::GestorInventario(){}
 GestorInventario::~GestorInventario(){}
@@ -24,4 +25,9 @@ int GestorInventario::covertirAEntero(char * pcodigo) {
 	return num;
 }
 
-
+void GestorInventario::agregarArticulo(int codigoLinea, char *pnombre, char *pmarca, char * ptamanio, double pprecio)
+{
+	ListaArticulo *lista = new ListaArticulo();
+	InfoArticulo *info = new InfoArticulo(codigoLinea, pnombre, pmarca, ptamanio, pprecio);
+	lista->almacenarArticuloEnFichero(info);
+}

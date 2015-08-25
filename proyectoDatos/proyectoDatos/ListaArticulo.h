@@ -18,7 +18,7 @@ private:
 
 	void agregarNodoAntesDe(NodoArticulo * nuevo, NodoArticulo * nodo);
 	int convertirAEntero(char * pcodigo);
-	bool almacenarArticuloEnFichero(InfoArticulo * articulo);
+	
 
 
 public:
@@ -54,6 +54,7 @@ public:
 
 	void ListaArticulo::modificarArticulo(InfoArticulo * usr);
 
+	bool almacenarArticuloEnFichero(InfoArticulo * articulo);
 
 	//eliminar
 	bool elimina(char *);

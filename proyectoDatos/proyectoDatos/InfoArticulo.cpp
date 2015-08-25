@@ -29,6 +29,17 @@ InfoArticulo::InfoArticulo(int codigoLinea,  char *pnombre, char *pmarca, char *
 	setPrecio(pprecio);
 }
 
+InfoArticulo::InfoArticulo( char * pcodigo, char *pnombre, char *pmarca, char * ptamanio, double pprecio) {
+	setCodLinea(0);
+	setCodigo(pcodigo);
+	setNombre(pnombre);
+	setMarca(pmarca);
+	setTamanio(ptamanio);
+	setPrecio(pprecio);
+}
+
+
+
 void InfoArticulo::setCodLinea(int plinea){
 	this->lineaEspecifica = plinea;
 }

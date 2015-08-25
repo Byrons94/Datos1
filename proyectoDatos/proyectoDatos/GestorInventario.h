@@ -13,5 +13,9 @@ public:
 
 	int covertirAEntero(char * );
 
+	void agregarArticulo(int codigoLinea, char * pnombre, char * pmarca, char * ptamanio, double pprecio);
+
+	void agregarArticulo(char * pnombre, char * pcontrasenna, int prol);
+
 };
 

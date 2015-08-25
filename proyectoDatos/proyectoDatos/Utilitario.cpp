@@ -26,4 +26,11 @@ char * Utilitario::intToChar(int numero){
 	return toChar(var);
 }
 
+double Utilitario::toDouble(System::String ^ variable)
+{
+	double foo = System::Convert::ToDouble(variable);
+
+	return foo;
+}
+
 
