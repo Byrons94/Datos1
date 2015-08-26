@@ -66,7 +66,7 @@ namespace proyectoDatos {
 			estado = pestado;
 			listaCompra = plistaCompra;
 			listaCarrito = plistaCarrito;
-			almacenar();
+			
 		}
 
 	protected:

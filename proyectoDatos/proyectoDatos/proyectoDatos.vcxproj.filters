@@ -178,19 +178,19 @@
     <ClInclude Include="UIGuardar.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="BuscarCarritos.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="NodoEntrega.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="colaEntregas.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UIRegistro.h">
+    <ClInclude Include="ModificarArticulo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UIRegArticulo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="BuscarCarritos.h">
+    <ClInclude Include="ModificarArticulo2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="ModificarUsuario.h">
@@ -199,10 +199,13 @@
     <ClInclude Include="ModificarUsuario2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ModificarArticulo.h">
+    <ClInclude Include="UIRegArticulo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="ModificarArticulo2.h">
+    <ClInclude Include="UIRegistro.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFacturar.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -297,16 +300,7 @@
     <ClCompile Include="NodoEntrega.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
-    <ClCompile Include="UIRegistro.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="UIRegArticulo.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="ModificarUsuario.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="ModificarUsuario2.cpp">
+    <ClCompile Include="colaEntregas.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
     <ClCompile Include="ModificarArticulo.cpp">
@@ -315,7 +309,19 @@
     <ClCompile Include="ModificarArticulo2.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
-    <ClCompile Include="colaEntregas.cpp">
+    <ClCompile Include="ModificarUsuario.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="ModificarUsuario2.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRegArticulo.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="UIRegistro.cpp">
+      <Filter>Archivos de codigo fuente</Filter>
+    </ClCompile>
+    <ClCompile Include="UIFacturar.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
   </ItemGroup>
@@ -332,10 +338,25 @@
     <EmbeddedResource Include="BuscarCarritos.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModificarArticulo.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarArticulo2.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarUsuario.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarUsuario2.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIRegArticulo.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="UIRegistro.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFacturar.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

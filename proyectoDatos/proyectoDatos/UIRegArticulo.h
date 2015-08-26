@@ -36,8 +36,8 @@ namespace proyectoDatos {
 			
 			/*comboRol->Items->Add("Administrador");
 			comboRol->Items->Add("Dependiente");
-			comboRol->Items->Add("Cliente");
-			comboRol->SelectedIndex = 2;*/
+			comboRol->Items->Add("Cliente");*/
+			comboRol->SelectedIndex = 0;
 		}
 
 	protected:
@@ -339,7 +339,6 @@ namespace proyectoDatos {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-
 		}
 #pragma endregion
 	
@@ -348,11 +347,8 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 
 	//int codigoLinea, char *pnombre, char *pmarca, char * ptamanio, double pprecio
 
-
-	gestor->agregarArticulo(Utilitario::toInt(comboRol->SelectedIndex + 1), Utilitario::toChar(txtNombre->Text),
-		Utilitario::toChar(txtMarca->Text), Utilitario::toChar(txtTamanno->Text),
-		Utilitario::toDouble(txtPrecio->Text));
-
+	int i = System::Convert::ToInt32(txtPrecio->Text);
+	gestor->agregarArticulo(1, "sd", "sdfds", "sdfsd", 15);
 	Hide();
 
 	
