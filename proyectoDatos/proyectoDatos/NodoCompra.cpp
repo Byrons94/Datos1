@@ -6,7 +6,6 @@ NodoCompra::NodoCompra(InfoCompra * pinfo){
 	setLineaDetalle(pinfo);
 	setSgte(NULL);
 }
-
 NodoCompra::~NodoCompra(){}
 
 void NodoCompra::setLineaDetalle(InfoCompra * plinea){

@@ -351,7 +351,8 @@ namespace proyectoDatos {
 			gestor->agregarListaCompras(listaCarrito, codigo, nombreCarrito,
 						Utilitario::toChar(codigoUsuario), 0, totalCarrito, listaCompra);
 			listaCompra = new ListaCompra();
-			
+			listaCarrito = new ListaCarrito();
+
 			Close();
 		}
 	}

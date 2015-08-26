@@ -1,5 +1,7 @@
 #pragma once
 #include "ListaCarrito.h"
+#include "colaEntregas.h"
+
 class GestorCompras
 {
 public:
@@ -20,7 +22,7 @@ public:
 
 	ListaCarrito * obtenerCarritoUsuario(char * codUsuario);
 
-	ListaCarrito * obtenerCarritosPendientes();
+	ColaEntregas * obtenerCarritosPendientes();
 
 
 	ListaCarrito * crearPedido();

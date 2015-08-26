@@ -159,7 +159,6 @@ bool ListaCarrito::insertarAcendente(InfoCarrito * pinfo){
 			agregarNodoDespuesDe(nodo,new NodoCarrito(pinfo));
 			return true;
 		}
-	return false;
 }
 
 bool ListaCarrito::insertarDecendente(InfoCarrito * pinfo){
@@ -178,7 +177,6 @@ bool ListaCarrito::insertarDecendente(InfoCarrito * pinfo){
 		agregarNodoDespuesDe(new NodoCarrito(pinfo), nodo);
 		return true;
 	}
-	return false;
 }
 
 bool ListaCarrito::insertarIndex(InfoCarrito * pinfo, int pindex){
@@ -270,7 +268,6 @@ void ListaCarrito::agregarListaCompra(char* codigo, char * nombre,
 	insertarAcendente(pinfo);
 }
 
-//falta implementar
 void ListaCarrito::mostrarLista(){
 }
 
@@ -336,7 +333,7 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 
 
 			if (covertirAEntero(codUsuario) == covertirAEntero(codCliente) 
-								&& convertirABoolean(estado) == true){
+				&& convertirABoolean(estado) == true && strcmp(nombre, "Regular" ) !=0 ){
 				ListaCompra * listaC = new ListaCompra();
 				listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),
@@ -355,10 +352,10 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 	}
 }
 
+
 void ListaCarrito::cargarCarritosPendientes() {
 	leerFicheroCarritoPendientes();
 }
-
 
 int ListaCarrito::leerFicheroCarritoPendientes() {
 	std::ifstream lectura;
@@ -390,12 +387,12 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 			getline(ss, palabraString, ';');
 			convertirAChar(monto, palabraString);
 
-			if (convertirABoolean(estado) == false) {
+		if (convertirABoolean(estado) == true) {
 				ListaCompra * listaC = new ListaCompra();
 				listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),
 					covertirAEntero(monto), listaC);
-				//insertarAcendente(new NodoCarrito(listaCarrito));
+				insertarAcendente(listaCarrito);
 			}
 			lectura >> codigo;
 		}
@@ -420,9 +417,10 @@ int ListaCarrito::covertirAEntero(char * pcodigo) {
 	int num = atoi(pcodigo);
 	return num;
 }
+
 //0 entregado, 1 pendiente
 bool ListaCarrito::convertirABoolean(char *num){
-	if (num == "0")
+	if (strcmp(num, "1") ==0)
 		return false;
 
 	return true;

@@ -188,6 +188,7 @@ void ListaEspecifica::insertarFinal(InfoEspecifica * pinfo) {
 	tamanio++;
 }
 
+
 bool ListaEspecifica::insertarAntesDe(InfoEspecifica * pinfo, char * pcodigo) {
 	NodoEspecifica *aux = dirNodo(pcodigo);
 	bool existe = aux != NULL;
@@ -278,7 +279,6 @@ int ListaEspecifica::leerFicheroEspecificas(int numLineaGeneral) {
 			if (covertirAEntero(numero) == numLineaGeneral) {
 				lineaEspecifica = new InfoEspecifica(covertirAEntero(numero), codigo, descripcion);
 				insertarAcendente(lineaEspecifica);
-
 				lineaEspecifica->cargarArticulos();
 			}
 			lectura >> numero;

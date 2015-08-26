@@ -436,6 +436,7 @@ namespace proyectoDatos {
 								dataGridView1->Rows->Add(Utilitario::toSystemString(nodoC->getLineaDetalle()->getProducto()),
 														Utilitario::toSystemString(articulo->getNombre()),
 														Utilitario::toSystemString(articulo->getMarca()),
+														Utilitario::toSystemString(articulo->getTamanio()),
 														Utilitario::toInt32(articulo->getPrecio()),
 														Utilitario::toInt32(nodoC->getLineaDetalle()->getCantidad()),
 														Utilitario::toInt32(nodoC->getLineaDetalle()->getMonto()));

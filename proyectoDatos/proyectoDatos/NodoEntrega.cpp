@@ -1,10 +1,7 @@
 #include "NodoEntrega.h"
 
-
-
 NodoEntrega::NodoEntrega()
-{
-}
+{}
 
 NodoEntrega::NodoEntrega(NodoCarrito *pcarrito)
 {
@@ -12,30 +9,21 @@ NodoEntrega::NodoEntrega(NodoCarrito *pcarrito)
 	setSgte(NULL);
 }
 
-
-
-
 NodoEntrega::~NodoEntrega()
-{
+{}
+
+void NodoEntrega::setCarrito(NodoCarrito * pcarrito){
+	this->carrito = pcarrito;
 }
 
-void NodoEntrega::setCarrito(NodoCarrito *)
-{
-}
-
-void NodoEntrega::setSgte(NodoEntrega *sgte)
-{
+void NodoEntrega::setSgte(NodoEntrega *sgte){
 	this->sgte = sgte;
 }
 
-
-
-NodoCarrito * NodoEntrega::getCarrito()
-{
+NodoCarrito * NodoEntrega::getCarrito(){
 	return carrito;
 }
 
-NodoEntrega * NodoEntrega::getSgte()
-{
+NodoEntrega * NodoEntrega::getSgte(){
 	return this->sgte;
 }

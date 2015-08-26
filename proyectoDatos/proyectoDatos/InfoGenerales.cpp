@@ -59,7 +59,6 @@ char * InfoGenerales::getDescripcion(){
 	return this->descripcion;
 }
 
-
 ListaEspecifica * InfoGenerales::getListaEspecifica(){
 	return this->lista;
 }

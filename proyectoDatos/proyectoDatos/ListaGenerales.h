@@ -43,6 +43,8 @@ public:
 
 	int leerFicheroGenerales(int numPasillo);
 
+	int leerFicheroGenerales();
+
 	void convertirAChar(char * palabra, std::string palabraString);
 
 	int covertirAEntero(char * pcodigo);
