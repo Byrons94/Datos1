@@ -21,7 +21,7 @@ ListaArticulo* GestorInventario::cargarArticulos(){
 
 int GestorInventario::covertirAEntero(char * pcodigo) {
 	int num = atoi(pcodigo);
-	return num;
+	return num; 
 }
 
 void GestorInventario::agregarArticulo(int codigoLinea, char *codigo, char *pnombre, char *pmarca, char * ptamanio, double pprecio){
