@@ -1,8 +1,10 @@
 #pragma once
 #include "GestorInventario.h"
 #include "Utilitario.h"
-namespace proyectoDatos {
+#include "ListaGenerales.h"
 
+namespace proyectoDatos {
+	
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -16,6 +18,7 @@ namespace proyectoDatos {
 	/// </summary>
 	public ref class UIAgregarGenerales : public System::Windows::Forms::Form
 	{
+		ListaPasillos * lista;
 	public:
 		UIAgregarGenerales(void)
 		{
@@ -23,10 +26,14 @@ namespace proyectoDatos {
 			cargarCombo();
 		}
 
+		UIAgregarGenerales(ListaPasillos * plista){
+			InitializeComponent();
+			cargarCombo();
+			lista = plista;
+		}
+
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+		
 		~UIAgregarGenerales()
 		{
 			if (components)
@@ -251,7 +258,11 @@ namespace proyectoDatos {
 		char * codigo = Utilitario::toChar(txtCodigo->Text);
 		char * desc = Utilitario::toChar(txtNombre->Text);
 		int numero = atoi(pasillo);
-		gestor->agregarLGeneral(numero, codigo, desc, NULL);
+		
+		ListaGenerales * listaGe = Utilitario::getGeneral(pasillo, lista);
+		if (lista != NULL) {
+			gestor->agregarLGeneral(numero, codigo, desc, listaGe);
+		}
 	}
 };
 }

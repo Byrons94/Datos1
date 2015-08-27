@@ -89,11 +89,11 @@ ListaArticulo::~ListaArticulo(){}
 
 
 NodoArticulo * ListaArticulo::getCab(){
-	return cab;
+	return this->cab;
 }
 
 int ListaArticulo::getTamanio(){
-	return tamanio;
+	return this->tamanio;
 }
 
 void ListaArticulo::setCab(NodoArticulo * NodoArticulo){
@@ -403,21 +403,19 @@ void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 	aux.open("Ficheros/auxiliar.txt", std::ios::out);
 	lectura.open("Ficheros/articulos.txt", std::ios::in);
 	if (aux.is_open() && lectura.is_open()) {
-		lectura >> codigo;
+		lectura >> lineaEsp;
 
 		std::string linea;		//contador de las lineas del documento
 		while (getline(lectura, linea)) {
 			std::stringstream ss(linea); //nos da un el elemento por linea
 			std::string palabraString;   // lo definimos para almacenar el dato del txt
 
-
-			std::string str(codigo);
+			std::string str(lineaEsp);
 			str.erase(str.find(';'));
-			strcpy_s(codigo, str.c_str());
-
-
+			strcpy_s(lineaEsp, str.c_str());
+			
 			getline(ss, palabraString, ';');
-			convertirAChar(lineaEsp, palabraString);
+			convertirAChar(codigo, palabraString);
 
 			getline(ss, palabraString, ';');
 			convertirAChar(nombre, palabraString);
@@ -431,21 +429,19 @@ void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 			getline(ss, palabraString, ';');
 			convertirAChar(precio, palabraString);
 
-			if (codigo == articulo->getCodigo()) {
+			if (strcmp(codigo,articulo->getCodigo())==0) {
 				encontrado = true;
 
-				aux << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
+				aux << articulo->getCodlinea() << "; " << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
 					<< articulo->getMarca() << "; " << articulo->getTamanio() << "; "
 					<< articulo->getPrecio() << "; " << std::endl;
-
 			}
 			else {
-				aux << codigo << "; " << nombre << "; "
+				aux << lineaEsp << "; " << codigo << "; " << nombre << "; "
 					<< marca << "; " << tamanio << "; "
 					<< precio << "; " << std::endl;
 			}
-
-			lectura >> codigo;
+			lectura >> lineaEsp;
 		}
 	}
 

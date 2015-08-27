@@ -1,7 +1,8 @@
 #pragma once
 #include "Utilitario.h"
 #include "ListaArticulo.h"
-#include "InfoArticulo.h"
+#include "ListaEspecifica.h"
+
 
 namespace proyectoDatos {
 
@@ -25,15 +26,14 @@ namespace proyectoDatos {
 		ModificarArticulo2()
 		{
 			InitializeComponent();
+		
 		}
 
 		ModificarArticulo2(char * c)
 		{
 			InitializeComponent();
 			codigo = c;
-			//
-			//TODO: agregar código de constructor aquí
-			//
+			cargarEspecificas();
 		}
 
 	protected:
@@ -295,22 +295,31 @@ namespace proyectoDatos {
 			this->ResumeLayout(false);
 
 		}
-#pragma endregion
+
+	private: System::Void cargarEspecificas(){
+		ListaEspecifica * listaE = new ListaEspecifica();
+		listaE->leerFicheroEspecificas2();
+		NodoEspecifica * nodo = listaE->getCab();
+		while (nodo != NULL) {
+			char * codigo = nodo->getInfo()->getCodigo();
+			char * nombre = nodo->getInfo()->getDescripcion();
+			comboBox1->Items->Add(Utilitario::Contanenado(codigo, nombre));
+			nodo = nodo->getSgte();
+		}
+		comboBox1->SelectedIndex = 0;
+	}
+
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		ListaArticulo *lista = new ListaArticulo();
-
 		lista->cargarArticulos();
 
-	
-		//revisasr
-		InfoArticulo *info = new InfoArticulo(2, 0, Utilitario::toChar(txtNombre->Text),
-			Utilitario::toChar(txtMarca->Text), Utilitario::toChar(txtTamanno->Text),
-			0);
+		char * codigoPasillo = Utilitario::getElementCode(comboBox1->SelectedItem->ToString());
+		int numeroEspecifica = atoi(codigoPasillo);
 
+		InfoArticulo *info = new InfoArticulo(numeroEspecifica, codigo, Utilitario::toChar(txtNombre->Text),
+			Utilitario::toChar(txtMarca->Text), Utilitario::toChar(txtTamanno->Text),0);
 		lista->modificarArticulo(info);
-
 		Hide();
-
 	}
 };
 }

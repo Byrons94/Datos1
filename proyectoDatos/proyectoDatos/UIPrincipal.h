@@ -16,6 +16,8 @@
 #include "UIRegArticulo.h"
 #include "UIPendientes.h"
 #include "UIAgregarPasillo.h"
+#include "UIAgregarGenerales.h"
+#include "UIAgregarEspecificas.h"
 
 namespace proyectoDatos {
 	using namespace System;
@@ -42,6 +44,8 @@ namespace proyectoDatos {
 	ListaCompra	  * listaCompra;
 	ListaCarrito  * listaCarrito;
 	String ^	    codigoUsuario;
+	int totalCarrito = 0;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  nombre;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  marca;
 	private: System::Windows::Forms::ToolStripMenuItem^  inventarioToolStripMenuItem;
@@ -54,7 +58,7 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::ToolStripMenuItem^  lEspecificasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  agregarToolStripMenuItem2;
 	private: System::Windows::Forms::ToolStripMenuItem^  modificarToolStripMenuItem4;
-			 int totalCarrito = 0;
+			
 	public:
 		UIPrincipal(){
 			InitializeComponent();
@@ -69,6 +73,7 @@ namespace proyectoDatos {
 			listaCarrito = new ListaCarrito();
 			codigoUsuario = codUser;
 		}
+
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -80,7 +85,7 @@ namespace proyectoDatos {
 				delete components;
 			}
 		}
-
+			
 	private: System::Windows::Forms::Panel^  panel1;
 	private: System::Windows::Forms::Panel^  panel2;
 	private: System::Windows::Forms::Panel^  panel6;
@@ -111,7 +116,6 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::Button^  btnVaciar;
 
-
 	private: System::Windows::Forms::Button^  btnFacturar;
 	private: System::Windows::Forms::Button^  btnGuardar;
 
@@ -124,7 +128,7 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::ToolStripMenuItem^  registrarToolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  modificarToolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^  pendientesEntregaToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^  entregadasToolStripMenuItem;
+
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
 	private: System::Windows::Forms::Label^  lblProducto;
 	private: System::Windows::Forms::NumericUpDown^  numericUpDown1;
@@ -158,14 +162,14 @@ namespace proyectoDatos {
 			void InitializeComponent(void)
 			{
 				this->components = (gcnew System::ComponentModel::Container());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle11 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle12 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle13 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle14 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle15 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+				System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle16 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 				System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(UIPrincipal::typeid));
 				this->panel1 = (gcnew System::Windows::Forms::Panel());
 				this->panel6 = (gcnew System::Windows::Forms::Panel());
@@ -224,18 +228,17 @@ namespace proyectoDatos {
 				this->modificarToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->comprasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->pendientesEntregaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-				this->entregadasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->inventarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->pasillosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-				this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
-				this->lGeneralesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-				this->lEspecificasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->agregarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->modificarToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->lGeneralesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->agregarToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->modificarToolStripMenuItem3 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->lEspecificasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->agregarToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 				this->modificarToolStripMenuItem4 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+				this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 				this->panel1->SuspendLayout();
 				this->panel6->SuspendLayout();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
@@ -341,36 +344,36 @@ namespace proyectoDatos {
 				this->dataGridView1->AllowUserToDeleteRows = false;
 				this->dataGridView1->AllowUserToResizeColumns = false;
 				this->dataGridView1->AllowUserToResizeRows = false;
-				dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Silver;
-				this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+				dataGridViewCellStyle9->SelectionBackColor = System::Drawing::Color::Silver;
+				this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
 				this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
 				this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 				this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleVertical;
 				this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::Disable;
-				dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-				dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-				dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+				dataGridViewCellStyle10->BackColor = System::Drawing::SystemColors::Control;
+				dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
-				dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-				dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-				this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+				dataGridViewCellStyle10->ForeColor = System::Drawing::Color::White;
+				dataGridViewCellStyle10->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+				dataGridViewCellStyle10->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle10->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+				this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
 				this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 				this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 					this->Column1,
 						this->Column2, this->Column5, this->Column3, this->Column4
 				});
 				this->dataGridView1->Cursor = System::Windows::Forms::Cursors::Hand;
-				dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-				dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Window;
-				dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle11->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+				dataGridViewCellStyle11->BackColor = System::Drawing::SystemColors::Window;
+				dataGridViewCellStyle11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle3->ForeColor = System::Drawing::Color::White;
-				dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-				dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-				this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle3;
+				dataGridViewCellStyle11->ForeColor = System::Drawing::Color::White;
+				dataGridViewCellStyle11->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+				dataGridViewCellStyle11->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle11->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+				this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle11;
 				this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Bottom;
 				this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnF2;
 				this->dataGridView1->GridColor = System::Drawing::Color::White;
@@ -378,22 +381,22 @@ namespace proyectoDatos {
 				this->dataGridView1->MultiSelect = false;
 				this->dataGridView1->Name = L"dataGridView1";
 				this->dataGridView1->ReadOnly = true;
-				dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-				dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Control;
-				dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle12->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+				dataGridViewCellStyle12->BackColor = System::Drawing::SystemColors::Control;
+				dataGridViewCellStyle12->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
-				dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::Gainsboro;
-				dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-				this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-				dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-				dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle12->ForeColor = System::Drawing::SystemColors::WindowText;
+				dataGridViewCellStyle12->SelectionBackColor = System::Drawing::Color::Gainsboro;
+				dataGridViewCellStyle12->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle12->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+				this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+				dataGridViewCellStyle13->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+				dataGridViewCellStyle13->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle5->ForeColor = System::Drawing::Color::Black;
-				dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::Maroon;
-				this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle5;
+				dataGridViewCellStyle13->ForeColor = System::Drawing::Color::Black;
+				dataGridViewCellStyle13->SelectionBackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle13->SelectionForeColor = System::Drawing::Color::Maroon;
+				this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle13;
 				this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 				this->dataGridView1->Size = System::Drawing::Size(678, 479);
 				this->dataGridView1->StandardTab = true;
@@ -572,29 +575,29 @@ namespace proyectoDatos {
 				this->dataGridView2->AllowUserToAddRows = false;
 				this->dataGridView2->AllowUserToDeleteRows = false;
 				this->dataGridView2->BackgroundColor = System::Drawing::Color::White;
-				dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-				dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::Control;
-				dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle14->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+				dataGridViewCellStyle14->BackColor = System::Drawing::SystemColors::Control;
+				dataGridViewCellStyle14->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle6->ForeColor = System::Drawing::Color::Maroon;
-				dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-				this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+				dataGridViewCellStyle14->ForeColor = System::Drawing::Color::Maroon;
+				dataGridViewCellStyle14->SelectionBackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle14->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle14->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+				this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
 				this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 				this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 					this->Column6,
 						this->Column7, this->Column8, this->Column9, this->nombre, this->marca
 				});
-				dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-				dataGridViewCellStyle7->BackColor = System::Drawing::SystemColors::Window;
-				dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle15->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+				dataGridViewCellStyle15->BackColor = System::Drawing::SystemColors::Window;
+				dataGridViewCellStyle15->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle7->ForeColor = System::Drawing::Color::Black;
-				dataGridViewCellStyle7->SelectionBackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle7->SelectionForeColor = System::Drawing::Color::Maroon;
-				dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-				this->dataGridView2->DefaultCellStyle = dataGridViewCellStyle7;
+				dataGridViewCellStyle15->ForeColor = System::Drawing::Color::Black;
+				dataGridViewCellStyle15->SelectionBackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle15->SelectionForeColor = System::Drawing::Color::Maroon;
+				dataGridViewCellStyle15->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+				this->dataGridView2->DefaultCellStyle = dataGridViewCellStyle15;
 				this->dataGridView2->Dock = System::Windows::Forms::DockStyle::Fill;
 				this->dataGridView2->GridColor = System::Drawing::Color::White;
 				this->dataGridView2->Location = System::Drawing::Point(0, 0);
@@ -602,16 +605,16 @@ namespace proyectoDatos {
 				this->dataGridView2->Name = L"dataGridView2";
 				this->dataGridView2->ReadOnly = true;
 				this->dataGridView2->RightToLeft = System::Windows::Forms::RightToLeft::No;
-				dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-				dataGridViewCellStyle8->BackColor = System::Drawing::Color::White;
-				dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dataGridViewCellStyle16->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+				dataGridViewCellStyle16->BackColor = System::Drawing::Color::White;
+				dataGridViewCellStyle16->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				dataGridViewCellStyle8->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-					static_cast<System::Int32>(static_cast<System::Byte>(64)));
-				dataGridViewCellStyle8->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-				dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-				dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-				this->dataGridView2->RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+				dataGridViewCellStyle16->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+					static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
+				dataGridViewCellStyle16->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+				dataGridViewCellStyle16->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+				dataGridViewCellStyle16->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+				this->dataGridView2->RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
 				this->dataGridView2->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
 				this->dataGridView2->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 				this->dataGridView2->Size = System::Drawing::Size(279, 376);
@@ -940,7 +943,7 @@ namespace proyectoDatos {
 				});
 				this->menuStrip1->Location = System::Drawing::Point(197, 65);
 				this->menuStrip1->Name = L"menuStrip1";
-				this->menuStrip1->Size = System::Drawing::Size(481, 26);
+				this->menuStrip1->Size = System::Drawing::Size(389, 26);
 				this->menuStrip1->TabIndex = 0;
 				this->menuStrip1->Text = L"menuStrip1";
 				// 
@@ -998,10 +1001,7 @@ namespace proyectoDatos {
 				// 
 				// comprasToolStripMenuItem
 				// 
-				this->comprasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-					this->pendientesEntregaToolStripMenuItem,
-						this->entregadasToolStripMenuItem
-				});
+				this->comprasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->pendientesEntregaToolStripMenuItem });
 				this->comprasToolStripMenuItem->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
 					static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
 				this->comprasToolStripMenuItem->Name = L"comprasToolStripMenuItem";
@@ -1011,15 +1011,9 @@ namespace proyectoDatos {
 				// pendientesEntregaToolStripMenuItem
 				// 
 				this->pendientesEntregaToolStripMenuItem->Name = L"pendientesEntregaToolStripMenuItem";
-				this->pendientesEntregaToolStripMenuItem->Size = System::Drawing::Size(169, 22);
+				this->pendientesEntregaToolStripMenuItem->Size = System::Drawing::Size(167, 22);
 				this->pendientesEntregaToolStripMenuItem->Text = L"Pendientes";
 				this->pendientesEntregaToolStripMenuItem->Click += gcnew System::EventHandler(this, &UIPrincipal::pendientesEntregaToolStripMenuItem_Click);
-				// 
-				// entregadasToolStripMenuItem
-				// 
-				this->entregadasToolStripMenuItem->Name = L"entregadasToolStripMenuItem";
-				this->entregadasToolStripMenuItem->Size = System::Drawing::Size(169, 22);
-				this->entregadasToolStripMenuItem->Text = L"Entregadas";
 				// 
 				// inventarioToolStripMenuItem
 				// 
@@ -1027,6 +1021,8 @@ namespace proyectoDatos {
 					this->pasillosToolStripMenuItem,
 						this->lGeneralesToolStripMenuItem, this->lEspecificasToolStripMenuItem
 				});
+				this->inventarioToolStripMenuItem->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)),
+					static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)));
 				this->inventarioToolStripMenuItem->Name = L"inventarioToolStripMenuItem";
 				this->inventarioToolStripMenuItem->Size = System::Drawing::Size(106, 22);
 				this->inventarioToolStripMenuItem->Text = L"Inventario";
@@ -1041,11 +1037,18 @@ namespace proyectoDatos {
 				this->pasillosToolStripMenuItem->Size = System::Drawing::Size(179, 22);
 				this->pasillosToolStripMenuItem->Text = L"Pasillos";
 				// 
-				// contextMenuStrip1
+				// agregarToolStripMenuItem
 				// 
-				this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-				this->contextMenuStrip1->Name = L"contextMenuStrip1";
-				this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
+				this->agregarToolStripMenuItem->Name = L"agregarToolStripMenuItem";
+				this->agregarToolStripMenuItem->Size = System::Drawing::Size(149, 22);
+				this->agregarToolStripMenuItem->Text = L"Agregar";
+				this->agregarToolStripMenuItem->Click += gcnew System::EventHandler(this, &UIPrincipal::agregarToolStripMenuItem_Click);
+				// 
+				// modificarToolStripMenuItem2
+				// 
+				this->modificarToolStripMenuItem2->Name = L"modificarToolStripMenuItem2";
+				this->modificarToolStripMenuItem2->Size = System::Drawing::Size(149, 22);
+				this->modificarToolStripMenuItem2->Text = L"Modificar";
 				// 
 				// lGeneralesToolStripMenuItem
 				// 
@@ -1057,6 +1060,19 @@ namespace proyectoDatos {
 				this->lGeneralesToolStripMenuItem->Size = System::Drawing::Size(179, 22);
 				this->lGeneralesToolStripMenuItem->Text = L"L. Generales";
 				// 
+				// agregarToolStripMenuItem1
+				// 
+				this->agregarToolStripMenuItem1->Name = L"agregarToolStripMenuItem1";
+				this->agregarToolStripMenuItem1->Size = System::Drawing::Size(149, 22);
+				this->agregarToolStripMenuItem1->Text = L"Agregar";
+				this->agregarToolStripMenuItem1->Click += gcnew System::EventHandler(this, &UIPrincipal::agregarToolStripMenuItem1_Click);
+				// 
+				// modificarToolStripMenuItem3
+				// 
+				this->modificarToolStripMenuItem3->Name = L"modificarToolStripMenuItem3";
+				this->modificarToolStripMenuItem3->Size = System::Drawing::Size(149, 22);
+				this->modificarToolStripMenuItem3->Text = L"Modificar";
+				// 
 				// lEspecificasToolStripMenuItem
 				// 
 				this->lEspecificasToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
@@ -1067,42 +1083,24 @@ namespace proyectoDatos {
 				this->lEspecificasToolStripMenuItem->Size = System::Drawing::Size(179, 22);
 				this->lEspecificasToolStripMenuItem->Text = L"L Especificas";
 				// 
-				// agregarToolStripMenuItem
-				// 
-				this->agregarToolStripMenuItem->Name = L"agregarToolStripMenuItem";
-				this->agregarToolStripMenuItem->Size = System::Drawing::Size(152, 22);
-				this->agregarToolStripMenuItem->Text = L"Agregar";
-				this->agregarToolStripMenuItem->Click += gcnew System::EventHandler(this, &UIPrincipal::agregarToolStripMenuItem_Click);
-				// 
-				// modificarToolStripMenuItem2
-				// 
-				this->modificarToolStripMenuItem2->Name = L"modificarToolStripMenuItem2";
-				this->modificarToolStripMenuItem2->Size = System::Drawing::Size(152, 22);
-				this->modificarToolStripMenuItem2->Text = L"Modificar";
-				// 
-				// agregarToolStripMenuItem1
-				// 
-				this->agregarToolStripMenuItem1->Name = L"agregarToolStripMenuItem1";
-				this->agregarToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
-				this->agregarToolStripMenuItem1->Text = L"Agregar";
-				// 
-				// modificarToolStripMenuItem3
-				// 
-				this->modificarToolStripMenuItem3->Name = L"modificarToolStripMenuItem3";
-				this->modificarToolStripMenuItem3->Size = System::Drawing::Size(152, 22);
-				this->modificarToolStripMenuItem3->Text = L"Modificar";
-				// 
 				// agregarToolStripMenuItem2
 				// 
 				this->agregarToolStripMenuItem2->Name = L"agregarToolStripMenuItem2";
-				this->agregarToolStripMenuItem2->Size = System::Drawing::Size(152, 22);
+				this->agregarToolStripMenuItem2->Size = System::Drawing::Size(149, 22);
 				this->agregarToolStripMenuItem2->Text = L"Agregar";
+				this->agregarToolStripMenuItem2->Click += gcnew System::EventHandler(this, &UIPrincipal::agregarToolStripMenuItem2_Click);
 				// 
 				// modificarToolStripMenuItem4
 				// 
 				this->modificarToolStripMenuItem4->Name = L"modificarToolStripMenuItem4";
-				this->modificarToolStripMenuItem4->Size = System::Drawing::Size(152, 22);
+				this->modificarToolStripMenuItem4->Size = System::Drawing::Size(149, 22);
 				this->modificarToolStripMenuItem4->Text = L"Modificar";
+				// 
+				// contextMenuStrip1
+				// 
+				this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+				this->contextMenuStrip1->Name = L"contextMenuStrip1";
+				this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 				// 
 				// UIPrincipal
 				// 
@@ -1145,7 +1143,6 @@ namespace proyectoDatos {
 		Application::Exit();
 	}
 	
-
 	private: System::Void validarPermisos(int idRol){
 		if (idRol == 3) {
 			menuStrip1->Visible = false;
@@ -1159,16 +1156,22 @@ namespace proyectoDatos {
 
 	private: System::Void cargarCombos(){
 		GestorInventario * gestor = new GestorInventario();
-		if (lista == NULL) {
+		
+			limpiarCombos();
 			lista = new ListaPasillos();
 			lista->cargarPasillos();
-		}
+		
 		cargarPasillos(lista);
+	}
+
+	private: System::Void limpiarCombos(){
+		comboBox1->Items->Clear();
+		comboBox2->Items->Clear();
+		comboBox3->Items->Clear();
 	}
 
 	private: System::Void cargarPasillos(ListaPasillos * lista){
 		NodoPasillo * nodo = lista->getCab();
-
 		while (nodo!=NULL){
 			char * nombre = nodo->getInfoPasillo()->getDescripcion();
 			char * codigo = nodo->getInfoPasillo()->getCodigo();
@@ -1189,7 +1192,7 @@ namespace proyectoDatos {
 		int contador = 0;
 		NodoPasillo * nodo = lista->getCab();
 		while (nodo != NULL) {
-			if (contador == index) {
+			if (contador == index){
 				NodoGenerales * nodosG = nodo->getInfoPasillo()->getListaGeneral()->getCab();
 				while (nodosG != NULL) {
 					char* codigo = nodosG->getInfo()->getCodigo();
@@ -1201,7 +1204,6 @@ namespace proyectoDatos {
 			nodo = nodo->getSgte();
 			++contador;
 		}
-		//comboBox2->SelectedIndex = 0;
 	}
 	
 	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -1236,7 +1238,6 @@ namespace proyectoDatos {
 			nodo = nodo->getSgte();
 			++contador;
 		}
-		comboBox3->SelectedIndex = 0;
 	}
 
 	private: System::Void comboBox3_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -1300,7 +1301,6 @@ namespace proyectoDatos {
 	}
 
 	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
-
 		char * pasillo    = Utilitario::getElementCode(comboBox1->SelectedItem->ToString());
 		char * general    = Utilitario::getElementCode(comboBox2->SelectedItem->ToString());
 		char * especifica =	Utilitario::getElementCode(comboBox3->SelectedItem->ToString());
@@ -1308,10 +1308,12 @@ namespace proyectoDatos {
 		String^ cod = gcnew System::String(dataGridView1->Rows[fila]->Cells[0]->Value->ToString());
 		String^ precio = gcnew System::String(dataGridView1->Rows[fila]->Cells[4]->Value->ToString());
 		String^ nombre = dataGridView1->Rows[fila]->Cells[1]->Value->ToString();
+		
 		int precioFinal = int::Parse(precio);
 		char * codigoProd = Utilitario::toChar(cod);
 		int cantidad    = (int)numericUpDown1->Value;
 		int montoTotal = (precioFinal*cantidad);
+
 		bool existe = gestorCompras->agregarProductoALista(pasillo, general, especifica, codigoProd, cantidad, montoTotal, listaCompra);
 		if(existe)
 			agregarAlCarrito(cod, nombre, cantidad, montoTotal);
@@ -1340,7 +1342,7 @@ namespace proyectoDatos {
 		btnFacturar->Enabled = true;
 		btnGuardar->Enabled = true;
 	}
-	//revisar
+
 	private: System::Void btnEliminar_Click(System::Object^  sender, System::EventArgs^  e) {
 		int fila = dataGridView2->CurrentRow->Index;
 		String^ codigoSis = dataGridView2->Rows[fila]->Cells[0]->Value->ToString();
@@ -1403,22 +1405,39 @@ namespace proyectoDatos {
 		modif->Show();
 	}
 	private: System::Void modificarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		ModificarArticulo ^modif = gcnew ModificarArticulo();
+		ModificarArticulo ^modif = gcnew ModificarArticulo(lista);
 		modif->Show();
+		restablecerLista();
 	}
 
 	private: System::Void registrarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		UIRegArticulo ^reg = gcnew UIRegArticulo();
-		reg->Show();
+		UIRegArticulo ^ UIreg = gcnew UIRegArticulo();
+		UIreg->Show();
+		restablecerLista();
 	}
+
 	private: System::Void pendientesEntregaToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 		UIPendientes ^ comprasPendientes = gcnew UIPendientes();
 		comprasPendientes->Show();
 	}
 
 	private: System::Void agregarToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-		UIAgregarPasillo ^ UIPasillo = gcnew UIAgregarPasillo();
+		UIAgregarPasillo ^ UIPasillo = gcnew UIAgregarPasillo(lista);
 		UIPasillo->Show();
+		limpiarCombos();
+		cargarCombos();
+	}
+
+	private: System::Void agregarToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+		UIAgregarGenerales  ^ UIGenerales = gcnew UIAgregarGenerales(lista);
+		UIGenerales->Show();
+		cargarCombos();
+	}
+
+	private: System::Void agregarToolStripMenuItem2_Click(System::Object^  sender, System::EventArgs^  e) {
+		UIAgregarEspecificas ^ UIEspecificas = gcnew UIAgregarEspecificas(lista);
+		UIEspecificas->Show();
+		cargarCombos();
 	}
 };
 }

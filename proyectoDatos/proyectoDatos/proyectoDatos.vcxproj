@@ -183,12 +183,8 @@
     <ClInclude Include="ListaGenerales.h" />
     <ClInclude Include="ListaPasillos.h" />
     <ClInclude Include="ListaUsuario.h" />
-    <ClInclude Include="ModificarArticulo.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="ModificarArticulo2.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
+    <ClInclude Include="ModificarArticulo.h" />
+    <ClInclude Include="ModificarArticulo2.h" />
     <ClInclude Include="ModificarUsuario.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -504,12 +500,8 @@
     <EmbeddedResource Include="BuscarCarritos.resx">
       <DependentUpon>BuscarCarritos.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ModificarArticulo.resx">
-      <DependentUpon>ModificarArticulo.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ModificarArticulo2.resx">
-      <DependentUpon>ModificarArticulo2.h</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarArticulo.resx" />
+    <EmbeddedResource Include="ModificarArticulo2.resx" />
     <EmbeddedResource Include="ModificarUsuario.resx">
       <DependentUpon>ModificarUsuario.h</DependentUpon>
     </EmbeddedResource>

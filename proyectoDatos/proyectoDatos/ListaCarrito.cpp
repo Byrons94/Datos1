@@ -1,5 +1,4 @@
 #include "ListaCarrito.h"
-
 NodoCarrito * ListaCarrito::dirNodo(char * codigo){
 	NodoCarrito *nodo = getCab();
 	for (int i = 0; i < getTamanio(); i++){
@@ -147,18 +146,18 @@ bool ListaCarrito::insertarAcendente(InfoCarrito * pinfo){
 	NodoCarrito *nodo = getCab();
 	
 	bool insertar = estaVacia() || strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) < 0;
-		if (insertar){
-			insetarInicio(pinfo);
-			return true;
+	if (insertar){
+		insetarInicio(pinfo);
+		return true;
+	}
+	else {
+		while (nodo->getSgte() != getCab() 
+				&& strcmp(pinfo->getCodigo(), nodo->getSgte()->getInfo()->getCodigo()) > 0) {
+			nodo = nodo->getSgte();
 		}
-		else {
-			while (nodo->getSgte() != getCab() 
-					&& strcmp(pinfo->getCodigo(), nodo->getSgte()->getInfo()->getCodigo()) > 0) {
-				nodo = nodo->getSgte();
-			}
-			agregarNodoDespuesDe(nodo,new NodoCarrito(pinfo));
-			return true;
-		}
+		agregarNodoDespuesDe(nodo,new NodoCarrito(pinfo));
+		return true;
+	}
 }
 
 bool ListaCarrito::insertarDecendente(InfoCarrito * pinfo){

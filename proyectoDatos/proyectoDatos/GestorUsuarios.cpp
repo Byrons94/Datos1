@@ -9,10 +9,10 @@ GestorUsuarios::~GestorUsuarios()
 
 
 
-void GestorUsuarios::agregarUsuario(char * pnombre, char * pcontrasenna, int prol)
+void GestorUsuarios::agregarUsuario(char* codigo, char * pnombre, char * pcontrasenna, int prol)
 {
 	ListaUsuario *lista = new ListaUsuario();
-	InfoUsuario *info = new InfoUsuario(pnombre, pcontrasenna, prol);
+	InfoUsuario *info = new InfoUsuario(codigo ,pnombre, pcontrasenna, prol);
 	lista->crearUsuario(info);
 }
 

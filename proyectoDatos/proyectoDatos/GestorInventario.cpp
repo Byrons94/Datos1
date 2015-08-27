@@ -47,4 +47,3 @@ void GestorInventario::agregarLEspecifica(int numero, char * codigo, char * desc
 	listae->agregarLEspecifica(info);
 	listae->insertarAcendente(info);
 }
-

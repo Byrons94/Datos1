@@ -1,6 +1,8 @@
 #pragma once
 #include "ModificarArticulo2.h"
 #include "Utilitario.h"
+#include "InfoArticulo.h"
+#include "ListaArticulo.h"
 
 namespace proyectoDatos {
 
@@ -19,6 +21,8 @@ namespace proyectoDatos {
 	public ref class ModificarArticulo : public System::Windows::Forms::Form
 	{
 	public:
+		ListaPasillos * lista;
+
 		ModificarArticulo(void)
 		{
 			InitializeComponent();
@@ -27,6 +31,12 @@ namespace proyectoDatos {
 			//
 		}
 
+		ModificarArticulo(ListaPasillos * plista){
+			InitializeComponent();
+			lista = plista;
+			cargarCombo();
+		}
+			
 	protected:
 		/// <summary>
 		/// Limpiar los recursos que se estén usando.
@@ -148,11 +158,25 @@ namespace proyectoDatos {
 			this->ResumeLayout(false);
 
 		}
+
+	private: System::Void cargarCombo(){
+		ListaArticulo * listaAr = new ListaArticulo();
+		listaAr->cargarArticulos();
+		NodoArticulo * nodo = listaAr->getCab();
+		while (nodo != NULL) {
+			char * codigo = nodo->getInfo()->getCodigo();
+			char * nombre = nodo->getInfo()->getNombre();
+			comboBox1->Items->Add(Utilitario::Contanenado(codigo, nombre));
+			nodo = nodo->getSgte();
+		}
+		comboBox1->SelectedIndex = 0;
+	}
+
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		ModificarArticulo2 ^modif = gcnew ModificarArticulo2();
+		char * codigo = Utilitario::getElementCode(comboBox1->SelectedItem->ToString());
+		ModificarArticulo2 ^modif = gcnew ModificarArticulo2(codigo);
 		modif->Show();
-
 		Hide();
 
 	}

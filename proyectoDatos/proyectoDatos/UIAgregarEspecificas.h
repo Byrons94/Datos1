@@ -16,9 +16,17 @@ namespace proyectoDatos {
 	/// </summary>
 	public ref class UIAgregarEspecificas : public System::Windows::Forms::Form
 	{
+		ListaPasillos * lista;
 	public:
 		UIAgregarEspecificas(void)
 		{
+			InitializeComponent();
+			cargarCombo();
+		}
+
+		UIAgregarEspecificas(ListaPasillos *plista)
+		{
+			lista = plista;
 			InitializeComponent();
 			cargarCombo();
 		}
@@ -46,7 +54,7 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::TextBox^  txtNombre;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Label^  label1;
+
 
 	private:
 		/// <summary>
@@ -72,7 +80,6 @@ namespace proyectoDatos {
 			this->txtNombre = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -88,7 +95,6 @@ namespace proyectoDatos {
 			this->panel1->Controls->Add(this->txtNombre);
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Controls->Add(this->button1);
-			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
@@ -198,18 +204,6 @@ namespace proyectoDatos {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &UIAgregarEspecificas::button1_Click);
 			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Verdana", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label1->Location = System::Drawing::Point(167, 9);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 23);
-			this->label1->TabIndex = 8;
-			// 
 			// UIAgregarEspecificas
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -218,6 +212,7 @@ namespace proyectoDatos {
 			this->Controls->Add(this->panel1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"UIAgregarEspecificas";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"UIAgregarEspecificas";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -240,11 +235,14 @@ namespace proyectoDatos {
 
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		GestorInventario * gestor = new GestorInventario();
-		char * pasillo = Utilitario::getElementCode(combo->SelectedItem->ToString());
+		
+		char * general = Utilitario::getElementCode(combo->SelectedItem->ToString());
 		char * codigo = Utilitario::toChar(txtCodigo->Text);
 		char * desc = Utilitario::toChar(txtNombre->Text);
-		int numero = atoi(pasillo);
-		gestor->agregarLEspecifica(numero, codigo, desc, NULL);
+		int numero = atoi(general);
+		ListaEspecifica * listaEs = Utilitario::getEspecificas(general, lista);
+		if(listaEs!=NULL)
+			gestor->agregarLEspecifica(numero, codigo, desc, listaEs);
 	}
 };
 }

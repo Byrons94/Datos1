@@ -44,4 +44,57 @@ char * Utilitario::getElementCode(System::String ^ variable){
 	return toChar(codigo);;
 }
 
+ListaGenerales *Utilitario::getGeneral(char * pcodigoPasillo, ListaPasillos *lista) {
+	ListaGenerales * listag = NULL;
+	NodoPasillo * nodoPasillo = lista->getCab();
+	while (nodoPasillo != NULL) {
+		char * codigoPasillo = nodoPasillo->getInfoPasillo()->getCodigo();
+		if (strcmp(codigoPasillo, pcodigoPasillo) == 0) {
+			listag = nodoPasillo->getInfoPasillo()->getListaGeneral();
+			return listag;
+		}
+		nodoPasillo = nodoPasillo->getSgte();
+	}
+	return listag;
+}
+
+ListaEspecifica *Utilitario::getEspecificas(char * pcodigoGenerales, ListaPasillos *lista) {
+		ListaEspecifica * listae = NULL;
+		NodoPasillo * nodoPasillo = lista->getCab();
+		while (nodoPasillo != NULL) {
+			NodoGenerales * nodoGeneral = nodoPasillo->getInfoPasillo()->getListaGeneral()->getCab();
+			while (nodoGeneral != NULL) {
+				char * codGeneral = nodoGeneral->getInfo()->getCodigo();
+				if (strcmp(codGeneral, pcodigoGenerales) == 0) {
+					listae = nodoGeneral->getInfo()->getListaEspecifica();
+					return listae;
+				}
+				nodoGeneral = nodoGeneral->getSgte();
+			}
+			nodoPasillo = nodoPasillo->getSgte();
+		}
+		return listae;
+	}
+
+  ListaArticulo *Utilitario::getArticulos(char * pcodigoEspecifica, ListaPasillos *lista) {
+		ListaArticulo * listaA = NULL;
+		NodoPasillo * nodoPasillo = lista->getCab();
+		while (nodoPasillo != NULL) {
+			NodoGenerales * nodoGeneral = nodoPasillo->getInfoPasillo()->getListaGeneral()->getCab();
+			while (nodoGeneral != NULL) {
+				NodoEspecifica * nodoE = nodoGeneral->getInfo()->getListaEspecifica()->getCab();
+				while (nodoE != NULL) {
+					char *codigoEspecifica = nodoE->getInfo()->getCodigo();
+					if (strcmp(codigoEspecifica, pcodigoEspecifica) == 0) {
+						listaA = nodoE->getInfo()->getListaArticulos();
+					}
+					nodoE = nodoE->getSgte();
+				}
+				nodoGeneral = nodoGeneral->getSgte();
+			}
+			nodoPasillo = nodoPasillo->getSgte();
+		}
+		return listaA;
+	}
+
 
