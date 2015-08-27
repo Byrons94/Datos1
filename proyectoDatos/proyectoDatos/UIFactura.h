@@ -430,7 +430,7 @@ namespace proyectoDatos {
 
 	
 		gestor->agregarListaCompras(listaCarrito, Utilitario::toChar(txtxIde->Text), "Regular",
-			Utilitario::toChar(codigoUsuario), 1, totalCarrito, listaCompra);
+			Utilitario::toChar(codigoUsuario), 0, totalCarrito, listaCompra);
 		Close();
 	}
 };

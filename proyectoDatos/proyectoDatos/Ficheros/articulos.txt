@@ -14,3 +14,4 @@
 7; 14; Cerveza 6 pack(lata); Pilsen; 2100ml; 4255;
 8; 15; Vino blanco Pinot Grigio; Black Tower; 750ml; 4000;
 9; 16; Vino tinto Cabernet Sauv; Aliwen; 750ml; 5650;
+5; 5487; pa moler; el trapiche; 1kg; 51; 

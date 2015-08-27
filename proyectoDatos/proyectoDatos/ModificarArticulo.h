@@ -40,11 +40,12 @@ namespace proyectoDatos {
 		}
 	private: System::Windows::Forms::Panel^  panel1;
 	protected:
-	private: System::Windows::Forms::Panel^  panel2;
-	private: System::Windows::Forms::TextBox^  txtCodigo;
+
+
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::Button^  button1;
 	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::ComboBox^  comboBox1;
 
 	private:
 		/// <summary>
@@ -59,49 +60,27 @@ namespace proyectoDatos {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(ModificarArticulo::typeid));
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->txtCodigo = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->panel1->Controls->Add(this->panel2);
-			this->panel1->Controls->Add(this->txtCodigo);
+			this->panel1->BackColor = System::Drawing::Color::White;
+			this->panel1->Controls->Add(this->comboBox1);
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->label1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(4);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(474, 253);
+			this->panel1->Size = System::Drawing::Size(356, 206);
 			this->panel1->TabIndex = 6;
-			// 
-			// panel2
-			// 
-			this->panel2->BackColor = System::Drawing::Color::DarkRed;
-			this->panel2->Location = System::Drawing::Point(0, 311);
-			this->panel2->Margin = System::Windows::Forms::Padding(4);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(571, 55);
-			this->panel2->TabIndex = 26;
-			// 
-			// txtCodigo
-			// 
-			this->txtCodigo->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->txtCodigo->Location = System::Drawing::Point(124, 101);
-			this->txtCodigo->Margin = System::Windows::Forms::Padding(4);
-			this->txtCodigo->MaxLength = 15;
-			this->txtCodigo->Name = L"txtCodigo";
-			this->txtCodigo->Size = System::Drawing::Size(239, 37);
-			this->txtCodigo->TabIndex = 13;
 			// 
 			// label2
 			// 
@@ -110,21 +89,19 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label2->Location = System::Drawing::Point(97, 40);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(99, 32);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(328, 25);
+			this->label2->Size = System::Drawing::Size(174, 18);
 			this->label2->TabIndex = 11;
-			this->label2->Text = L"Codigo del articulo a modificar:";
+			this->label2->Text = L"Articulo a modificar:";
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(165, 190);
-			this->button1->Margin = System::Windows::Forms::Padding(4);
+			this->button1->Location = System::Drawing::Point(121, 143);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(159, 48);
+			this->button1->Size = System::Drawing::Size(119, 39);
 			this->button1->TabIndex = 10;
 			this->button1->Text = L"Modificar";
 			this->button1->UseVisualStyleBackColor = true;
@@ -137,19 +114,34 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label1->Location = System::Drawing::Point(223, 11);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(167, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(0, 29);
+			this->label1->Size = System::Drawing::Size(0, 23);
 			this->label1->TabIndex = 8;
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(91, 82);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(182, 24);
+			this->comboBox1->TabIndex = 12;
 			// 
 			// ModificarArticulo
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(474, 253);
+			this->BackColor = System::Drawing::Color::White;
+			this->ClientSize = System::Drawing::Size(356, 206);
 			this->Controls->Add(this->panel1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"ModificarArticulo";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"ModificarArticulo";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -158,8 +150,7 @@ namespace proyectoDatos {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		ModificarArticulo2 ^modif = gcnew ModificarArticulo2(Utilitario::toChar(txtCodigo->Text));
-
+		ModificarArticulo2 ^modif = gcnew ModificarArticulo2();
 		modif->Show();
 
 		Hide();

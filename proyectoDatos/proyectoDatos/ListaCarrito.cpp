@@ -296,7 +296,6 @@ bool ListaCarrito::almacenarCarritoEnFichero(InfoCarrito* carrito) {
 	return true;
 }
 
-
 void ListaCarrito::cargarCarritosUsuario(char *codUsuario) {
 	leerFicheroCarritoUsuario(codUsuario);
 }
@@ -331,7 +330,6 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 			getline(ss, palabraString, ';');
 			convertirAChar(monto, palabraString);
 
-
 			if (covertirAEntero(codUsuario) == covertirAEntero(codCliente) 
 				&& convertirABoolean(estado) == true && strcmp(nombre, "Regular" ) !=0 ){
 				ListaCompra * listaC = new ListaCompra();
@@ -343,7 +341,6 @@ int ListaCarrito::leerFicheroCarritoUsuario(char *codUsuario) {
 
 			lectura >> codigo;
 		}
-
 		lectura.close();
 		return 1;
 	}
@@ -387,12 +384,12 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 			getline(ss, palabraString, ';');
 			convertirAChar(monto, palabraString);
 
-		if (convertirABoolean(estado) == true) {
+		if (convertirABoolean(estado) == true && strcmp(nombre, "Regular") == 0) {
 				ListaCompra * listaC = new ListaCompra();
 				listaC->cargarCompras(codigo);
 				listaCarrito = new InfoCarrito(codigo, nombre, codCliente, convertirABoolean(estado),
 					covertirAEntero(monto), listaC);
-				insertarAcendente(listaCarrito);
+				insertarFinal(listaCarrito);
 			}
 			lectura >> codigo;
 		}
@@ -404,8 +401,60 @@ int ListaCarrito::leerFicheroCarritoPendientes() {
 	}
 }
 
-void ListaCarrito::modificarCarrito(InfoCarrito * info)
-{
+void ListaCarrito::modificarCarrito(InfoCarrito * info){
+	std::ofstream aux;
+	std::ifstream lectura;
+	bool encontrado = false;
+
+	char codigo[15], codCliente[15], nombre[30], estado[5], monto[15];
+
+	aux.open("Ficheros/auxiliar.txt", std::ios::out);
+	lectura.open("Ficheros/carritos.txt", std::ios::in);
+
+	std::string linea;
+
+	if (aux.is_open() && lectura.is_open()) {
+		lectura >> codigo;
+
+		while (getline(lectura, linea)) {
+			std::stringstream ss(linea); 
+			std::string palabraString;   
+
+			std::string str(codigo);
+			str.erase(str.find(';'));
+			strcpy_s(codigo, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(codCliente, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(nombre, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(estado, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(monto, palabraString);
+
+			if (strcmp(codigo, info->getCodigo()) == 0) {
+				encontrado = true;
+
+				aux << info->getCodigo() << "; " << info->getCodClie() << "; "
+					<< info->getNombre() << "; " << 1 << "; "
+					<< info->getMonto() << "; " << std::endl;
+			}
+			else {
+				aux << codigo << "; " << codCliente << "; "
+					<< nombre << "; " << estado << "; " << monto << "; " << std::endl;
+			}
+			lectura >> codigo;
+		}
+	}
+
+	aux.close();
+	lectura.close();
+	remove("Ficheros/carritos.txt");
+	rename("Ficheros/auxiliar.txt", "Ficheros/carritos.txt");
 }
 
 void ListaCarrito::convertirAChar(char *palabra, std::string palabraString) {

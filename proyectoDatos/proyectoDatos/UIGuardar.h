@@ -87,10 +87,6 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::TextBox^  txtMonto;
 	private: System::Windows::Forms::Label^  lblrequerido;
 
-
-
-
-
 	protected:
 
 

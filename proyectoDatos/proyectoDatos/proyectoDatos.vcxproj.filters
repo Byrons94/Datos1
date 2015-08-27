@@ -238,6 +238,15 @@
     <ClInclude Include="NodoEntrega.h">
       <Filter>Archivos de encabezado\Compras\ColaPendientes</Filter>
     </ClInclude>
+    <ClInclude Include="UIAgregarGenerales.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAgregarEspecificas.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAgregarPasillo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -351,14 +360,23 @@
     <ClCompile Include="Facturar.cpp">
       <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
-    <ClCompile Include="UIPendientes.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
     <ClCompile Include="colaEntregas.cpp">
       <Filter>Archivos de codigo fuente\Compras\ColaPendientes</Filter>
     </ClCompile>
     <ClCompile Include="NodoEntrega.cpp">
       <Filter>Archivos de codigo fuente\Compras\ColaPendientes</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAgregarEspecificas.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAgregarGenerales.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAgregarPasillo.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPendientes.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -390,6 +408,21 @@
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarUsuario2.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIFactura.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIPendientes.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIAgregarEspecificas.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIAgregarGenerales.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIAgregarPasillo.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

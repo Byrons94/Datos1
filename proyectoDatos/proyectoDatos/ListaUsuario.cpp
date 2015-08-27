@@ -269,8 +269,7 @@ int ListaUsuario::covertirAEntero(char * pcodigo) {
 	return num;
 }
 
-void ListaUsuario::modificarUsuario(InfoUsuario * usr)
-{
+void ListaUsuario::modificarUsuario(InfoUsuario * usr){
 	std::ofstream aux;
 	std::ifstream lectura;
 	bool encontrado = false;
@@ -304,10 +303,8 @@ void ListaUsuario::modificarUsuario(InfoUsuario * usr)
 
 			if (strcmp(codigo, usr->getCodigo()) == 0) {
 				encontrado = true;
-
 				aux << usr->getCodigo() << "; " << usr->getNombre() << "; "
 					<< usr->getContrasenna() << "; " << usr->getRol() << "; " << std::endl;
-
 			}
 			else {
 				aux << codigo << "; " << nombre << "; "

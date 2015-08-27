@@ -252,6 +252,20 @@ bool ListaGenerales::insertarDecendente(InfoGenerales * pinfo) {
 	return false;
 }
 
+bool ListaGenerales::agregarLGeneral(InfoGenerales * info) {
+	std::ofstream escritura;
+	escritura.open("Ficheros/generales.txt", std::ios::out | std::ios::app);
+	if (escritura.is_open()) {
+		escritura << info->getNumero() << "; " << info->getCodigo() << "; "
+			<< info->getDescripcion() << std::endl;
+		escritura.close();
+	}
+	else {
+		return false;
+	}
+	return true;
+}
+
 void ListaGenerales::cargarGenerales(int numPasillo) {
 	leerFicheroGenerales(numPasillo);
 }

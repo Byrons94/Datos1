@@ -4,7 +4,6 @@
 #include "Utilitario.h"
 
 namespace proyectoDatos {
-
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -25,8 +24,7 @@ namespace proyectoDatos {
 		ListaArticulo * listaArticulos = new ListaArticulo();
 
 	public:
-		UIPendientes(void)
-		{
+		UIPendientes(void){
 			InitializeComponent();
 			cargarPendientes();
 		}
@@ -160,6 +158,8 @@ namespace proyectoDatos {
 			this->dataGridView1->ScrollBars = System::Windows::Forms::ScrollBars::Horizontal;
 			this->dataGridView1->Size = System::Drawing::Size(223, 529);
 			this->dataGridView1->TabIndex = 2;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &UIPendientes::dataGridView1_CellContentClick);
+			this->dataGridView1->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &UIPendientes::dataGridView1_MouseClick);
 			// 
 			// Column1
 			// 
@@ -304,6 +304,7 @@ namespace proyectoDatos {
 			this->btnAgregar->TabIndex = 5;
 			this->btnAgregar->Text = L"Aplicar entrega";
 			this->btnAgregar->UseVisualStyleBackColor = false;
+			this->btnAgregar->Click += gcnew System::EventHandler(this, &UIPendientes::btnAgregar_Click);
 			// 
 			// label7
 			// 
@@ -389,35 +390,73 @@ namespace proyectoDatos {
 	}
 
 	private: System::Void cargarDataGreeds(){
+		dataGridView1->Rows->Clear();
+		NodoEntrega * nodoE = cola->frente();
+		
+		while (nodoE != NULL) {
+			dataGridView1->Rows->Add(Utilitario::toSystemString(nodoE->getCarrito()->getInfo()->getCodigo()));
+			nodoE = nodoE->getSgte();
+		}
+		cargarDatosgenerales();
+		leerDatos(0);
+	}
+
+	private: System::Void cargarDatosgenerales() {
 		listaPasillos->leerFicheroPasillos();
 		listaGenerales->leerFicheroGenerales();
 		listaEspecifica->leerFicheroEspecificas2();
 		listaArticulos->cargarArticulos();
+	}
 
+	private: void leerDatos(int posicion){
+		dataGridView2->Rows->Clear();
 		NodoEntrega * nodoE = cola->frente();
-		
-		while (nodoE != NULL){
-			dataGridView1->Rows->Add(Utilitario::toSystemString(nodoE->getCarrito()->getInfo()->getCodigo()));
-			NodoCompra * nodoCompra = nodoE->getCarrito()->getInfo()->getListaCompra()->getCab();
-			
-			while (nodoCompra != NULL){
-				InfoPasillo * infoPasillo = listaPasillos->obtenerDato(nodoCompra->getLineaDetalle()->getPasillo());
-				InfoGenerales * infoGenerales = listaGenerales->obtenerDato(nodoCompra->getLineaDetalle()->getGeneral());
-				InfoEspecifica * infoEspecificas = listaEspecifica->obtenerDato(nodoCompra->getLineaDetalle()->getEspecifica());
-				InfoArticulo * infoArticulo = listaArticulos->obtenerDato(nodoCompra->getLineaDetalle()->getProducto());
-				dataGridView2->Rows->Add(Utilitario::toSystemString(infoPasillo->getDescripcion()),
-											Utilitario::toSystemString(infoGenerales->getDescripcion()),
-											Utilitario::toSystemString(infoEspecificas->getDescripcion()),
-											Utilitario::toSystemString(infoArticulo->getCodigo()),
-											Utilitario::toSystemString(infoArticulo->getNombre()),
-											Utilitario::toSystemString(infoArticulo->getMarca()),
-											Utilitario::toSystemString(infoArticulo->getTamanio())
-											);
+		int contador = 0;
 
-				nodoCompra = nodoCompra->getSgte();
+		while (nodoE!=NULL){
+			NodoCompra * nodoCompra = nodoE->getCarrito()->getInfo()->getListaCompra()->getCab();
+			if (contador == posicion) {
+				
+				while (nodoCompra != NULL) {
+				
+					InfoPasillo * infoPasillo	     = listaPasillos->obtenerDato(nodoCompra->getLineaDetalle()->getPasillo());
+					InfoGenerales * infoGenerales    = listaGenerales->obtenerDato(nodoCompra->getLineaDetalle()->getGeneral());
+					InfoEspecifica * infoEspecificas = listaEspecifica->obtenerDato(nodoCompra->getLineaDetalle()->getEspecifica());
+					InfoArticulo * infoArticulo      = listaArticulos->obtenerDato(nodoCompra->getLineaDetalle()->getProducto());
+					
+					dataGridView2->Rows->Add(Utilitario::toSystemString(infoPasillo->getDescripcion()),
+						Utilitario::toSystemString(infoGenerales->getDescripcion()),
+						Utilitario::toSystemString(infoEspecificas->getDescripcion()),
+						Utilitario::toSystemString(infoArticulo->getCodigo()),
+						Utilitario::toSystemString(infoArticulo->getNombre()),
+						Utilitario::toSystemString(infoArticulo->getMarca()),
+						Utilitario::toSystemString(infoArticulo->getTamanio()),
+						Utilitario::toInt32(nodoCompra->getLineaDetalle()->getCantidad()),
+						Utilitario::toInt32(nodoCompra->getLineaDetalle()->getMonto())
+						);
+					nodoCompra = nodoCompra->getSgte();
+				}
 			}
+			contador++;
 			nodoE = nodoE->getSgte();
 		}
 	}
-	};
+
+	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+		int fila = dataGridView1->CurrentCell->RowIndex;
+		leerDatos(fila);
+	}
+
+	private: System::Void dataGridView1_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		int fila = dataGridView1->CurrentCell->RowIndex;
+		leerDatos(fila);
+	}
+	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
+		if (cola->largo() != 0) {
+			cola->desencolar();
+			cargarDataGreeds();
+		}
+	}
+
+};
 }

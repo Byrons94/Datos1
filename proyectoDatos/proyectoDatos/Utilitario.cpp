@@ -41,7 +41,7 @@ System::String ^ Utilitario::Contanenado(char * codigo, char * nombre){
 
 char * Utilitario::getElementCode(System::String ^ variable){
 	System::String^ codigo = variable->Split('-')[0];
-	return toChar(codigo);
+	return toChar(codigo);;
 }
 
 

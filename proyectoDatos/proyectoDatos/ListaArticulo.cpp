@@ -67,8 +67,9 @@ bool ListaArticulo::almacenarArticuloEnFichero(InfoArticulo* articulo) {
 	std::ofstream escritura;
 	escritura.open("Ficheros/articulos.txt", std::ios::out | std::ios::app);
 	if (escritura.is_open()) {
-		escritura << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
-			<< articulo->getMarca() << "; " << articulo->getTamanio() << "; "
+		escritura << articulo->getCodlinea() << "; "<< articulo->getCodigo() << "; " 
+			<< articulo->getNombre() << "; " << articulo->getMarca() << "; " 
+			<< articulo->getTamanio() << "; "
 			<< articulo->getPrecio() << "; " << std::endl;
 		escritura.close();
 	}

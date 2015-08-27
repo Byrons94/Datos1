@@ -36,6 +36,9 @@ public:
 	bool insertarAcendente(InfoEspecifica *);
 	bool insertarDecendente(InfoEspecifica *);
 
+	bool agregarLEspecifica(InfoEspecifica * info);
+
+	
 	void cargarEspecificas(int numLineaGeneral);
 
 	int leerFicheroEspecificas2();

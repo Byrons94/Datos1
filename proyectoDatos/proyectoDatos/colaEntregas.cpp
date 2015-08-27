@@ -67,13 +67,11 @@ NodoCarrito * ColaEntregas::desencolar(){
 		else {
 			setFrente(aux->getSgte());
 		}
-		//cambiar el estado del carrito
+
 		InfoCarrito *info = carrito->getInfo();
-		
 		ListaCarrito *lista = new ListaCarrito();
 		lista->cargarCarritosPendientes();
-		lista->modificarCarrito(new InfoCarrito(info->getCodigo(),info->getNombre(), info->getCodClie(),
-			!info->getEstado(), info->getMonto(), info->getListaCompra()));
+		lista->modificarCarrito(info);
 
 		delete aux;
 		setSize(getSize() - 1);

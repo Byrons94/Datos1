@@ -410,7 +410,7 @@ namespace proyectoDatos {
 	}
 
 
-	// te voy a arreglar infeliz!!! xS			
+		
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		btnAgregar->Enabled = true;
 		dataGridView1->Rows->Clear();
@@ -424,8 +424,8 @@ namespace proyectoDatos {
 			if (i == indexCombo) {
 
 				NodoCompra * nodoC = nodo->getInfo()->getListaCompra()->getCab();
-				if (strcmp(nodoC->getLineaDetalle()->getCodCarrito(), nodoC->getLineaDetalle()->getCodCarrito())==0 ) {
-					
+				/*if (strcmp(nodoC->getLineaDetalle()->getCodCarrito(), nodoC->getLineaDetalle()->getCodCarrito())==0 ) {
+				*/	
 					while (nodoC != NULL){
 						NodoArticulo * nodoA = listaArticulos->getCab();
 					
@@ -447,7 +447,7 @@ namespace proyectoDatos {
 						}
 						nodoC = nodoC->getSgte();
 					}
-				}
+			/*	}*/
 			}	
 				nodo = nodo->getSgte();
 		}
