@@ -1021,7 +1021,6 @@ namespace proyectoDatos {
 			this->Name = L"UIPrincipal";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"UIPrincipal";
-			this->Load += gcnew System::EventHandler(this, &UIPrincipal::UIPrincipal_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel6->ResumeLayout(false);
 			this->panel6->PerformLayout();
@@ -1050,11 +1049,8 @@ namespace proyectoDatos {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		Application::Exit();
 	}
-
-	private: System::Void UIPrincipal_Load(System::Object^  sender, System::EventArgs^  e) {
-
-	}
 	
+
 	private: System::Void validarPermisos(int idRol){
 		if (idRol == 3) {
 			menuStrip1->Visible = false;
@@ -1076,9 +1072,12 @@ namespace proyectoDatos {
 
 	private: System::Void cargarPasillos(ListaPasillos * lista){
 		NodoPasillo * nodo = lista->getCab();
+
 		while (nodo!=NULL){
 			char * nombre = nodo->getInfoPasillo()->getDescripcion();
-			comboBox1->Items->Add(Utilitario::toSystemString(nombre));
+			char * codigo = nodo->getInfoPasillo()->getCodigo();
+		
+			comboBox1->Items->Add(Utilitario::Contanenado(codigo, nombre));
 			nodo = nodo->getSgte();
 		}
 		comboBox1->SelectedIndex = 0;
@@ -1097,7 +1096,9 @@ namespace proyectoDatos {
 			if (contador == index) {
 				NodoGenerales * nodosG = nodo->getInfoPasillo()->getListaGeneral()->getCab();
 				while (nodosG != NULL) {
-					comboBox2->Items->Add(Utilitario::toSystemString(nodosG->getInfo()->getDescripcion()));
+					char* codigo = nodosG->getInfo()->getCodigo();
+					char* nombre = nodosG->getInfo()->getDescripcion();
+					comboBox2->Items->Add(Utilitario::Contanenado(codigo, nombre));
 					nodosG = nodosG->getSgte();
 				}
 			}
@@ -1106,7 +1107,7 @@ namespace proyectoDatos {
 		}
 		comboBox2->SelectedIndex = 0;
 	}
-
+	
 	private: System::Void comboBox2_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 		int index = comboBox2->SelectedIndex;
 		cargarLineasEspecificas(index);
@@ -1126,7 +1127,9 @@ namespace proyectoDatos {
 					if (contadorG == index) {
 						NodoEspecifica * nodoE = nodosG->getInfo()->getListaEspecifica()->getCab();
 						while (nodoE!=NULL){
-							comboBox3->Items->Add(Utilitario::toSystemString(nodoE->getInfo()->getDescripcion()));
+							char* codigo = nodoE->getInfo()->getCodigo();
+							char* nombre = nodoE->getInfo()->getDescripcion();
+							comboBox3->Items->Add(Utilitario::Contanenado(codigo, nombre));
 							nodoE = nodoE->getSgte();
 						}
 					}
@@ -1144,7 +1147,7 @@ namespace proyectoDatos {
 		int index = comboBox3->SelectedIndex;
 		cargarProductos(index);
 	}
-
+	
 	private: System::Void cargarProductos(int index){
 		dataGridView1->Rows->Clear();
 		int contador = 0;
@@ -1198,16 +1201,13 @@ namespace proyectoDatos {
 		int fila = dataGridView1->CurrentCell->RowIndex;
 		lblProducto->Text = dataGridView1->Rows[fila]->Cells[1]->Value->ToString();
 		btnAgregar->Enabled = true;
-
 	}
 
-
 	private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
-		//pasillo, general, especifica
-		int pasillo    = Utilitario::toInt(comboBox1->SelectedIndex + 1);
-		int general    = Utilitario::toInt(comboBox2->SelectedIndex + 1);
-		int especifica = Utilitario::toInt(comboBox3->SelectedIndex + 1);
-		
+
+		char * pasillo    = Utilitario::getElementCode(comboBox1->SelectedItem->ToString());
+		char * general    = Utilitario::getElementCode(comboBox2->SelectedItem->ToString());
+		char * especifica =	Utilitario::getElementCode(comboBox3->SelectedItem->ToString());
 		int fila = dataGridView1->CurrentCell->RowIndex;
 		String^ cod = gcnew System::String(dataGridView1->Rows[fila]->Cells[0]->Value->ToString());
 		String^ precio = gcnew System::String(dataGridView1->Rows[fila]->Cells[4]->Value->ToString());
@@ -1216,8 +1216,7 @@ namespace proyectoDatos {
 		char * codigoProd = Utilitario::toChar(cod);
 		int cantidad    = (int)numericUpDown1->Value;
 		int montoTotal = (precioFinal*cantidad);
-		bool existe = gestorCompras->agregarProductoALista(Utilitario::intToChar(pasillo), Utilitario::intToChar(general), 
-											Utilitario::intToChar(especifica), codigoProd, cantidad, montoTotal, listaCompra);
+		bool existe = gestorCompras->agregarProductoALista(pasillo, general, especifica, codigoProd, cantidad, montoTotal, listaCompra);
 		if(existe)
 			agregarAlCarrito(cod, nombre, cantidad, montoTotal);
 	}

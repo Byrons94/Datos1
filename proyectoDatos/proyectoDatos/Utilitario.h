@@ -1,6 +1,10 @@
 #pragma once
 #include <string> 
 #include <iostream>
+#include "stdafx.h"
+#include <string> 
+#include <iostream>
+#include <stdio.h>
 
 using namespace System::Runtime::InteropServices;
 namespace Utilitario {
@@ -13,6 +17,9 @@ namespace Utilitario {
 
 	double toDouble(System::String ^ variable);
 
+	System::String^ Contanenado(char *, char *);
+
+	char * getElementCode(System::String ^ variable);
 }
 
 

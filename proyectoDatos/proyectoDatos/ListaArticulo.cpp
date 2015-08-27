@@ -32,7 +32,6 @@ NodoArticulo * ListaArticulo::dirIndex(int pindex) {
 }
 
 void ListaArticulo::agregarNodoDespuesDe(NodoArticulo * nuevo, NodoArticulo * nodo) {
-
 	if (nodo->getSgte() != NULL) {
 		nodo->getSgte()->setAnte(nuevo);
 	}
@@ -78,7 +77,6 @@ bool ListaArticulo::almacenarArticuloEnFichero(InfoArticulo* articulo) {
 	}
 	return true;
 }
-//fin privados
 
 //constrructores
 ListaArticulo::ListaArticulo(){
@@ -264,7 +262,6 @@ bool ListaArticulo::insertarDecendente(InfoArticulo * pinfo) {
 }
 
 
-////////////////almacenamiento
 int  ListaArticulo::agregar(char * codigo, char *nombre, char *marca, char * tamanio, double precio, ListaArticulo *lista) {
 	//devuelve 1 si el producto ya existe
 	//devuelve 2 si el archivo no pudo ser abierto
@@ -395,7 +392,6 @@ int ListaArticulo::covertirAEntero(char * pcodigo) {
 	return num;
 }
 
-
 void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 {
 	std::ofstream aux;
@@ -412,6 +408,7 @@ void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 		while (getline(lectura, linea)) {
 			std::stringstream ss(linea); //nos da un el elemento por linea
 			std::string palabraString;   // lo definimos para almacenar el dato del txt
+
 
 			std::string str(codigo);
 			str.erase(str.find(';'));
@@ -449,26 +446,6 @@ void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 
 			lectura >> codigo;
 		}
-
-		/*while (!lectura.eof()) {
-
-
-			lectura >> lineaEsp >> nombre >> marca >> tamanio >> precio;
-			if (codigo == articulo->getCodigo()) {
-				encontrado = true;
-
-				aux << articulo->getCodigo() << "; " << articulo->getNombre() << "; "
-					<< articulo->getMarca() << "; " << articulo->getTamanio() << "; "
-					<< articulo->getPrecio() << "; " << std::endl;
-
-			}
-			else {
-				aux << codigo << "; " << nombre << "; "
-					<< marca << "; " << tamanio << "; "
-					<< precio << "; " << std::endl;
-			}
-			lectura >> precio;
-		}*/
 	}
 
 	aux.close();
@@ -476,120 +453,3 @@ void ListaArticulo::modificarArticulo(InfoArticulo * articulo)
 	remove("Ficheros/articulos.txt");
 	rename("Ficheros/auxiliar.txt", "Ficheros/articulos.txt");
 }
-
-
-//
-//bool ListaArticulo::Agregar(InfoArticulo * articulo){
-//	NodoArticulo *temp = new NodoArticulo(articulo);
-//	NodoArticulo *aux = NULL;
-//	aux = getCab();
-//	
-//	if (aux == NULL) {
-//		setCab(temp);
-//		aux = temp;
-//		setTamanio(getTamanio() + 1);
-//		return true;
-//	}
-//	else {
-//		while(aux != NULL){
-//			if (strcmp(temp->getInfo()->getCodigo(), aux->getInfo()->getCodigo()) == 0) {
-//				return false;
-//			}
-//			else if(strcmp(temp->getInfo()->getCodigo(), aux->getInfo()->getCodigo()) < 0 
-//					&& strlen(temp->getInfo()->getCodigo()) <= strlen(aux->getInfo()->getCodigo())){
-//				if (aux->getAnte() == NULL) {
-//					setCab(temp);
-//					aux->setAnte(temp);
-//					temp->setSgte(aux);
-//				
-//				}else{
-//					aux->getAnte()->setSgte(temp);
-//					temp->setAnte(aux->getAnte());
-//					temp->setSgte(aux);
-//					aux->setAnte(temp);
-//				}
-//				setTamanio(getTamanio() + 1);
-//				return true;
-//			}
-//			else if (aux->getSgte() == NULL){
-//				aux->setSgte(temp);
-//				temp->setAnte(aux);
-//				setTamanio(getTamanio() + 1);
-//				return true;
-//			}
-//			aux = aux->getSgte();
-//			}
-//	}
-//	return false;
-//}
-//
-//bool ListaArticulo::Eliminar(char *codigo){
-//	if (getCab() == NULL) {
-//		return false;
-//	}else {
-//		NodoArticulo *aux = DirNodo(codigo);
-//		if (aux == NULL) {
-//			return false;
-//		}else {
-//			if (getTamanio() == 1) {
-//				setCab(NULL);
-//			}
-//
-//			else if (aux->getAnte() == NULL) {
-//				setCab(aux->getSgte());
-//				aux->getSgte()->setAnte(NULL);
-//			}
-//
-//			else if(aux->getSgte() == NULL){
-//				aux->getAnte()->setSgte(NULL);
-//			}
-//			delete aux;
-//			setTamanio(getTamanio() - 1);
-//			return true;
-//		}
-//	}
-//	return false;
-//}
-//
-//
-//bool ListaArticulo::Modificar(InfoArticulo *articulo) {
-//	NodoArticulo *aux = DirNodo(articulo->getCodigo());
-//	if (aux == NULL) {
-//		return false;
-//	}
-//	else {
-//		NodoArticulo *temp = new NodoArticulo(articulo);
-//		if (aux->getAnte() == NULL && aux->getSgte() == NULL) {
-//			aux->setInfo(articulo);
-//		}
-//		else if (aux->getAnte() == NULL) {
-//			temp->setSgte(aux->getSgte());
-//			aux->getSgte()->setAnte(temp);
-//		}
-//		else if (aux->getSgte() == NULL){
-//			aux->getAnte()->setSgte(temp);
-//			temp->setAnte(aux->getAnte());
-//		}else {
-//			aux->getSgte()->setAnte(temp);
-//			aux->getAnte()->setSgte(temp);
-//			temp->setAnte(aux->getAnte());
-//			temp->setSgte(aux->getSgte());
-//		}
-//		return true;
-//	}
-//	return false;
-//}
-//
-//void ListaArticulo::DesplegarListaArticulos() {
-//	if (getCab() == NULL) {
-//		cout << "La lista esta vacia \n";
-//	}else {
-//		NodoArticulo *temp = getCab();
-//		do {
-//			cout << "----------------------------------------\n";
-//			cout << "Codigo: "<< temp->getInfo()->getCodigo();
-//			cout << "Nombre: " << temp->getInfo()->getNombre();
-//			cout << "Precio: " << temp->getInfo()->getPrecio();
-//		} while (temp != NULL);
-//	}
-//}

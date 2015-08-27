@@ -388,7 +388,6 @@ namespace proyectoDatos {
 		cargarDataGreeds();
 	}
 
-
 	private: System::Void cargarDataGreeds(){
 		listaPasillos->leerFicheroPasillos();
 		listaGenerales->leerFicheroGenerales();
@@ -419,7 +418,6 @@ namespace proyectoDatos {
 			}
 			nodoE = nodoE->getSgte();
 		}
-
 	}
 	};
 }
