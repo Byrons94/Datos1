@@ -34,7 +34,7 @@ void GestorInventario::agregarPasillo(int numero, char * codigo, char * descripc
 	InfoPasillo * info = new InfoPasillo(numero, codigo, descripcion);
 	listap->agregarPasiilo(info);
 	listap->insertarAcendente(info);
-}
+} 
 
 void GestorInventario::agregarLGeneral(int numero, char * codigo, char * descripcion, ListaGenerales * listag) {
 	InfoGenerales * info = new InfoGenerales(numero, codigo, descripcion);
