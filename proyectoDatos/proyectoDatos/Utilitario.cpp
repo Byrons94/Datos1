@@ -26,11 +26,22 @@ char * Utilitario::intToChar(int numero){
 	return toChar(var);
 }
 
-double Utilitario::toDouble(System::String ^ variable)
-{
+double Utilitario::toDouble(System::String ^ variable){
 	double foo = System::Convert::ToDouble(variable);
-
 	return foo;
+}
+
+System::String ^ Utilitario::Contanenado(char * codigo, char * nombre){
+	char  a[60];
+	strcpy_s(a, codigo);
+	strcat_s(a, "-");
+	strcat_s(a, nombre);
+	return toSystemString(a);
+}
+
+char * Utilitario::getElementCode(System::String ^ variable){
+	System::String^ codigo = variable->Split('-')[0];
+	return toChar(codigo);;
 }
 
 

@@ -48,8 +48,7 @@ void ListaEspecifica::agregarNodoDespuesDe(NodoEspecifica * nuevo, NodoEspecific
 
 void ListaEspecifica::agregarNodoAntesDe(NodoEspecifica * nuevo, NodoEspecifica * nodo) {
 
-	if (nodo->getAnte() != NULL)
-	{
+	if (nodo->getAnte() != NULL){
 		nodo->getAnte()->setSgte(nuevo);
 		nuevo->setSgte(nodo->getAnte());
 	}
@@ -188,6 +187,7 @@ void ListaEspecifica::insertarFinal(InfoEspecifica * pinfo) {
 	tamanio++;
 }
 
+
 bool ListaEspecifica::insertarAntesDe(InfoEspecifica * pinfo, char * pcodigo) {
 	NodoEspecifica *aux = dirNodo(pcodigo);
 	bool existe = aux != NULL;
@@ -209,45 +209,65 @@ bool ListaEspecifica::insertarDespuesDe(InfoEspecifica * pinfo, char * pcodigo) 
 }
 
 bool ListaEspecifica::insertarAcendente(InfoEspecifica * pinfo) {
+	NodoEspecifica * temp = new NodoEspecifica(pinfo);
 
 	NodoEspecifica * nodo = getCab();
-	if (nodo == NULL || strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) < 0) {
+	if (nodo == NULL || covertirAEntero(pinfo->getCodigo()) < covertirAEntero(nodo->getInfo()->getCodigo())) {
 		insetarInicio(pinfo);
 	}
 	else {
-		while (nodo->getSgte() != NULL && strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) < 0) {
+		bool existe = false;
+		while (nodo->getSgte() != NULL && covertirAEntero(pinfo->getCodigo()) >= covertirAEntero(nodo->getSgte()->getInfo()->getCodigo())) {
+			existe = (covertirAEntero(pinfo->getCodigo()) == covertirAEntero(nodo->getInfo()->getCodigo()));
 			nodo = nodo->getSgte();
 		}
-		agregarNodoDespuesDe(new NodoEspecifica(pinfo), nodo);
-		return true;
+		if (!existe) {
+			agregarNodoDespuesDe(temp, nodo);
+			return true;
+		}
 	}
 	return false;
 }
 
 bool ListaEspecifica::insertarDecendente(InfoEspecifica * pinfo) {
+	NodoEspecifica * temp = new NodoEspecifica(pinfo);
 
 	NodoEspecifica * nodo = getCab();
-	if (nodo == NULL || strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) > 0) {
+	if (nodo == NULL || covertirAEntero(pinfo->getCodigo()) > covertirAEntero(nodo->getInfo()->getCodigo())) {
 		insetarInicio(pinfo);
 	}
 	else {
-		while (nodo->getSgte() != NULL && strcmp(pinfo->getCodigo(), nodo->getInfo()->getCodigo()) > 0) {
+		bool existe = false;
+		while (nodo->getSgte() != NULL && covertirAEntero(pinfo->getCodigo()) < covertirAEntero(nodo->getSgte()->getInfo()->getCodigo())) {
+			existe = (covertirAEntero(pinfo->getCodigo()) == covertirAEntero(nodo->getInfo()->getCodigo()));
 			nodo = nodo->getSgte();
 		}
-		agregarNodoDespuesDe(new NodoEspecifica(pinfo), nodo);
-		return true;
+		if (!existe) {
+			agregarNodoDespuesDe(temp, nodo);
+			return true;
+		}
 	}
 	return false;
 }
 
-
+bool ListaEspecifica::agregarLEspecifica(InfoEspecifica * info) {
+	std::ofstream escritura;
+	escritura.open("Ficheros/especificas.txt", std::ios::out | std::ios::app);
+	if (escritura.is_open()) {
+		escritura << info->getNumero() << "; " << info->getCodigo() << "; "
+			<< info->getDescripcion() << std::endl;
+		escritura.close();
+	}
+	else {
+		return false;
+	}
+	return true;
+}
 
 void ListaEspecifica::cargarEspecificas(int numLineaGeneral) {
 
 	leerFicheroEspecificas(numLineaGeneral);
 }
-
-
 
 int ListaEspecifica::leerFicheroEspecificas(int numLineaGeneral) {
 
@@ -278,7 +298,6 @@ int ListaEspecifica::leerFicheroEspecificas(int numLineaGeneral) {
 			if (covertirAEntero(numero) == numLineaGeneral) {
 				lineaEspecifica = new InfoEspecifica(covertirAEntero(numero), codigo, descripcion);
 				insertarAcendente(lineaEspecifica);
-
 				lineaEspecifica->cargarArticulos();
 			}
 			lectura >> numero;
@@ -317,12 +336,9 @@ int ListaEspecifica::leerFicheroEspecificas2() {
 			getline(ss, palabraString, ';');
 			convertirAChar(descripcion, palabraString);
 
-			
-				lineaEspecifica = new InfoEspecifica(covertirAEntero(numero), codigo, descripcion);
-				insertarAcendente(lineaEspecifica);
+			lineaEspecifica = new InfoEspecifica(covertirAEntero(numero), codigo, descripcion);
+			insertarAcendente(lineaEspecifica);
 
-				lineaEspecifica->cargarArticulos();
-			
 			lectura >> numero;
 		}
 		lectura.close();

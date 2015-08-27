@@ -8,36 +8,29 @@ private:
 	char	nombre[30];
 	char	marca[30];
 	char	tamanio[30];
-	double	precio;
+	int	precio;
 
 public:
 	InfoArticulo();
 	~InfoArticulo();
-	InfoArticulo(int, char*, char*, char*, char *, double);
+	InfoArticulo(int, char*, char*, char*, char *, int);
 
-	InfoArticulo(int codigoLinea, char * pnombre, char * pmarca, char * ptamanio, double pprecio);
 
-	InfoArticulo(char * pcodigo, char * pnombre, char * pmarca, char * ptamanio, double pprecio);
 
-	InfoArticulo(char * pnombre, char * pmarca, char * ptamanio, double pprecio);
-	
 	void   setCodLinea(int);	
 	void   setCodigo(char *);
 	void   setNombre(char *);
 	void   setMarca(char *);
 	void   setTamanio(char*);
-	void   setPrecio(double);
+	void   setPrecio(int);
 
 	int    getCodlinea();
 	char   *getCodigo();
 	char   *getNombre();
 	char   *getMarca();
 	char    *getTamanio();
-	double getPrecio();
+	int getPrecio();
 
-	char * autoIncrementar();
-
-	int ultimoRegistro();
 
 	void convertirAChar(char * palabra, std::string palabraString);
 

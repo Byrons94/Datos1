@@ -1,4 +1,5 @@
 #include "GestorCompras.h"
+#include "colaEntregas.h"
 
 
 GestorCompras::GestorCompras()
@@ -49,10 +50,10 @@ ListaCarrito * GestorCompras::obtenerCarritoUsuario(char *codUsuario){
 	return lista;
 }
 
-ListaCarrito * GestorCompras::obtenerCarritosPendientes(){
-	ListaCarrito * lista = new ListaCarrito();
-	lista->cargarCarritosPendientes();
-	return lista;
+ColaEntregas * GestorCompras::obtenerCarritosPendientes(){
+	ColaEntregas *colaPendientes = new ColaEntregas();
+	colaPendientes->cargarColaPendientes();
+	return colaPendientes;
 }
 
 

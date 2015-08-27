@@ -12,10 +12,13 @@ public:
 	ListaArticulo *cargarArticulos();
 
 	int covertirAEntero(char * );
+	void agregarArticulo(int codigoLinea, char * codigo, char *pnombre, char * pmarca, char * ptamanio, double pprecio);
+	void agregarPasillo(int, char *, char *, ListaPasillos * listap);
 
-	void agregarArticulo(int codigoLinea, char * pnombre, char * pmarca, char * ptamanio, double pprecio);
+	void agregarLGeneral(int numero, char * codigo, char * descripcion, ListaGenerales * listap);
 
-	void agregarArticulo(char * pnombre, char * pcontrasenna, int prol);
+	void agregarLEspecifica(int numero, char * codigo, char * descripcion, ListaEspecifica * listae);
+
 
 };
 

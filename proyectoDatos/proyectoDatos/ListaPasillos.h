@@ -48,6 +48,8 @@ public:
 	bool insertarDecendente(InfoPasillo *);
 
 
+	bool agregarPasiilo(InfoPasillo * info);
+
 	void cargarPasillos();
 
 	int leerFicheroPasillos();

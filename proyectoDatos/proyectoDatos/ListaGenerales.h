@@ -39,9 +39,13 @@ public:
 	bool insertarAcendente(InfoGenerales *);
 	bool insertarDecendente(InfoGenerales *);
 
+	bool agregarLGeneral(InfoGenerales * info);
+
 	void cargarGenerales(int numPasillo);
 
 	int leerFicheroGenerales(int numPasillo);
+
+	int leerFicheroGenerales();
 
 	void convertirAChar(char * palabra, std::string palabraString);
 

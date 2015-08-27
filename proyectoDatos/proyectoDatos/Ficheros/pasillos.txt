@@ -3,4 +3,4 @@
 5; 5; Limpieza; 
 2; 2; Bebidas alcoholicas;
 3; 3; Carnes; 
-
+6; 654; Ropa

@@ -1,8 +1,8 @@
 1; 1; Imitacion de tocino; Badia; 113.4g; 1235;
 1; 2; Salsa de rabano; KRAFT; 354ml; 1500;
 2; 3; Salsa de queso cheddar; Monteverde; 350g; 2420;
-3; 4; Binagre de manzana; Biotrentito; 500ml; 3030;
-3; 5; Binagre balsamico blanco; Carbonell; 250ml; 11250;
+3; 4; Vinagre de manzana; Biotrentito; 500ml; 3030;
+3; 5; Vinagre balsamico blanco; Carbonell; 250ml; 11250;
 4; 6; Azucar blanco; Dona Maria; 2000g; 1325; 
 4; 7; Azucar crudo; Dona Maria; 500g; 765;
 5; 8; Miel de cana dulce; El trapiche; 750ml; 1815;
@@ -14,3 +14,4 @@
 7; 14; Cerveza 6 pack(lata); Pilsen; 2100ml; 4255;
 8; 15; Vino blanco Pinot Grigio; Black Tower; 750ml; 4000;
 9; 16; Vino tinto Cabernet Sauv; Aliwen; 750ml; 5650;
+5; 5487; pa moler; el trapiche; 1kg; 51; 

@@ -76,16 +76,40 @@
     <Filter Include="Interfaz">
       <UniqueIdentifier>{0c339ac4-6d33-48b4-8469-40f1e44fe0cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de codigo fuente\Interfaz">
+      <UniqueIdentifier>{197576fb-c533-4765-af9a-0f2b18d38796}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ficheros">
+      <UniqueIdentifier>{5ef125ff-ff98-4de7-ab5d-d2bbd209285e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de codigo fuente\Compras\ColaPendientes">
+      <UniqueIdentifier>{0be17a2e-6aaa-444a-a5d2-977b7c2463fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Compras\ColaPendientes">
+      <UniqueIdentifier>{67d09865-9052-4f3d-8f3e-b3bd9366fa06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
-    <Text Include="Ficheros\articulos.txt" />
-    <Text Include="Ficheros\carritos.txt" />
-    <Text Include="Ficheros\especificas.txt" />
-    <Text Include="Ficheros\generales.txt" />
-    <Text Include="Ficheros\pasillos.txt" />
-    <Text Include="Ficheros\pedidos.txt" />
     <Text Include="Ficheros\usuarios.txt" />
+    <Text Include="Ficheros\pedidos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\pasillos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\generales.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\especificas.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\carritos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
+    <Text Include="Ficheros\articulos.txt">
+      <Filter>Ficheros</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -178,19 +202,13 @@
     <ClInclude Include="UIGuardar.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="UIRegistro.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIRegArticulo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="BuscarCarritos.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="NodoEntrega.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="colaEntregas.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ModificarArticulo.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="ModificarArticulo2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="ModificarUsuario.h">
@@ -199,13 +217,34 @@
     <ClInclude Include="ModificarUsuario2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UIRegArticulo.h">
+    <ClInclude Include="ModificarArticulo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UIRegistro.h">
+    <ClInclude Include="ModificarArticulo2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UIFacturar.h">
+    <ClInclude Include="Facturar.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIFactura.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIPendientes.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="colaEntregas.h">
+      <Filter>Archivos de encabezado\Compras\ColaPendientes</Filter>
+    </ClInclude>
+    <ClInclude Include="NodoEntrega.h">
+      <Filter>Archivos de encabezado\Compras\ColaPendientes</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAgregarGenerales.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAgregarEspecificas.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UIAgregarPasillo.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -285,44 +324,59 @@
     <ClCompile Include="GestorCompras.cpp">
       <Filter>Archivos de codigo fuente\Gestores</Filter>
     </ClCompile>
-    <ClCompile Include="UI.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="UIPrincipal.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
     <ClCompile Include="Utilitario.cpp">
       <Filter>Archivos de codigo fuente</Filter>
     </ClCompile>
-    <ClCompile Include="UIGuardar.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="NodoEntrega.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
-    <ClCompile Include="colaEntregas.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
-    </ClCompile>
     <ClCompile Include="ModificarArticulo.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
     <ClCompile Include="ModificarArticulo2.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
     <ClCompile Include="ModificarUsuario.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
     <ClCompile Include="ModificarUsuario2.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UI.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIGuardar.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPrincipal.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
     <ClCompile Include="UIRegArticulo.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
     <ClCompile Include="UIRegistro.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
-    <ClCompile Include="UIFacturar.cpp">
-      <Filter>Archivos de codigo fuente</Filter>
+    <ClCompile Include="UIFactura.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="Facturar.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="colaEntregas.cpp">
+      <Filter>Archivos de codigo fuente\Compras\ColaPendientes</Filter>
+    </ClCompile>
+    <ClCompile Include="NodoEntrega.cpp">
+      <Filter>Archivos de codigo fuente\Compras\ColaPendientes</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAgregarEspecificas.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAgregarGenerales.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIAgregarPasillo.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
+    </ClCompile>
+    <ClCompile Include="UIPendientes.cpp">
+      <Filter>Archivos de codigo fuente\Interfaz</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +392,12 @@
     <EmbeddedResource Include="BuscarCarritos.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="UIRegArticulo.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIRegistro.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModificarArticulo.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
@@ -350,13 +410,19 @@
     <EmbeddedResource Include="ModificarUsuario2.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIRegArticulo.resx">
+    <EmbeddedResource Include="UIFactura.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIRegistro.resx">
+    <EmbeddedResource Include="UIPendientes.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="UIFacturar.resx">
+    <EmbeddedResource Include="UIAgregarEspecificas.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIAgregarGenerales.resx">
+      <Filter>Archivos de codigo fuente\Resource Files</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIAgregarPasillo.resx">
       <Filter>Archivos de codigo fuente\Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>

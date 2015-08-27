@@ -17,51 +17,53 @@ namespace proyectoDatos {
 	using namespace Utilitario;
 
 	/// <summary>
-	/// Summary for Facturar
+	/// Summary for UIFactura
 	/// </summary>
-	public ref class Facturar : public System::Windows::Forms::Form
+	public ref class UIFactura : public System::Windows::Forms::Form
 	{
 		String ^codigoUsuario = "";
-		int totalCarrito=0;
+		int totalCarrito = 0;
 		ListaCarrito * listaCarrito = NULL;
 		ListaCompra * listaCompra = NULL;
 		Label^   lblTotal1;
 
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
-		private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
-		private: System::Windows::Forms::DataGridView^  dataGridView1;
-		private: System::Windows::Forms::Button^  btnAgregar;
-				 
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column7;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column6;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column5;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::TextBox^  txtxIde;
+	private: System::Windows::Forms::Button^  btnFacturar;
+
+
 
 
 	public:
-		Facturar(void)
+		UIFactura(void)
 		{
 			InitializeComponent();
-			
+
 		}
 
 
-		Facturar(String^ usuario, int ptotalCarrito, ListaCompra * plistaCompra, ListaCarrito *plistaCarrito) {
+		UIFactura(String^ usuario, int ptotalCarrito, ListaCompra * plistaCompra, ListaCarrito *plistaCarrito) {
 			InitializeComponent();
 			codigoUsuario = usuario;
 			totalCarrito = ptotalCarrito;
-			
+
 			listaCompra = plistaCompra;
 			listaCarrito = plistaCarrito;
-			//cargarFactura();
+			cargarFactura();
 		}
 
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Facturar()
+		~UIFactura()
 		{
 			if (components)
 			{
@@ -95,13 +97,13 @@ namespace proyectoDatos {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle7 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle8 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle9 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle10 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^  dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->btnAgregar = (gcnew System::Windows::Forms::Button());
+			this->btnFacturar = (gcnew System::Windows::Forms::Button());
 			this->lblTotal = (gcnew System::Windows::Forms::Label());
 			this->lblCarrito = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -117,6 +119,7 @@ namespace proyectoDatos {
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->txtxIde = (gcnew System::Windows::Forms::TextBox());
 			this->panel2->SuspendLayout();
 			this->panel3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -125,7 +128,8 @@ namespace proyectoDatos {
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::White;
-			this->panel2->Controls->Add(this->btnAgregar);
+			this->panel2->Controls->Add(this->txtxIde);
+			this->panel2->Controls->Add(this->btnFacturar);
 			this->panel2->Controls->Add(this->lblTotal);
 			this->panel2->Controls->Add(this->lblCarrito);
 			this->panel2->Controls->Add(this->label1);
@@ -137,21 +141,21 @@ namespace proyectoDatos {
 			this->panel2->Size = System::Drawing::Size(1164, 94);
 			this->panel2->TabIndex = 8;
 			// 
-			// btnAgregar
+			// btnFacturar
 			// 
-			this->btnAgregar->BackColor = System::Drawing::Color::DarkRed;
-			this->btnAgregar->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->btnAgregar->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->btnAgregar->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnFacturar->BackColor = System::Drawing::Color::DarkRed;
+			this->btnFacturar->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->btnFacturar->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnFacturar->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnAgregar->ForeColor = System::Drawing::Color::White;
-			this->btnAgregar->Location = System::Drawing::Point(1010, 3);
-			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(154, 37);
-			this->btnAgregar->TabIndex = 10;
-			this->btnAgregar->Text = L"Facturar";
-			this->btnAgregar->UseVisualStyleBackColor = false;
-			//this->btnAgregar->Click += gcnew System::EventHandler(this, &Facturar::btnAgregar_Click);
+			this->btnFacturar->ForeColor = System::Drawing::Color::White;
+			this->btnFacturar->Location = System::Drawing::Point(998, 12);
+			this->btnFacturar->Name = L"btnFacturar";
+			this->btnFacturar->Size = System::Drawing::Size(154, 37);
+			this->btnFacturar->TabIndex = 10;
+			this->btnFacturar->Text = L"Facturar";
+			this->btnFacturar->UseVisualStyleBackColor = false;
+			this->btnFacturar->Click += gcnew System::EventHandler(this, &UIFactura::btnFacturar_Click);
 			// 
 			// lblTotal
 			// 
@@ -160,7 +164,7 @@ namespace proyectoDatos {
 			this->lblTotal->Font = (gcnew System::Drawing::Font(L"Verdana", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblTotal->ForeColor = System::Drawing::Color::Maroon;
-			this->lblTotal->Location = System::Drawing::Point(1021, 65);
+			this->lblTotal->Location = System::Drawing::Point(861, 61);
 			this->lblTotal->Name = L"lblTotal";
 			this->lblTotal->Size = System::Drawing::Size(0, 23);
 			this->lblTotal->TabIndex = 8;
@@ -186,11 +190,11 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label1->Location = System::Drawing::Point(506, 65);
+			this->label1->Location = System::Drawing::Point(322, 64);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(75, 18);
+			this->label1->Size = System::Drawing::Size(172, 18);
 			this->label1->TabIndex = 5;
-			this->label1->Text = L"Factura";
+			this->label1->Text = L"Identificador único";
 			// 
 			// label7
 			// 
@@ -301,36 +305,36 @@ namespace proyectoDatos {
 			this->dataGridView1->AllowUserToDeleteRows = false;
 			this->dataGridView1->AllowUserToResizeColumns = false;
 			this->dataGridView1->AllowUserToResizeRows = false;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::Color::Silver;
-			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::Silver;
+			this->dataGridView1->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this->dataGridView1->BackgroundColor = System::Drawing::Color::White;
 			this->dataGridView1->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->dataGridView1->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleVertical;
 			this->dataGridView1->ClipboardCopyMode = System::Windows::Forms::DataGridViewClipboardCopyMode::Disable;
-			dataGridViewCellStyle7->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle7->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle7->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Verdana", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle7->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle7->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle7->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle7->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::DisableResizing;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->Column1,
 					this->Column2, this->Column5, this->Column3, this->Column4, this->Column6, this->Column7
 			});
 			this->dataGridView1->Cursor = System::Windows::Forms::Cursors::Hand;
-			dataGridViewCellStyle8->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle8->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle8->ForeColor = System::Drawing::Color::White;
-			dataGridViewCellStyle8->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle8->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle8->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle8;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::Color::White;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView1->DefaultCellStyle = dataGridViewCellStyle3;
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->EditMode = System::Windows::Forms::DataGridViewEditMode::EditOnF2;
 			this->dataGridView1->GridColor = System::Drawing::Color::White;
@@ -338,28 +342,39 @@ namespace proyectoDatos {
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
-			dataGridViewCellStyle9->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle9->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle9->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle9->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle9->SelectionBackColor = System::Drawing::Color::Gainsboro;
-			dataGridViewCellStyle9->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle9->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-			dataGridViewCellStyle10->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle10->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::Gainsboro;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView1->RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Verdana", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle10->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle10->SelectionBackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle10->SelectionForeColor = System::Drawing::Color::Maroon;
-			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle10;
+			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::Color::Maroon;
+			this->dataGridView1->RowsDefaultCellStyle = dataGridViewCellStyle5;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(1164, 529);
 			this->dataGridView1->StandardTab = true;
 			this->dataGridView1->TabIndex = 9;
 			// 
-			// Facturar
+			// txtxIde
+			// 
+			this->txtxIde->CharacterCasing = System::Windows::Forms::CharacterCasing::Lower;
+			this->txtxIde->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtxIde->Location = System::Drawing::Point(500, 56);
+			this->txtxIde->MaxLength = 15;
+			this->txtxIde->Name = L"txtxIde";
+			this->txtxIde->Size = System::Drawing::Size(180, 31);
+			this->txtxIde->TabIndex = 24;
+			// 
+			// UIFactura
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -368,9 +383,9 @@ namespace proyectoDatos {
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel3);
 			this->MaximizeBox = false;
-			this->Name = L"Facturar";
+			this->Name = L"UIFactura";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Facturar";
+			this->Text = L"UIFactura";
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			this->panel3->ResumeLayout(false);
@@ -381,48 +396,42 @@ namespace proyectoDatos {
 		}
 #pragma endregion
 
-	//private: System::Void cargarFactura() {
-	//	ListaArticulo * listaArticulos = new ListaArticulo();
-	//	listaArticulos->cargarArticulos();
+		private: System::Void cargarFactura() {
+			ListaArticulo * listaArticulos = new ListaArticulo();
+			listaArticulos->cargarArticulos();
 
-	//	NodoCompra * nodo = listaCompra->getCab();
-	//	
-	//	while (nodo != NULL) {
-	//		NodoArticulo * nodoArti = listaArticulos->getCab();
-	//		while (nodoArti != NULL)
-	//		{
-	//			if (strcmp(nodoArti->getInfo()->getCodigo(), nodo->getLineaDetalle()->getProducto()) == 0) {
-	//				total = total + nodo->getLineaDetalle()->getMonto();
+			NodoCompra * nodo = listaCompra->getCab();
+			double total = 0;
+			while (nodo != NULL) {
+				NodoArticulo * nodoArti = listaArticulos->getCab();
+				while (nodoArti != NULL)
+				{
+					if (strcmp(nodoArti->getInfo()->getCodigo(), nodo->getLineaDetalle()->getProducto()) == 0) {
+						total = total + nodo->getLineaDetalle()->getMonto();
 
-	//				dataGridView1->Rows->Add(Utilitario::toSystemString(nodo->getLineaDetalle()->getProducto()),
-	//					Utilitario::toSystemString(nodoArti->getInfo()->getNombre()),
-	//					Utilitario::toSystemString(nodoArti->getInfo()->getMarca()),
-	//					Utilitario::toSystemString(nodoArti->getInfo()->getTamanio()),
-	//					Utilitario::toInt32(nodoArti->getInfo()->getPrecio()),
-	//					Utilitario::toInt32(nodo->getLineaDetalle()->getCantidad()),
-	//					Utilitario::toInt32(nodo->getLineaDetalle()->getMonto()));
-	//			}
-	//			nodoArti = nodoArti->getSgte();
-	//		}
-	//		nodo = nodo->getSgte();
-	//	}
-	//	lblTotal->Text = Utilitario::toInt32(total)->ToString();
-	//}
+						dataGridView1->Rows->Add(Utilitario::toSystemString(nodo->getLineaDetalle()->getProducto()),
+							Utilitario::toSystemString(nodoArti->getInfo()->getNombre()),
+							Utilitario::toSystemString(nodoArti->getInfo()->getMarca()),
+							Utilitario::toSystemString(nodoArti->getInfo()->getTamanio()),
+							Utilitario::toInt32(nodoArti->getInfo()->getPrecio()),
+							Utilitario::toInt32(nodo->getLineaDetalle()->getCantidad()),
+							Utilitario::toInt32(nodo->getLineaDetalle()->getMonto()));
+					}
+					nodoArti = nodoArti->getSgte();
+				}
+				nodo = nodo->getSgte();
+			}
+			lblTotal->Text = Utilitario::toInt32(total)->ToString();
+		}
 
-	//
-	//private: System::Void btnAgregar_Click(System::Object^  sender, System::EventArgs^  e) {
-	//	ListaCarrito * lista = new ListaCarrito();
-	//	GestorCompras * gestor = new GestorCompras();
+	private: System::Void btnFacturar_Click(System::Object^  sender, System::EventArgs^  e) {
+		ListaCarrito * lista = new ListaCarrito();
+		GestorCompras * gestor = new GestorCompras();
 
-
-	//	std::string s = std::to_string(5);
-	//	char palabra[15];
-	//	std::string palabraString;
-	//	std::memcpy(palabra, s.c_str(), s.size() + 1);
-	//	/*
-	//	gestor->agregarListaCompras(listaCarrito, palabra, "Regular",
-	//		Utilitario::toChar(codigoUsuario), 1, totalCarrito, listaCompra);*/
-	//	Close();
-	//}
+	
+		gestor->agregarListaCompras(listaCarrito, Utilitario::toChar(txtxIde->Text), "Regular",
+			Utilitario::toChar(codigoUsuario), 0, totalCarrito, listaCompra);
+		Close();
+	}
 };
 }

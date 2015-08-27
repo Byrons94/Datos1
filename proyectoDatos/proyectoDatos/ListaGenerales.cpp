@@ -9,6 +9,7 @@ NodoGenerales * ListaGenerales::dirNodo(char * pcodigo) {
 	return nodo;
 }
 
+
 NodoGenerales * ListaGenerales::dirUltimo() {
 	NodoGenerales *nodo = getCab();
 	for (int i = 0; i < getTamanio(); i++)
@@ -17,11 +18,13 @@ NodoGenerales * ListaGenerales::dirUltimo() {
 	return nodo;
 }
 
+
 NodoGenerales * ListaGenerales::dirAnterior(char * pcodigo) {
 	NodoGenerales * nodo = dirNodo(pcodigo);
 
 	return nodo != NULL ? nodo->getAnte() : NULL;
 }
+
 
 NodoGenerales * ListaGenerales::dirIndex(int pindex) {
 	NodoGenerales * nodo = getCab();
@@ -249,13 +252,25 @@ bool ListaGenerales::insertarDecendente(InfoGenerales * pinfo) {
 	return false;
 }
 
+bool ListaGenerales::agregarLGeneral(InfoGenerales * info) {
+	std::ofstream escritura;
+	escritura.open("Ficheros/generales.txt", std::ios::out | std::ios::app);
+	if (escritura.is_open()) {
+		escritura << info->getNumero() << "; " << info->getCodigo() << "; "
+			<< info->getDescripcion() << std::endl;
+		escritura.close();
+	}
+	else {
+		return false;
+	}
+	return true;
+}
+
 void ListaGenerales::cargarGenerales(int numPasillo) {
-	
 	leerFicheroGenerales(numPasillo);
 }
 
 int ListaGenerales::leerFicheroGenerales(int numPasillo) {
-
 	std::ifstream lectura;
 	char numero[3], codigo[15], descripcion[30];
 
@@ -283,8 +298,48 @@ int ListaGenerales::leerFicheroGenerales(int numPasillo) {
 			if(covertirAEntero(numero) == numPasillo){
 				lineaGeneral = new InfoGenerales(covertirAEntero(numero), codigo, descripcion);
 				insertarAcendente(lineaGeneral); 
-				lineaGeneral->cargarEspecificas();
+				 lineaGeneral->cargarEspecificas();
 			}
+			lectura >> numero;
+		}
+		lectura.close();
+		return 1;
+	}
+	else {
+		return 0;
+	}
+}
+
+
+int ListaGenerales::leerFicheroGenerales(){
+	std::ifstream lectura;
+	char numero[3], codigo[15], descripcion[30];
+
+	lectura.open("Ficheros/generales.txt", std::ios::out | std::ios::in);
+	InfoGenerales *lineaGeneral;
+
+	if (lectura.is_open()) {
+		lectura >> numero;  //primer registro de la linea
+		std::string linea;		//contador de las lineas del documento
+
+		while (getline(lectura, linea)) {
+			std::stringstream ss(linea); //nos da un el elemento por linea
+			std::string palabraString;   // lo definimos para almacenar el dato del txt
+
+			std::string str(numero);
+			str.erase(str.find(";"));
+			strcpy_s(numero, str.c_str());
+
+			getline(ss, palabraString, ';');
+			convertirAChar(codigo, palabraString);
+
+			getline(ss, palabraString, ';');
+			convertirAChar(descripcion, palabraString);
+
+			lineaGeneral = new InfoGenerales(covertirAEntero(numero), codigo, descripcion);
+			insertarAcendente(lineaGeneral);
+			lineaGeneral->cargarEspecificas();
+
 			lectura >> numero;
 		}
 		lectura.close();

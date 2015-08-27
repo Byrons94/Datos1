@@ -46,8 +46,7 @@ void ListaPasillos::agregarNodoDespuesDe(NodoPasillo * nuevo, NodoPasillo * nodo
 
 void ListaPasillos::agregarNodoAntesDe(NodoPasillo * nuevo, NodoPasillo * nodo){
 	
-	if (nodo->getAnte() != NULL)
-	{
+	if (nodo->getAnte() != NULL){
 		nodo->getAnte()->setSgte(nuevo);
 		nuevo->setSgte(nodo->getAnte());
 	}
@@ -247,6 +246,20 @@ bool ListaPasillos::insertarDecendente(InfoPasillo * pinfo){
 }
 
 
+bool ListaPasillos::agregarPasiilo(InfoPasillo * info){
+	std::ofstream escritura;
+	escritura.open("Ficheros/pasillos.txt", std::ios::out | std::ios::app);
+	if (escritura.is_open()){
+		escritura << info->getNumero() << "; " << info->getCodigo() << "; "
+			<< info->getDescripcion()  << std::endl;
+		escritura.close();
+	}
+	else {
+		return false;
+	}
+	return true;
+}
+
 void ListaPasillos::cargarPasillos(){
 	leerFicheroPasillos();
 }
@@ -260,12 +273,12 @@ int ListaPasillos::leerFicheroPasillos() {
 	InfoPasillo *pasillo;
 
 	if (lectura.is_open()) {
-		lectura >> numero;  //primer registro de la linea
-		std::string linea;		//contador de las lineas del documento
+		lectura >> numero;  
+		std::string linea;		
 
 		while (getline(lectura, linea)) {
-			std::stringstream ss(linea); //nos da un el elemento por linea
-			std::string palabraString;   // lo definimos para almacenar el dato del txt
+			std::stringstream ss(linea); 
+			std::string palabraString;   
 
 			std::string str(numero);
 			str.erase(str.find(';'));

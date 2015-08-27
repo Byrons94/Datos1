@@ -23,6 +23,9 @@ namespace proyectoDatos {
 		int estado = 0;
 		ListaCarrito * listaCarrito = NULL;
 		ListaCompra * listaCompra = NULL;
+	private: System::Windows::Forms::TextBox^  txtCod;
+
+	private: System::Windows::Forms::Label^  label6;
 
 
 	private: System::Windows::Forms::Button^  button2;
@@ -84,16 +87,7 @@ namespace proyectoDatos {
 	private: System::Windows::Forms::TextBox^  txtMonto;
 	private: System::Windows::Forms::Label^  lblrequerido;
 
-
-
-
-
 	protected:
-
-
-
-
-
 
 
 
@@ -113,6 +107,8 @@ namespace proyectoDatos {
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(UIGuardar::typeid));
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->txtCod = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->lblrequerido = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
@@ -132,13 +128,15 @@ namespace proyectoDatos {
 			// 
 			this->panel2->BackColor = System::Drawing::Color::DarkRed;
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel2->Location = System::Drawing::Point(0, 286);
+			this->panel2->Location = System::Drawing::Point(0, 349);
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(434, 45);
 			this->panel2->TabIndex = 2;
 			// 
 			// panel1
 			// 
+			this->panel1->Controls->Add(this->txtCod);
+			this->panel1->Controls->Add(this->label6);
 			this->panel1->Controls->Add(this->button2);
 			this->panel1->Controls->Add(this->lblrequerido);
 			this->panel1->Controls->Add(this->label5);
@@ -154,14 +152,37 @@ namespace proyectoDatos {
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(434, 286);
+			this->panel1->Size = System::Drawing::Size(434, 349);
 			this->panel1->TabIndex = 3;
+			// 
+			// txtCod
+			// 
+			this->txtCod->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtCod->Location = System::Drawing::Point(171, 26);
+			this->txtCod->MaxLength = 15;
+			this->txtCod->Name = L"txtCod";
+			this->txtCod->Size = System::Drawing::Size(180, 31);
+			this->txtCod->TabIndex = 23;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Verdana", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
+				static_cast<System::Int32>(static_cast<System::Byte>(64)));
+			this->label6->Location = System::Drawing::Point(17, 34);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(64, 18);
+			this->label6->TabIndex = 22;
+			this->label6->Text = L"Codigo";
 			// 
 			// button2
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(48, 226);
+			this->button2->Location = System::Drawing::Point(48, 282);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(119, 39);
 			this->button2->TabIndex = 21;
@@ -173,7 +194,7 @@ namespace proyectoDatos {
 			// 
 			this->lblrequerido->AutoSize = true;
 			this->lblrequerido->ForeColor = System::Drawing::Color::DarkRed;
-			this->lblrequerido->Location = System::Drawing::Point(208, 59);
+			this->lblrequerido->Location = System::Drawing::Point(208, 115);
 			this->lblrequerido->Name = L"lblrequerido";
 			this->lblrequerido->Size = System::Drawing::Size(102, 13);
 			this->lblrequerido->TabIndex = 20;
@@ -187,7 +208,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label5->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label5->Location = System::Drawing::Point(17, 187);
+			this->label5->Location = System::Drawing::Point(17, 243);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(65, 18);
 			this->label5->TabIndex = 19;
@@ -198,7 +219,7 @@ namespace proyectoDatos {
 			this->txtMonto->Enabled = false;
 			this->txtMonto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtMonto->Location = System::Drawing::Point(171, 174);
+			this->txtMonto->Location = System::Drawing::Point(171, 230);
 			this->txtMonto->Name = L"txtMonto";
 			this->txtMonto->Size = System::Drawing::Size(180, 31);
 			this->txtMonto->TabIndex = 18;
@@ -208,7 +229,7 @@ namespace proyectoDatos {
 			this->comboBox1->BackColor = System::Drawing::Color::White;
 			this->comboBox1->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBox1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-			this->comboBox1->Location = System::Drawing::Point(171, 135);
+			this->comboBox1->Location = System::Drawing::Point(171, 191);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(180, 21);
 			this->comboBox1->TabIndex = 0;
@@ -220,7 +241,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label4->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label4->Location = System::Drawing::Point(17, 135);
+			this->label4->Location = System::Drawing::Point(17, 191);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(71, 18);
 			this->label4->TabIndex = 16;
@@ -231,7 +252,7 @@ namespace proyectoDatos {
 			this->txtCodUsuario->Enabled = false;
 			this->txtCodUsuario->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtCodUsuario->Location = System::Drawing::Point(171, 78);
+			this->txtCodUsuario->Location = System::Drawing::Point(171, 134);
 			this->txtCodUsuario->Name = L"txtCodUsuario";
 			this->txtCodUsuario->Size = System::Drawing::Size(180, 31);
 			this->txtCodUsuario->TabIndex = 15;
@@ -240,7 +261,7 @@ namespace proyectoDatos {
 			// 
 			this->txtNombre->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtNombre->Location = System::Drawing::Point(171, 25);
+			this->txtNombre->Location = System::Drawing::Point(171, 81);
 			this->txtNombre->MaxLength = 15;
 			this->txtNombre->Name = L"txtNombre";
 			this->txtNombre->Size = System::Drawing::Size(180, 31);
@@ -253,7 +274,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label3->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label3->Location = System::Drawing::Point(17, 86);
+			this->label3->Location = System::Drawing::Point(17, 142);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(139, 18);
 			this->label3->TabIndex = 12;
@@ -266,7 +287,7 @@ namespace proyectoDatos {
 				static_cast<System::Byte>(0)));
 			this->label2->ForeColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(64)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
 				static_cast<System::Int32>(static_cast<System::Byte>(64)));
-			this->label2->Location = System::Drawing::Point(17, 33);
+			this->label2->Location = System::Drawing::Point(17, 89);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(136, 18);
 			this->label2->TabIndex = 11;
@@ -276,7 +297,7 @@ namespace proyectoDatos {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Verdana", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(232, 226);
+			this->button1->Location = System::Drawing::Point(232, 282);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(119, 39);
 			this->button1->TabIndex = 10;
@@ -301,7 +322,7 @@ namespace proyectoDatos {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(434, 331);
+			this->ClientSize = System::Drawing::Size(434, 394);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->panel2);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
@@ -311,7 +332,6 @@ namespace proyectoDatos {
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
-
 		}
 	
 	#pragma endregion
@@ -321,9 +341,13 @@ namespace proyectoDatos {
 			lblrequerido->Visible = true;
 		}
 		else {
+			char* codigo = Utilitario::toChar(txtCod->Text);
 			GestorCompras * gestor = new GestorCompras();
-			gestor->agregarListaCompras(listaCarrito, "123", nombreCarrito, 
+			gestor->agregarListaCompras(listaCarrito, codigo, nombreCarrito,
 						Utilitario::toChar(codigoUsuario), 0, totalCarrito, listaCompra);
+			listaCompra = new ListaCompra();
+			listaCarrito = new ListaCarrito();
+
 			Close();
 		}
 	}
@@ -331,5 +355,6 @@ namespace proyectoDatos {
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		Close();
 	}
+
 };
 }
