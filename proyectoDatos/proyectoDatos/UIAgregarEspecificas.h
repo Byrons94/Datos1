@@ -1,7 +1,7 @@
 #pragma once
 #include "GestorInventario.h"
 #include "Utilitario.h"
-namespace proyectoDatos {
+namespace proyectoDatos { 
 
 	using namespace System;
 	using namespace System::ComponentModel;
