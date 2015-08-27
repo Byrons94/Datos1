@@ -1,6 +1,7 @@
 #pragma once
 #include "GestorInventario.h"
 #include "Utilitario.h"
+#include "stdafx.h"
 namespace proyectoDatos {
 
 	using namespace System;
@@ -100,6 +101,7 @@ namespace proyectoDatos {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(428, 347);
 			this->panel1->TabIndex = 6;
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &UIAgregarGenerales::panel1_Paint);
 			// 
 			// txtCodigo
 			// 
@@ -253,5 +255,7 @@ namespace proyectoDatos {
 		int numero = atoi(pasillo);
 		gestor->agregarLGeneral(numero, codigo, desc, NULL);
 	}
+private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+}
 };
 }
